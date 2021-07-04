@@ -1,0 +1,19 @@
+ActivationMaximization
+===============================================
+
+```{toctree}
+   :maxdepth: 1
+
+tf_keras_vis.activation_maximization.callbacks
+tf_keras_vis.activation_maximization.input_modifiers
+tf_keras_vis.activation_maximization.regularizers
+```
+
+Classes
+-----------------
+
+```{eval-rst}
+.. automodule:: tf_keras_vis.activation_maximization
+   :members:
+   :show-inheritance:
+```

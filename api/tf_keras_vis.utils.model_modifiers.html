@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Model Modifiers &mdash; tf-keras-vis v0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scores" href="tf_keras_vis.utils.scores.html" />
+    <link rel="prev" title="ScoreCAM" href="tf_keras_vis.scorecam.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> tf-keras-vis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">HOME</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tf_keras_vis.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#feature-visualization">Feature Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#attentions">Attentions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="tf_keras_vis.html#utilities">Utilities</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Model Modifiers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-tf_keras_vis.utils.model_modifiers">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.scores.html">Scores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.html">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#module-tf_keras_vis">Model Visualization Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../change-log.html">CHANGE LOG</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">tf-keras-vis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tf_keras_vis.html">API</a> &raquo;</li>
+        
+      <li>Model Modifiers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="model-modifiers">
+<h1>Model Modifiers<a class="headerlink" href="#model-modifiers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-tf_keras_vis.utils.model_modifiers">
+<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-tf_keras_vis.utils.model_modifiers" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.model_modifiers.ExtractIntermediateLayer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.model_modifiers.</span></span><span class="sig-name descname"><span class="pre">ExtractIntermediateLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_or_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/model_modifiers.html#ExtractIntermediateLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.model_modifiers.ExtractIntermediateLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.model_modifiers.ModelModifier" title="tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.utils.model_modifiers.ModelModifier</span></code></a></p>
+<p>A model modifier that constructs new model instance
+whose output layer is an intermediate layer of <cite>model</cite>.</p>
+<p>This modifier will be used to visualize the features of the model layer.</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.model_modifiers.GuidedBackpropagation">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.model_modifiers.</span></span><span class="sig-name descname"><span class="pre">GuidedBackpropagation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_activations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[tf.keras.activations.relu]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/model_modifiers.html#GuidedBackpropagation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.model_modifiers.GuidedBackpropagation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.model_modifiers.ModelModifier" title="tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.utils.model_modifiers.ModelModifier</span></code></a></p>
+<p>A model modifier that replaces the gradient calculation of activation functions to
+Guided calculation.</p>
+<p>For details on Guided back propagation, see the papers:</p>
+<div class="admonition-references admonition">
+<p class="admonition-title">References</p>
+<ul class="simple">
+<li><p>String For Simplicity: The All Convolutional Net (<a class="reference external" href="https://arxiv.org/pdf/1412.6806.pdf">https://arxiv.org/pdf/1412.6806.pdf</a>)</p></li>
+<li><p>Grad-CAM: Why did you say that? Visual Explanations from Deep Networks via
+Gradient-based Localization (<a class="reference external" href="https://arxiv.org/pdf/1610.02391v1.pdf">https://arxiv.org/pdf/1610.02391v1.pdf</a>)</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note that there is a discussion that Guided Backpropagation is not working well as
+model explanations.</p>
+<ul class="simple">
+<li><p>Sanity Checks for Saliency Maps (<a class="reference external" href="https://arxiv.org/pdf/1810.03292.pdf">https://arxiv.org/pdf/1810.03292.pdf</a>)</p></li>
+<li><p>Guided Grad-CAM is Broken! Sanity Checks for Saliency Maps
+(<a class="reference external" href="https://glassboxmedicine.com/2019/10/12/guided-grad-cam-is-broken-sanity-checks-for-saliency-maps/">https://glassboxmedicine.com/2019/10/12/guided-grad-cam-is-broken-sanity-checks-for-saliency-maps/</a>)</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.model_modifiers.ModelModifier">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.model_modifiers.</span></span><span class="sig-name descname"><span class="pre">ModelModifier</span></span><a class="reference internal" href="../_modules/tf_keras_vis/utils/model_modifiers.html#ModelModifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.model_modifiers.ModelModifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Abstract class for defining a model modifier.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.model_modifiers.ModelModifier.__call__">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/model_modifiers.html#ModelModifier.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.model_modifiers.ModelModifier.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement modification to the model before processing gradient descent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> – A model instance.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.9)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
+</dd>
+</dl>
+<p>Returns: Modified model or None.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.model_modifiers.ReplaceToLinear">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.model_modifiers.</span></span><span class="sig-name descname"><span class="pre">ReplaceToLinear</span></span><a class="reference internal" href="../_modules/tf_keras_vis/utils/model_modifiers.html#ReplaceToLinear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.model_modifiers.ReplaceToLinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.model_modifiers.ModelModifier" title="tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.utils.model_modifiers.ModelModifier</span></code></a></p>
+<p>A model modifier that replaces the activation functions of all output layers to
+<cite>tf.keras.activations.linear</cite>.</p>
+<p>Please note that this modifier must be set the end of modifiers list
+that is passed to <cite>ModelVisualization#__init__()</cite>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># When visualizing `intermediate-1` layer.</span>
+<span class="n">ActivationMaximization</span><span class="p">(</span><span class="n">YOUR_MODEL</span><span class="p">,</span>
+                        <span class="n">model_modifier</span><span class="o">=</span><span class="p">[</span><span class="n">ExtractIntermediateLayer</span><span class="p">(</span><span class="s2">&quot;intermediate-1&quot;</span><span class="p">),</span>
+                                        <span class="n">ReplaceToLinear</span><span class="p">()])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tf_keras_vis.utils.scores.html" class="btn btn-neutral float-right" title="Scores" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tf_keras_vis.scorecam.html" class="btn btn-neutral float-left" title="ScoreCAM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, keisen(Yasuhiro Kubota).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

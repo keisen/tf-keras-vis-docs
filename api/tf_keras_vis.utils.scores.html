@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Scores &mdash; tf-keras-vis v0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functions" href="tf_keras_vis.utils.html" />
+    <link rel="prev" title="Model Modifiers" href="tf_keras_vis.utils.model_modifiers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> tf-keras-vis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">HOME</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tf_keras_vis.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#feature-visualization">Feature Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#attentions">Attentions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="tf_keras_vis.html#utilities">Utilities</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.model_modifiers.html">Model Modifiers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Scores</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-use">How to use</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-usage">Advanced usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tf_keras_vis.utils.scores">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.html">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#module-tf_keras_vis">Model Visualization Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../change-log.html">CHANGE LOG</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">tf-keras-vis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tf_keras_vis.html">API</a> &raquo;</li>
+        
+      <li>Scores</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scores">
+<h1>Scores<a class="headerlink" href="#scores" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The Scores are used to specify the score values corresponding to somethings you want to visualized.
+If you want just to see the API specification, please skip to
+<a class="reference external" href="tf_keras_vis.utils.scores.html#module-tf_keras_vis.utils.scores">Classes section</a>.</p>
+</div>
+<div class="section" id="how-to-use">
+<h2>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
+<p>To use <span class="xref myst">Feature visualization</span> or <span class="xref myst">Attentions</span>, we need the score instance or a function you
+defined to calculate the score value.</p>
+<ul class="simple">
+<li><p>Categorical classification model</p></li>
+<li><p>Binary classification model</p></li>
+<li><p>Regression model</p></li>
+</ul>
+<div class="section" id="categorical-classification-task">
+<h3>Categorical classification task<a class="headerlink" href="#categorical-classification-task" title="Permalink to this headline">¶</a></h3>
+<p>Load imagenet model</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">MobileNetV2</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Load images</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO load image</span>
+</pre></div>
+</div>
+<p>(image)[!]</p>
+<p>Implement score</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>Run</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO gradcam</span>
+</pre></div>
+</div>
+<p>(result image)[]</p>
+</div>
+<div class="section" id="binary-classification-task">
+<h3>Binary classification task<a class="headerlink" href="#binary-classification-task" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="regression-task">
+<h3>Regression task<a class="headerlink" href="#regression-task" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="advanced-usage">
+<h2>Advanced usage<a class="headerlink" href="#advanced-usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-visualize-feature-corresponding-to-one-of-model-outputs-in-multiple-outputs-model">
+<h3>How to visualize feature corresponding to one of model outputs in multiple outputs model<a class="headerlink" href="#how-to-visualize-feature-corresponding-to-one-of-model-outputs-in-multiple-outputs-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="how-to-synthesized-composed-features">
+<h3>How to synthesized composed features<a class="headerlink" href="#how-to-synthesized-composed-features" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="feature-visualization">
+<h4>Feature visualization<a class="headerlink" href="#feature-visualization" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="attentions">
+<h4>Attentions<a class="headerlink" href="#attentions" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="module-tf_keras_vis.utils.scores">
+<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-tf_keras_vis.utils.scores" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.scores.BinaryScore">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.scores.</span></span><span class="sig-name descname"><span class="pre">BinaryScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#BinaryScore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.BinaryScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.scores.Score" title="tf_keras_vis.utils.scores.Score"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.utils.scores.Score</span></code></a></p>
+<p>A score function that collects the scores from model output
+which is for binary classification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target_values</strong> – A bool or a list of them.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><strong>ValueError</strong></a> – When target_values is None or an empty list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.scores.CategoricalScore">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.scores.</span></span><span class="sig-name descname"><span class="pre">CategoricalScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#CategoricalScore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.CategoricalScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.scores.Score" title="tf_keras_vis.utils.scores.Score"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.utils.scores.Score</span></code></a></p>
+<p>A score function that collects the scores from model output
+which is for categorical classification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indices</strong> – An integer or a list of them.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><strong>ValueError</strong></a> – When indices is None or an empty list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.scores.InactiveScore">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.scores.</span></span><span class="sig-name descname"><span class="pre">InactiveScore</span></span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#InactiveScore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.InactiveScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.scores.Score" title="tf_keras_vis.utils.scores.Score"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.utils.scores.Score</span></code></a></p>
+<p>A score function that deactivate model output passed to <cite>__call__()</cite>.</p>
+<p>With a multiple output model, you can use this
+if you want a output to be excluded from targets of calculating gradients.</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.scores.Score">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.scores.</span></span><span class="sig-name descname"><span class="pre">Score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#Score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.Score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Abstract class for defining a score function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Instance name. Defaults to None.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.scores.Score.__call__">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#Score.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.Score.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement collecting scores that are used in visualization modules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output</strong> – A tf.Tensor that indicates a model output value.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.9)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Score values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tf_keras_vis.utils.html" class="btn btn-neutral float-right" title="Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tf_keras_vis.utils.model_modifiers.html" class="btn btn-neutral float-left" title="Model Modifiers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, keisen(Yasuhiro Kubota).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

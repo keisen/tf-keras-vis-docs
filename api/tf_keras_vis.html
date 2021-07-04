@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>API &mdash; tf-keras-vis v0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ActivationMaximization" href="tf_keras_vis.activation_maximization.html" />
+    <link rel="prev" title="Quick Start" href="../quick-start.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> tf-keras-vis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">HOME</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#feature-visualization">Feature Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.activation_maximization.html">ActivationMaximization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#attentions">Attentions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.saliency.html">Vanilla Saliency and SmoothGrad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-activation-map">Class Activation Map</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.gradcam.html">GradCAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.gradcam_plus_plus.html">GradCAM++</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.scorecam.html">ScoreCAM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.model_modifiers.html">Model Modifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.scores.html">Scores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.html">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tf_keras_vis">Model Visualization Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../change-log.html">CHANGE LOG</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">tf-keras-vis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="feature-visualization">
+<h2>Feature Visualization<a class="headerlink" href="#feature-visualization" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.html">ActivationMaximization</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="attentions">
+<h2>Attentions<a class="headerlink" href="#attentions" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.saliency.html">Vanilla Saliency and SmoothGrad</a></li>
+</ul>
+</div>
+<div class="section" id="class-activation-map">
+<h3>Class Activation Map<a class="headerlink" href="#class-activation-map" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.gradcam.html">GradCAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.gradcam_plus_plus.html">GradCAM++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.scorecam.html">ScoreCAM</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="utilities">
+<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.utils.model_modifiers.html">Model Modifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.utils.scores.html">Scores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.utils.html">Functions</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-tf_keras_vis">
+<span id="model-visualization-class"></span><h2>Model Visualization Class<a class="headerlink" href="#module-tf_keras_vis" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.ModelVisualization">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.</span></span><span class="sig-name descname"><span class="pre">ModelVisualization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis.html#ModelVisualization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.ModelVisualization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Visualization class that analyze the model for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – A  <cite>tf.keras.Model</cite> instance. When <cite>model_modifier</cite> is NOT None, this model will
+be cloned with <cite>tf.keras.models.clone_model</cite> function and then will be modified by
+<cite>model_modifier</cite> according to needs.</p></li>
+<li><p><strong>model_modifier</strong> – A <a class="reference internal" href="tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.ModelModifier" title="tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.utils.model_modifiers.ModelModifier</span></code></a> instance,
+a function or a list of them. We recommend to apply
+<cite>tf_keras_vis.utils.model_modifiers.ReplaceToLinear</cite> to all visualizations (except
+<a class="reference internal" href="tf_keras_vis.scorecam.html#tf_keras_vis.scorecam.Scorecam" title="tf_keras_vis.scorecam.Scorecam"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.scorecam.Scorecam</span></code></a>) when the model output is softmax. Defaults
+to None.</p></li>
+<li><p><strong>clone</strong> – A bool that indicates whether or not it clones the <cite>model</cite>. When False, the
+model won’t be cloned. Note that, although when True, the model won’t be clone if
+<cite>model_modifier</cite> is None. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.ModelVisualization.__call__">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis.html#ModelVisualization.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.ModelVisualization.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.9)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Visualized image(s) or something(s).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tf_keras_vis.activation_maximization.html" class="btn btn-neutral float-right" title="ActivationMaximization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../quick-start.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, keisen(Yasuhiro Kubota).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

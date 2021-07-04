@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Callbacks &mdash; tf-keras-vis v0.7.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Input Modifiers" href="tf_keras_vis.activation_maximization.input_modifiers.html" />
+    <link rel="prev" title="ActivationMaximization" href="tf_keras_vis.activation_maximization.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> tf-keras-vis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">HOME</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tf_keras_vis.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tf_keras_vis.html#feature-visualization">Feature Visualization</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="tf_keras_vis.activation_maximization.html">ActivationMaximization</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Callbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.input_modifiers.html">Input Modifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.regularizers.html">Regularizers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.html#module-tf_keras_vis.activation_maximization">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#attentions">Attentions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#utilities">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#module-tf_keras_vis">Model Visualization Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../change-log.html">CHANGE LOG</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">tf-keras-vis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tf_keras_vis.html">API</a> &raquo;</li>
+        
+          <li><a href="tf_keras_vis.activation_maximization.html">ActivationMaximization</a> &raquo;</li>
+        
+      <li>Callbacks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="callbacks">
+<h1>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-tf_keras_vis.activation_maximization.callbacks">
+<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-tf_keras_vis.activation_maximization.callbacks" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.Callback">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.callbacks.</span></span><span class="sig-name descname"><span class="pre">Callback</span></span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/callbacks.html#Callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.Callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Abstract class for defining callbacks.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.Callback.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_outputs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/callbacks.html#Callback.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.Callback.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will be called after updating input values by gradient descent in
+<a class="reference internal" href="tf_keras_vis.activation_maximization.html#tf_keras_vis.activation_maximization.ActivationMaximization.__call__" title="tf_keras_vis.activation_maximization.ActivationMaximization.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.ActivationMaximization.__call__()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> – The current number of optimizer iteration.</p></li>
+<li><p><strong>values</strong> – A list of tf.Tensor that indicates current <cite>values</cite>.</p></li>
+<li><p><strong>grads</strong> – A list of tf.Tensor that indicates the gradients with respect to model input.</p></li>
+<li><p><strong>scores</strong> – A list of tf.Tensor that indicates score values with respect to each the model
+outputs.</p></li>
+<li><p><strong>model_outputs</strong> – A list of tf.Tensor that indicates the model outputs.</p></li>
+<li><p><strong>regularizations</strong> – A list of tuples of (str, tf.Tensor) that indicates the regularizer
+values.</p></li>
+<li><p><strong>overall_score</strong> – A list of tf.Tensor that indicates the overall scores that includes the
+scores and regularization values.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.Callback.on_begin">
+<span class="sig-name descname"><span class="pre">on_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/callbacks.html#Callback.on_begin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.Callback.on_begin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called at the begin of optimization process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The parameters that was passed to
+<a class="reference internal" href="tf_keras_vis.activation_maximization.html#tf_keras_vis.activation_maximization.ActivationMaximization.__call__" title="tf_keras_vis.activation_maximization.ActivationMaximization.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.ActivationMaximization.__call__()</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.Callback.on_end">
+<span class="sig-name descname"><span class="pre">on_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/callbacks.html#Callback.on_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.Callback.on_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called at the end of optimization process.</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.GifGenerator2D">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.callbacks.</span></span><span class="sig-name descname"><span class="pre">GifGenerator2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/callbacks.html#GifGenerator2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.GifGenerator2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.callbacks.Callback" title="tf_keras_vis.activation_maximization.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.callbacks.Callback</span></code></a></p>
+<p>Callback to construct a gif of optimized image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – The file path to save gif.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.PrintLogger">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.callbacks.</span></span><span class="sig-name descname"><span class="pre">PrintLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/callbacks.html#PrintLogger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.PrintLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.callbacks.Callback" title="tf_keras_vis.activation_maximization.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.callbacks.Callback</span></code></a></p>
+<p>Callback to print values during optimization.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This class is now <strong>deprecated</strong>!
+Please use <a class="reference internal" href="#tf_keras_vis.activation_maximization.callbacks.Progress" title="tf_keras_vis.activation_maximization.callbacks.Progress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.callbacks.Progress</span></code></a> instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>interval</strong> – An integer that indicates the interval of printing.
+Defaults to 10.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.PrintLogger.on_begin">
+<span class="sig-name descname"><span class="pre">on_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.PrintLogger.on_begin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called at the begin of optimization process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The parameters that was passed to
+<a class="reference internal" href="tf_keras_vis.activation_maximization.html#tf_keras_vis.activation_maximization.ActivationMaximization.__call__" title="tf_keras_vis.activation_maximization.ActivationMaximization.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.ActivationMaximization.__call__()</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.PrintLogger.on_end">
+<span class="sig-name descname"><span class="pre">on_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.PrintLogger.on_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called at the end of optimization process.</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.Progress">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.callbacks.</span></span><span class="sig-name descname"><span class="pre">Progress</span></span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/callbacks.html#Progress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.Progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.callbacks.Callback" title="tf_keras_vis.activation_maximization.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.callbacks.Callback</span></code></a></p>
+<p>Callback to print values during optimization.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.Progress.on_end">
+<span class="sig-name descname"><span class="pre">on_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.Progress.on_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called at the end of optimization process.</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tf_keras_vis.activation_maximization.input_modifiers.html" class="btn btn-neutral float-right" title="Input Modifiers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tf_keras_vis.activation_maximization.html" class="btn btn-neutral float-left" title="ActivationMaximization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, keisen(Yasuhiro Kubota).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
