@@ -180,19 +180,98 @@
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Python 3.6-3.9</p></li>
+<li><p>tensorflow&gt;=2.0.4</p></li>
+</ul>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>We recommend you to install tf-keras-vis with <code class="docutils literal notranslate"><span class="pre">pip</span></code> as follows.
 However, when you want to develop or debug tf-keras-vis, you can also install from source code directly.</p>
+<ul class="simple">
+<li><p>PyPI</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install tf-keras-vis tensorflow
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Source (for development)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/keisen/tf-keras-vis.git
+$ <span class="nb">cd</span> tf-keras-vis
+$ pip install -e .<span class="o">[</span>develop<span class="o">]</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="activationmaximization">
 <h3>ActivationMaximization<a class="headerlink" href="#activationmaximization" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.applications</span> <span class="kn">import</span> <span class="n">VGG16</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.activation_maximization</span> <span class="kn">import</span> <span class="n">ActivationMaximization</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.activation_maximization.callbacks</span> <span class="kn">import</span> <span class="n">Progress</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.activation_maximization.input_modifiers</span> <span class="kn">import</span> <span class="n">Jitter</span><span class="p">,</span> <span class="n">Rotate2D</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.activation_maximization.regularizers</span> <span class="kn">import</span> <span class="n">TotalVariation2D</span><span class="p">,</span> <span class="n">Norm</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.utils.model_modifiers</span> <span class="kn">import</span> <span class="n">ExtractIntermediateLayer</span><span class="p">,</span> <span class="n">ReplaceToLinear</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">CategoricalScore</span>
+
+<span class="c1"># Create the visualization instance.</span>
+<span class="c1"># All visualization classes accept a model and model-modifier, which, for example,</span>
+<span class="c1">#     replaces the activation of last layer to linear function so on, in constructor.</span>
+<span class="n">activation_maximization</span> <span class="o">=</span> \
+   <span class="n">ActivationMaximization</span><span class="p">(</span><span class="n">VGG16</span><span class="p">(),</span>
+                          <span class="n">model_modifier</span><span class="o">=</span><span class="p">[</span><span class="n">ExtractIntermediateLayer</span><span class="p">(</span><span class="s1">&#39;block5_conv3&#39;</span><span class="p">),</span>
+                                          <span class="n">ReplaceToLinear</span><span class="p">()],</span>
+                          <span class="n">clone</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># You can use Score class to specify visualizing target you want.</span>
+<span class="c1"># And add regularizers or input-modifiers as needed.</span>
+<span class="n">activations</span> <span class="o">=</span> \
+   <span class="n">activation_maximization</span><span class="p">(</span><span class="n">CategoricalScore</span><span class="p">(</span><span class="n">FILTER_INDEX</span><span class="p">),</span>
+                           <span class="n">steps</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                           <span class="n">input_modifiers</span><span class="o">=</span><span class="p">[</span><span class="n">Jitter</span><span class="p">(</span><span class="n">jitter</span><span class="o">=</span><span class="mi">16</span><span class="p">),</span> <span class="n">Rotate2D</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span>
+                           <span class="n">regularizers</span><span class="o">=</span><span class="p">[</span><span class="n">TotalVariation2D</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+                                         <span class="n">Norm</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span>
+                           <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">),</span>
+                           <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">Progress</span><span class="p">()])</span>
+
+<span class="c1">## Since v0.6.0, calling `astype()` is NOT necessary.</span>
+<span class="c1"># activations = activations[0].astype(np.uint8)</span>
+
+<span class="c1"># Render</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">activations</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="gradcam">
 <h3>Gradcam++<a class="headerlink" href="#gradcam" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.gradcam_plus_plus</span> <span class="kn">import</span> <span class="n">GradcamPlusPlus</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.utils.model_modifiers</span> <span class="kn">import</span> <span class="n">ReplaceToLinear</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">CategoricalScore</span>
+
+<span class="c1"># Create GradCAM++ object</span>
+<span class="n">gradcam</span> <span class="o">=</span> <span class="n">GradcamPlusPlus</span><span class="p">(</span><span class="n">YOUR_MODEL_INSTANCE</span><span class="p">,</span>
+                          <span class="n">model_modifier</span><span class="o">=</span><span class="n">ReplaceToLinear</span><span class="p">(),</span>
+                          <span class="n">clone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Generate cam with GradCAM++</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">gradcam</span><span class="p">(</span><span class="n">CategoricalScore</span><span class="p">(</span><span class="n">CATEGORICAL_INDEX</span><span class="p">),</span>
+              <span class="n">SEED_INPUT</span><span class="p">)</span>
+
+<span class="c1">## Since v0.6.0, calling `normalize()` is NOT necessary.</span>
+<span class="c1"># cam = normalize(cam)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">SEED_INPUT_IMAGE</span><span class="p">)</span>
+<span class="n">heatmap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="n">cam</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">heatmap</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># overlay</span>
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -200,6 +279,11 @@ However, when you want to develop or debug tf-keras-vis, you can also install fr
 <div class="section" id="getting-started-guides">
 <h2>Getting started guides<a class="headerlink" href="#getting-started-guides" title="Permalink to this headline">¶</a></h2>
 <p>You can see the usage of All Visualizations in the notebooks below for details.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/keisen/tf-keras-vis/blob/master/examples/attentions.ipynb">Saliency and CAMs</a></p></li>
+<li><p><a class="reference external" href="https://github.com/keisen/tf-keras-vis/blob/master/examples/visualize_dense_layer.ipynb">Visualize Dense Layer</a></p></li>
+<li><p><a class="reference external" href="https://github.com/keisen/tf-keras-vis/blob/master/examples/visualize_conv_filters.ipynb">Visualize Convolutional Filer</a></p></li>
+</ul>
 </div>
 </div>
 

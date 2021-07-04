@@ -2,7 +2,7 @@ LICENSE
 =======
 
 ```{eval-rst}
-.. literalinclude:: ../../LICENSE
+.. literalinclude:: ../LICENSE
 ```
 
 ```{toctree}

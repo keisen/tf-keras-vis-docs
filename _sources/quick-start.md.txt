@@ -4,7 +4,7 @@ Quick Start
 Requirements
 ------------
 
-```{include} ../../README.md
+```{include} ../README.md
 :start-after: <!-- sec.5 -->
 :end-before: <!-- ./sec.5 -->
 ```
@@ -15,7 +15,7 @@ Installation
 We recommend you to install tf-keras-vis with `pip` as follows.
 However, when you want to develop or debug tf-keras-vis, you can also install from source code directly.
 
-```{include} ../../README.md
+```{include} ../README.md
 :start-after: <!-- sec.6 -->
 :end-before: <!-- ./sec.6 -->
 ```
@@ -25,7 +25,7 @@ Usage
 
 ### ActivationMaximization
 
-```{include} ../../README.md
+```{include} ../README.md
 :start-after: <!-- ActivationMaximization -->
 :end-before: <!-- ./ActivationMaximization -->
 ```
@@ -33,7 +33,7 @@ Usage
 
 ### Gradcam++
 
-```{include} ../../README.md
+```{include} ../README.md
 :start-after: <!-- Gradcam++ -->
 :end-before: <!-- ./Gradcam++ -->
 ```
@@ -48,7 +48,7 @@ Getting started guides
 
 You can see the usage of All Visualizations in the notebooks below for details.
 
-```{include} ../../README.md
+```{include} ../README.md
 :start-after: <!-- examples -->
 :end-before: <!-- ./examples -->
 ```
