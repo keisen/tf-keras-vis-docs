@@ -12,10 +12,7 @@ If you want just to see the API specification, please skip to
 [Classes section](tf_keras_vis.utils.scores.html#module-tf_keras_vis.utils.scores).
 
 
-Description
-------------
-
-### Categorical classification model
+## Categorical classification model
 
 We expect the output shape of the categorical classification model is `(batch_size, num_of_classes)`. That's, `softmax` activation function should be applied to the output layer of the model.
 
@@ -26,7 +23,7 @@ it should be eliminated during visualizing process. Please see [ReplaceToLinear]
 
 Here, we suppose that the model output shape is `(None, 1000)`. You might imagine a model trained by imagenet datasets :-)
 
-#### Define function
+### Define function
 
 The `output` variable below is assigned model output value. The code snippet below means that it will return the values corresponding to the No.20 in the output.
 
@@ -61,13 +58,13 @@ score = CategoricalScore([20, 48, 128])
 ```
 
 
-### Binary classification task
+## Binary classification task
 
 We expect the output shape of the binary classification model is `(batch_size, 1)` and the output value range is `[0, 1]`. That's, `sigmoid` activation function should be applied to the output layer of the model.
 
 In the case of categorical classification, score functions is simple. They just return the values corresponding to somethings you want to visualize. In binary classification, you need to be aware of whether the value you want to visualize is 0.0 or 1.0 (False or True).
 
-#### 1.0 (True)
+### 1.0 (True)
 
 It's simple. It's the same as the categorical classification.
 
@@ -77,7 +74,7 @@ def score_function(output): # output shape is (batch_size, 1)
 ```
 
 
-#### 0.0 (False)
+### 0.0 (False)
 
 Because you want to visualize something corresponding to the value that will be closing to `0.0`,
 you need to subtract the value from `1.0`.
@@ -88,7 +85,7 @@ def score_function(output): # output shape is (batch_size, 1)
 ```
 
 
-#### Score class
+### Score class
 
 Of course, we recommend you to use BinaryScore class as follows.
 
@@ -105,7 +102,7 @@ score = BinaryScore(1.0) # or BinaryScore(True)
 ```
 
 
-### Regression task
+## Regression task
 
 We expect the output shape of the regression model is `(batch_size, 1)` like binary classification, however the output value range is no limitation. That's, `linear` activation function should be applied to the output layer of the model.
 
@@ -116,7 +113,7 @@ In Regression task, we need to consider how what we want to visualize contribute
 3. Maintain the output value at ...
 
 
-#### 1. Increase the output value
+### 1. Increase the output value
 
 It's simple. It just returns the value like the categorical classification.
 
@@ -125,7 +122,7 @@ def score_function(output):
     return output[:, 0]
 ```
 
-#### 2. Decrease the output value
+### 2. Decrease the output value
 
 The model output value smaller, the score value should be larger,
 so you need to multiply by `-1.0`.
@@ -136,7 +133,7 @@ def score_function(output):
 ```
 
 
-#### 3. Maintain the output value at ...
+### 3. Maintain the output value at ...
 
 The model output value closer to the target value, the score value should be larger, so you need to calculate `abs(1.0 / (target_value - model_output_value))`.
 For example, suppose the target value is 0.0, the score function should be as follows.

@@ -104,7 +104,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="tf_keras_vis.html#utilities">Utilities</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.model_modifiers.html">Model Modifiers</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Scores</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#categorical-classification-model">Categorical classification model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#binary-classification-task">Binary classification task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#regression-task">Regression task</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tf_keras_vis.utils.scores">Classes</a></li>
 </ul>
 </li>
@@ -218,10 +220,8 @@ Here, we will introduce the fundamental score usage corresponding to the models 
 </ul>
 <p>If you want just to see the API specification, please skip to
 <a class="reference external" href="tf_keras_vis.utils.scores.html#module-tf_keras_vis.utils.scores">Classes section</a>.</p>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="categorical-classification-model">
-<h3>Categorical classification model<a class="headerlink" href="#categorical-classification-model" title="Permalink to this headline">¶</a></h3>
+<h2>Categorical classification model<a class="headerlink" href="#categorical-classification-model" title="Permalink to this headline">¶</a></h2>
 <p>We expect the output shape of the categorical classification model is <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_of_classes)</span></code>. That’s, <code class="docutils literal notranslate"><span class="pre">softmax</span></code> activation function should be applied to the output layer of the model.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -230,7 +230,7 @@ it should be eliminated during visualizing process. Please see <a class="referen
 </div>
 <p>Here, we suppose that the model output shape is <code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">1000)</span></code>. You might imagine a model trained by imagenet datasets :-)</p>
 <div class="section" id="define-function">
-<h4>Define function<a class="headerlink" href="#define-function" title="Permalink to this headline">¶</a></h4>
+<h3>Define function<a class="headerlink" href="#define-function" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">output</span></code> variable below is assigned model output value. The code snippet below means that it will return the values corresponding to the No.20 in the output.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, num_of_classes)</span>
    <span class="k">return</span> <span class="n">output</span><span class="p">[:,</span> <span class="mi">20</span><span class="p">]</span>
@@ -258,11 +258,11 @@ it should be eliminated during visualizing process. Please see <a class="referen
 </div>
 </div>
 <div class="section" id="binary-classification-task">
-<h3>Binary classification task<a class="headerlink" href="#binary-classification-task" title="Permalink to this headline">¶</a></h3>
+<h2>Binary classification task<a class="headerlink" href="#binary-classification-task" title="Permalink to this headline">¶</a></h2>
 <p>We expect the output shape of the binary classification model is <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">1)</span></code> and the output value range is <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>. That’s, <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> activation function should be applied to the output layer of the model.</p>
 <p>In the case of categorical classification, score functions is simple. They just return the values corresponding to somethings you want to visualize. In binary classification, you need to be aware of whether the value you want to visualize is 0.0 or 1.0 (False or True).</p>
 <div class="section" id="true">
-<h4>1.0 (True)<a class="headerlink" href="#true" title="Permalink to this headline">¶</a></h4>
+<h3>1.0 (True)<a class="headerlink" href="#true" title="Permalink to this headline">¶</a></h3>
 <p>It’s simple. It’s the same as the categorical classification.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, 1)</span>
    <span class="k">return</span> <span class="n">output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -270,7 +270,7 @@ it should be eliminated during visualizing process. Please see <a class="referen
 </div>
 </div>
 <div class="section" id="false">
-<h4>0.0 (False)<a class="headerlink" href="#false" title="Permalink to this headline">¶</a></h4>
+<h3>0.0 (False)<a class="headerlink" href="#false" title="Permalink to this headline">¶</a></h3>
 <p>Because you want to visualize something corresponding to the value that will be closing to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>,
 you need to subtract the value from <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, 1)</span>
@@ -279,7 +279,7 @@ you need to subtract the value from <code class="docutils literal notranslate"><
 </div>
 </div>
 <div class="section" id="score-class">
-<h4>Score class<a class="headerlink" href="#score-class" title="Permalink to this headline">¶</a></h4>
+<h3>Score class<a class="headerlink" href="#score-class" title="Permalink to this headline">¶</a></h3>
 <p>Of course, we recommend you to use BinaryScore class as follows.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">BinaryScore</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">BinaryScore</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span> <span class="c1"># or BinaryScore(False) </span>
@@ -293,7 +293,7 @@ you need to subtract the value from <code class="docutils literal notranslate"><
 </div>
 </div>
 <div class="section" id="regression-task">
-<h3>Regression task<a class="headerlink" href="#regression-task" title="Permalink to this headline">¶</a></h3>
+<h2>Regression task<a class="headerlink" href="#regression-task" title="Permalink to this headline">¶</a></h2>
 <p>We expect the output shape of the regression model is <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">1)</span></code> like binary classification, however the output value range is no limitation. That’s, <code class="docutils literal notranslate"><span class="pre">linear</span></code> activation function should be applied to the output layer of the model.</p>
 <p>In Regression task, we need to consider how what we want to visualize contributes to the model output. Here we introduce three situations below we want to visualize.</p>
 <ol class="simple">
@@ -302,7 +302,7 @@ you need to subtract the value from <code class="docutils literal notranslate"><
 <li><p>Maintain the output value at …</p></li>
 </ol>
 <div class="section" id="increase-the-output-value">
-<h4>1. Increase the output value<a class="headerlink" href="#increase-the-output-value" title="Permalink to this headline">¶</a></h4>
+<h3>1. Increase the output value<a class="headerlink" href="#increase-the-output-value" title="Permalink to this headline">¶</a></h3>
 <p>It’s simple. It just returns the value like the categorical classification.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -310,7 +310,7 @@ you need to subtract the value from <code class="docutils literal notranslate"><
 </div>
 </div>
 <div class="section" id="decrease-the-output-value">
-<h4>2. Decrease the output value<a class="headerlink" href="#decrease-the-output-value" title="Permalink to this headline">¶</a></h4>
+<h3>2. Decrease the output value<a class="headerlink" href="#decrease-the-output-value" title="Permalink to this headline">¶</a></h3>
 <p>The model output value smaller, the score value should be larger,
 so you need to multiply by <code class="docutils literal notranslate"><span class="pre">-1.0</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
@@ -319,13 +319,12 @@ so you need to multiply by <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 <div class="section" id="maintain-the-output-value-at">
-<h4>3. Maintain the output value at …<a class="headerlink" href="#maintain-the-output-value-at" title="Permalink to this headline">¶</a></h4>
+<h3>3. Maintain the output value at …<a class="headerlink" href="#maintain-the-output-value-at" title="Permalink to this headline">¶</a></h3>
 <p>The model output value closer to the target value, the score value should be larger, so you need to calculate <code class="docutils literal notranslate"><span class="pre">abs(1.0</span> <span class="pre">/</span> <span class="pre">(target_value</span> <span class="pre">-</span> <span class="pre">model_output_value))</span></code>.
 For example, suppose the target value is 0.0, the score function should be as follows.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">epsilon</span><span class="p">()))</span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>
