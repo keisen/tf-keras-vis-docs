@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>ActivationMaximization &mdash; tf-keras-vis v0.7.0 documentation</title>
+  <title>ActivationMaximization &mdash; tf-keras-vis documents (beta) v0.7.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> tf-keras-vis
+            <a href="../index.html" class="icon icon-home"> tf-keras-vis documents (beta)
           
 
           
@@ -104,7 +104,6 @@
 <li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.callbacks.html">Callbacks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.input_modifiers.html">Input Modifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.regularizers.html">Regularizers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-tf_keras_vis.activation_maximization">Classes</a></li>
 </ul>
 </li>
 </ul>
@@ -131,7 +130,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">tf-keras-vis</a>
+          <a href="../index.html">tf-keras-vis documents (beta)</a>
         
       </nav>
 
@@ -216,9 +215,13 @@
 <li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.regularizers.html">Regularizers</a></li>
 </ul>
 </div>
-<div class="section" id="module-tf_keras_vis.activation_maximization">
-<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-tf_keras_vis.activation_maximization" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ActivationMaximization class is optimized for VGG16 model in Keras.
+So, when you visualize with other models,
+you <strong>MUST</strong> tune the parameters of ActivationMaximization.</p>
+</div>
+<span class="target" id="module-tf_keras_vis.activation_maximization"></span><dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.ActivationMaximization">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.</span></span><span class="sig-name descname"><span class="pre">ActivationMaximization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization.html#ActivationMaximization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.ActivationMaximization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="tf_keras_vis.html#tf_keras_vis.ModelVisualization" title="tf_keras_vis.ModelVisualization"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.ModelVisualization</span></code></a></p>
@@ -394,7 +397,6 @@ When the model has multiple inputs, a list of <a class="reference external" href
 
 </dd></dl>
 
-</div>
 </div>
 
 

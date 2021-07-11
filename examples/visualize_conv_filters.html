@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Visualizing Conv filters using ActivationMaximization &mdash; tf-keras-vis v0.7.0 documentation</title>
+  <title>Visualizing Conv filters using ActivationMaximization &mdash; tf-keras-vis documents (beta) v0.7.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> tf-keras-vis
+            <a href="../index.html" class="icon icon-home"> tf-keras-vis documents (beta)
           
 
           
@@ -108,13 +108,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#Implement-functions-required-to-use-ActivationMaximization">Implement functions required to use ActivationMaximization</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Model-modifier">Model modifier</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Score-function">Score function</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Visualizeing-a-conv-filter">Visualizeing a conv filter</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Create-ActivationMaximization-Instnace">Create ActivationMaximization Instnace</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Visualize">Visualize</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#Visualizing-Conv-filters">Visualizing Conv filters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Define-Score-function">Define Score function</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Create-SeedInput-values">Create SeedInput values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Modify-Score-function">Modify Score function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Create-Seed-Input-values">Create Seed-Input values</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id1">Visualize</a></li>
 </ul>
 </li>
@@ -141,7 +144,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">tf-keras-vis</a>
+          <a href="../index.html">tf-keras-vis documents (beta)</a>
         
       </nav>
 
@@ -631,6 +634,9 @@ def score_function(output):
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="Visualizeing-a-conv-filter">
+<h2>Visualizeing a conv filter<a class="headerlink" href="#Visualizeing-a-conv-filter" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="Create-ActivationMaximization-Instnace">
 <h3>Create ActivationMaximization Instnace<a class="headerlink" href="#Create-ActivationMaximization-Instnace" title="Permalink to this headline">¶</a></h3>
 <p>When <code class="docutils literal notranslate"><span class="pre">clone</span></code> argument is True(default), the <code class="docutils literal notranslate"><span class="pre">model</span></code> will be cloned, so the <code class="docutils literal notranslate"><span class="pre">model</span></code> instance will be NOT modified, however the process may take a while.</p>
@@ -661,8 +667,6 @@ activation_maximization = ActivationMaximization(model,
 <span></span>%%time
 
 from tf_keras_vis.activation_maximization.callbacks import Progress
-from tf_keras_vis.activation_maximization.input_modifiers import Jitter, Rotate2D, Scale
-from tf_keras_vis.activation_maximization.regularizers import Norm, TotalVariation2D
 
 # Generate maximized activation
 activations = activation_maximization(score,
@@ -710,9 +714,9 @@ Wall time: 8.49 s
 <div class="section" id="Visualizing-Conv-filters">
 <h2>Visualizing Conv filters<a class="headerlink" href="#Visualizing-Conv-filters" title="Permalink to this headline">¶</a></h2>
 <p>Then, let’s visualize multiple convolutional filters!</p>
-<div class="section" id="Define-Score-function">
-<h3>Define Score function<a class="headerlink" href="#Define-Score-function" title="Permalink to this headline">¶</a></h3>
-<p>You MUST create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> that returns arbitrary filter values. Here, our socre function returns the values corresponding to 63rd, 132nd and 320th filters of the layer..</p>
+<div class="section" id="Modify-Score-function">
+<h3>Modify Score function<a class="headerlink" href="#Modify-Score-function" title="Permalink to this headline">¶</a></h3>
+<p>Because change the target you want to visualize, you MUST create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> again. Here, our socre function returns the values corresponding to 63rd, 132nd and 320th filters of the layer.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
@@ -726,8 +730,8 @@ scores = CategoricalScore(filter_numbers)
 </div>
 </div>
 </div>
-<div class="section" id="Create-SeedInput-values">
-<h3>Create SeedInput values<a class="headerlink" href="#Create-SeedInput-values" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Create-Seed-Input-values">
+<h3>Create Seed-Input values<a class="headerlink" href="#Create-Seed-Input-values" title="Permalink to this headline">¶</a></h3>
 <p>And then, you MUST create <code class="docutils literal notranslate"><span class="pre">seed_input</span></code> value. In default, when visualizing a specific filter, tf-keras-vis automatically generates <code class="docutils literal notranslate"><span class="pre">seed_input</span></code> to visualize a image. When visualizing multiple images, you MUST manually create <code class="docutils literal notranslate"><span class="pre">seed_input</span></code>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -751,8 +755,6 @@ seed_input = tf.random.uniform((3, 224, 224, 3), 0, 255)
 <span></span>%%time
 
 from tf_keras_vis.activation_maximization.callbacks import Progress
-from tf_keras_vis.activation_maximization.input_modifiers import Jitter, Rotate2D, Scale
-from tf_keras_vis.activation_maximization.regularizers import Norm, TotalVariation2D
 
 # Generate maximized activation
 activations = activation_maximization(scores,
@@ -785,7 +787,7 @@ plt.show()
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/examples_visualize_conv_filters_18_1.png" src="../_images/examples_visualize_conv_filters_18_1.png" />
+<img alt="../_images/examples_visualize_conv_filters_17_1.png" src="../_images/examples_visualize_conv_filters_17_1.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">

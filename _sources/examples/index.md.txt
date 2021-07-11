@@ -1,9 +1,8 @@
 Examples
-========
-
+=========
 
 ```{toctree}
-   :maxdepth: 1
+   :maxdepth: 2
 
 attentions
 visualize_conv_filters

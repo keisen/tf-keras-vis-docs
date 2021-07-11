@@ -1,9 +1,6 @@
 Scores
 ==================================
 
-Abstraction
-------------
-
 The Scores are used to specify somethings you want to visualized with Saliency, X-CAMs and ActivationMaximization.
 Here, we will introduce the fundamental score usage corresponding to the models below.
 
@@ -18,95 +15,136 @@ If you want just to see the API specification, please skip to
 Description
 ------------
 
-### Categorical classification task
+### Categorical classification model
 
-:::{note}
-Here, we will explain it with pre-trained [VGG16](https://www.tensorflow.org/api_docs/python/tf/keras/applications/vgg16/VGG16).
-:::
+We expect the output shape of the categorical classification model is `(batch_size, num_of_classes)`. That's, `softmax` activation function should be applied to the output layer of the model.
 
-Commonly, the output shape of the categorical classification model is `(batch_size, num_of_classes)` such below:
+```{note}
+Because, in most of Visualization, `softmax` may obstruct to visualize,
+it should be eliminated during visualizing process. Please see [ReplaceToLinear](tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.ReplaceToLinear) for details.
+```
+
+Here, we suppose that the model output shape is `(None, 1000)`. You might imagine a model trained by imagenet datasets :-)
+
+#### Define function
+
+The `output` variable below is assigned model output value. The code snippet below means that it will return the values corresponding to the No.20 in the output.
 
 ```python
-import tensorflow as tf
-
-model = tf.keras.applications.VGG16()
-print(model.output.shape)
+def score_function(output): # output shape is (batch_size, num_of_classes)
+   return output[:, 20]
 ```
 
-```bash
-(None, 1000)
-```
-
-If you want to visualize something corresponding to No.1 of the indices,
-you can simply implement the score function as follows:
+The function above is the same as follows:
 
 ```python
-def score_function(output):
-   return output[:, 1]
+from tf_keras_vis.utils.scores import CategoricalScore
+score = CategoricalScore(20)
 ```
 
-The `output` variable assigned model output value whose shape is `(None, 1000)`.
-So, the code snippet above means that it will return the values corresponding to the category of No.1.
+If you want to visualize corresponding to multiple various indices of model output, you can define as follows. The code snippet below means that it will return the three values for the No.20, the No.48 and the No.128 of model output respectively.
 
 ```python
-from matplotlib import pyplot as plt
-from tf_keras_vis.activation_maximization import ActivationMaximization
-from tf_keras_vis.utils.model_modifiers import ReplaceToLinear
-
-activation_maximization  = ActivationMaximization(model, model_modifier=ReplaceToLinear())
-activations = activation_maximization(score_function)
-plt.imshow(activations[0])
+def score_function(output): # output shape is (batch_size, num_of_classes)
+   return (output[0, 20], output[1, 48], output[0, 128])
 ```
 
+```{note}
+Please note that the length of the values returned by the score function MUST be identical to `batch_size` (the number of samples).
+```
 
-
-[](!images/goldfish.png)
-
+Of course, you can also use CategoricalScore.
 
 ```python
-import tensorflow as tf
-
-model = tf.keras.applications.MobileNetV2(input_shape=(224, 224, 3))
+from tf_keras_vis.utils.scores import CategoricalScore
+score = CategoricalScore([20, 48, 128])
 ```
-
-Load images
-
-```python
-# TODO load image
-```
-
-(image)[!]
-
-
-Implement score
-```python
-```
-
-Run
-
-```python
-# TODO gradcam
-```
-
-
 
 
 ### Binary classification task
 
+We expect the output shape of the binary classification model is `(batch_size, 1)` and the output value range is `[0, 1]`. That's, `sigmoid` activation function should be applied to the output layer of the model.
+
+In the case of categorical classification, score functions is simple. They just return the values corresponding to somethings you want to visualize. In binary classification, you need to be aware of whether the value you want to visualize is 0.0 or 1.0 (False or True).
+
+#### 1.0 (True)
+
+It's simple. It's the same as the categorical classification.
+
+```python
+def score_function(output): # output shape is (batch_size, 1)
+   return output[:, 0]
+```
+
+
+#### 0.0 (False)
+
+Because you want to visualize something corresponding to the value that will be closing to `0.0`,
+you need to subtract the value from `1.0`.
+
+```python
+def score_function(output): # output shape is (batch_size, 1)
+   return 1.0 - output[:, 0]
+```
+
+
+#### Score class
+
+Of course, we recommend you to use BinaryScore class as follows.
+
+```python
+from tf_keras_vis.utils.scores import BinaryScore
+score = BinaryScore(0.0) # or BinaryScore(False) 
+```
+
+or
+
+```python
+from tf_keras_vis.utils.scores import BinaryScore
+score = BinaryScore(1.0) # or BinaryScore(True) 
+```
+
 
 ### Regression task
 
+We expect the output shape of the regression model is `(batch_size, 1)` like binary classification, however the output value range is no limitation. That's, `linear` activation function should be applied to the output layer of the model.
 
-Advanced usage
---------------
+In Regression task, we need to consider how what we want to visualize contributes to the model output. Here we introduce three situations below we want to visualize.
 
-### How to visualize feature corresponding to one of model outputs in multiple outputs model
+1. Increase the output value
+2. Decrease the output value
+3. Maintain the output value at ...
 
-### How to synthesized composed features
 
-#### Feature visualization
+#### 1. Increase the output value
 
-#### Attentions
+It's simple. It just returns the value like the categorical classification.
+
+```python
+def score_function(output):
+    return output[:, 0]
+```
+
+#### 2. Decrease the output value
+
+The model output value smaller, the score value should be larger,
+so you need to multiply by `-1.0`.
+
+```python
+def score_function(output):
+    return -1.0 * output[:, 0]
+```
+
+
+#### 3. Maintain the output value at ...
+
+The model output value closer to the target value, the score value should be larger, so you need to calculate `abs(1.0 / (target_value - model_output_value))`.
+For example, suppose the target value is 0.0, the score function should be as follows.
+
+```python
+def score_function(output):
+    return tf.math.abs(1.0 / (output[:, 0] + tf.keras.backend.epsilon()))
+```
 
 
 Classes

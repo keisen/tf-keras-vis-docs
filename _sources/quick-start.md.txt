@@ -9,6 +9,7 @@ Requirements
 :end-before: <!-- ./sec.5 -->
 ```
 
+
 Installation
 ------------
 
@@ -19,6 +20,7 @@ However, when you want to develop or debug tf-keras-vis, you can also install fr
 :start-after: <!-- sec.6 -->
 :end-before: <!-- ./sec.6 -->
 ```
+
 
 Usage
 -----
@@ -39,10 +41,6 @@ Usage
 ```
 
 
-```{toctree}
-   :includehidden:
-```
-
 Getting started guides
 -------------------------
 
@@ -51,4 +49,9 @@ You can see the usage of All Visualizations in the notebooks below for details.
 ```{include} ../README.md
 :start-after: <!-- examples -->
 :end-before: <!-- ./examples -->
+```
+
+
+```{toctree}
+   :maxdepth: 1
 ```

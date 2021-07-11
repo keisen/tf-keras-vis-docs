@@ -9,8 +9,11 @@ tf_keras_vis.activation_maximization.input_modifiers
 tf_keras_vis.activation_maximization.regularizers
 ```
 
-Classes
------------------
+```{note}
+ActivationMaximization class is optimized for VGG16 model in Keras.
+So, when you visualize with other models,
+you **MUST** tune the parameters of ActivationMaximization.
+```
 
 ```{eval-rst}
 .. automodule:: tf_keras_vis.activation_maximization
