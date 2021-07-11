@@ -32,6 +32,7 @@ HOME <self>
    :maxdepth: 1
 
 quick-start
+examples/index
 api/tf_keras_vis
 license
 change-log

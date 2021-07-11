@@ -1,28 +1,67 @@
 Scores
 ==================================
 
-Description
------------
+Abstraction
+------------
 
-The Scores are used to specify the score values corresponding to somethings you want to visualized.
-If you want just to see the API specification, please skip to
-[Classes section](tf_keras_vis.utils.scores.html#module-tf_keras_vis.utils.scores).
-
-
-How to use
------------
-
-To use [Feature visualization]() or [Attentions](), we need the score instance or a function you
-defined to calculate the score value.
+The Scores are used to specify somethings you want to visualized with Saliency, X-CAMs and ActivationMaximization.
+Here, we will introduce the fundamental score usage corresponding to the models below.
 
 * Categorical classification model
 * Binary classification model
 * Regression model
 
+If you want just to see the API specification, please skip to
+[Classes section](tf_keras_vis.utils.scores.html#module-tf_keras_vis.utils.scores).
+
+
+Description
+------------
 
 ### Categorical classification task
 
-Load imagenet model
+:::{note}
+Here, we will explain it with pre-trained [VGG16](https://www.tensorflow.org/api_docs/python/tf/keras/applications/vgg16/VGG16).
+:::
+
+Commonly, the output shape of the categorical classification model is `(batch_size, num_of_classes)` such below:
+
+```python
+import tensorflow as tf
+
+model = tf.keras.applications.VGG16()
+print(model.output.shape)
+```
+
+```bash
+(None, 1000)
+```
+
+If you want to visualize something corresponding to No.1 of the indices,
+you can simply implement the score function as follows:
+
+```python
+def score_function(output):
+   return output[:, 1]
+```
+
+The `output` variable assigned model output value whose shape is `(None, 1000)`.
+So, the code snippet above means that it will return the values corresponding to the category of No.1.
+
+```python
+from matplotlib import pyplot as plt
+from tf_keras_vis.activation_maximization import ActivationMaximization
+from tf_keras_vis.utils.model_modifiers import ReplaceToLinear
+
+activation_maximization  = ActivationMaximization(model, model_modifier=ReplaceToLinear())
+activations = activation_maximization(score_function)
+plt.imshow(activations[0])
+```
+
+
+
+[](!images/goldfish.png)
+
 
 ```python
 import tensorflow as tf
@@ -49,7 +88,7 @@ Run
 # TODO gradcam
 ```
 
-(result image)[]
+
 
 
 ### Binary classification task

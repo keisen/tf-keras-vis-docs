@@ -35,6 +35,7 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -96,14 +97,15 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="tf_keras_vis.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#feature-visualization">Feature Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#attentions">Attentions</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="tf_keras_vis.html#utilities">Utilities</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.model_modifiers.html">Model Modifiers</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Scores</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#abstraction">Abstraction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-to-use">How to use</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#advanced-usage">Advanced usage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tf_keras_vis.utils.scores">Classes</a></li>
 </ul>
@@ -183,26 +185,79 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="scores">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="scores">
 <h1>Scores<a class="headerlink" href="#scores" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>The Scores are used to specify the score values corresponding to somethings you want to visualized.
-If you want just to see the API specification, please skip to
-<a class="reference external" href="tf_keras_vis.utils.scores.html#module-tf_keras_vis.utils.scores">Classes section</a>.</p>
-</div>
-<div class="section" id="how-to-use">
-<h2>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
-<p>To use <span class="xref myst">Feature visualization</span> or <span class="xref myst">Attentions</span>, we need the score instance or a function you
-defined to calculate the score value.</p>
+<div class="section" id="abstraction">
+<h2>Abstraction<a class="headerlink" href="#abstraction" title="Permalink to this headline">¶</a></h2>
+<p>The Scores are used to specify somethings you want to visualized with Saliency, X-CAMs and ActivationMaximization.
+Here, we will introduce the fundamental score usage corresponding to the models below.</p>
 <ul class="simple">
 <li><p>Categorical classification model</p></li>
 <li><p>Binary classification model</p></li>
 <li><p>Regression model</p></li>
 </ul>
+<p>If you want just to see the API specification, please skip to
+<a class="reference external" href="tf_keras_vis.utils.scores.html#module-tf_keras_vis.utils.scores">Classes section</a>.</p>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="categorical-classification-task">
 <h3>Categorical classification task<a class="headerlink" href="#categorical-classification-task" title="Permalink to this headline">¶</a></h3>
-<p>Load imagenet model</p>
+<p>:::{note}
+Here, we will explain it with pre-trained <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/vgg16/VGG16">VGG16</a>.
+:::</p>
+<p>Commonly, the output shape of the categorical classification model is <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_of_classes)</span></code> such below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">VGG16</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>None, <span class="m">1000</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>If you want to visualize something corresponding to No.1 of the indices,
+you can simply implement the score function as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">output</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">output</span></code> variable assigned model output value whose shape is <code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">1000)</span></code>.
+So, the code snippet above means that it will return the values corresponding to the category of No.1.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.activation_maximization</span> <span class="kn">import</span> <span class="n">ActivationMaximization</span>
+<span class="kn">from</span> <span class="nn">tf_keras_vis.utils.model_modifiers</span> <span class="kn">import</span> <span class="n">ReplaceToLinear</span>
+
+<span class="n">activation_maximization</span>  <span class="o">=</span> <span class="n">ActivationMaximization</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model_modifier</span><span class="o">=</span><span class="n">ReplaceToLinear</span><span class="p">())</span>
+<span class="n">activations</span> <span class="o">=</span> <span class="n">activation_maximization</span><span class="p">(</span><span class="n">score_function</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">activations</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><span class="xref myst"></span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">MobileNetV2</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -221,7 +276,6 @@ defined to calculate the score value.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO gradcam</span>
 </pre></div>
 </div>
-<p>(result image)[]</p>
 </div>
 <div class="section" id="binary-classification-task">
 <h3>Binary classification task<a class="headerlink" href="#binary-classification-task" title="Permalink to this headline">¶</a></h3>
