@@ -464,6 +464,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Attentions">
 <h1>Attentions<a class="headerlink" href="#Attentions" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/keisen/tf-keras-vis/blob/master/examples/attentions.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> <a class="reference external" href="https://raw.githubusercontent.com/keisen/tf-keras-vis/master/examples/attentions.ipynb"><img alt="Right click and save" src="https://img.shields.io/badge/Download_Notebook-Right_click_and_save_as...-orange.svg" /></a></p>
 <p>This notebook explains how to get various attention images with Saliency, SmoothGrad, GradCAM, GradCAM++ and ScoreCAM/Faster-ScoreCAM.</p>
 <div class="section" id="Preparation">
 <h2>Preparation<a class="headerlink" href="#Preparation" title="Permalink to this headline">¶</a></h2>
@@ -622,7 +623,7 @@ plt.show()
 <h2>Implement functions required to use attentions<a class="headerlink" href="#Implement-functions-required-to-use-attentions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="Model-modifier">
 <h3>Model modifier<a class="headerlink" href="#Model-modifier" title="Permalink to this headline">¶</a></h3>
-<p>When the softmax activation function is applied to the last layer of model, it may obstruct generating the attention images, so you should replace the function to a linear activation function. Although we create and use <code class="docutils literal notranslate"><span class="pre">ReplaceToLinear</span></code> instance here, you can also use the model modifier function defined by yourself.</p>
+<p>When the softmax activation function is applied to the last layer of model, it may obstruct generating the attention images, so you should replace the function to a linear activation function. Although we create and use <code class="docutils literal notranslate"><span class="pre">ReplaceToLinear</span></code> instance here, we can also use the model modifier function defined by ourselves.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -642,7 +643,7 @@ def model_modifier_function(cloned_model):
 </div>
 <div class="section" id="Score-function">
 <h3>Score function<a class="headerlink" href="#Score-function" title="Permalink to this headline">¶</a></h3>
-<p>And then, you <strong>MUST</strong> create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> that returns target scores. Here, they returns the score values corresponding Goldfish, Bear, Assault Rifle.</p>
+<p>And then, you <strong>MUST</strong> create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> that returns target scores. Here, they return the score values corresponding Goldfish, Bear, Assault Rifle.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
