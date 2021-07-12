@@ -41,10 +41,10 @@ Usage
 ```
 
 
-Getting started guides
--------------------------
+Next steps
+-----------
 
-You can see the usage of All Visualizations in the notebooks below for details.
+We recommend you to read the example notebooks below.
 
 ```{include} ../README.md
 :start-after: <!-- examples -->

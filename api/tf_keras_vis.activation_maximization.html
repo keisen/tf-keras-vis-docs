@@ -101,9 +101,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="tf_keras_vis.html">API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="tf_keras_vis.html#feature-visualization">Feature Visualization</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ActivationMaximization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.callbacks.html">Callbacks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.input_modifiers.html">Input Modifiers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.regularizers.html">Regularizers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
 </ul>
@@ -208,13 +206,7 @@
 </style>
 <div class="section" id="activationmaximization">
 <h1>ActivationMaximization<a class="headerlink" href="#activationmaximization" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.callbacks.html">Callbacks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.input_modifiers.html">Input Modifiers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.regularizers.html">Regularizers</a></li>
-</ul>
-</div>
+<p><img alt="" src="../_images/activation_maximization.0.gif" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>ActivationMaximization class is optimized for VGG16 model in Keras.
@@ -245,7 +237,7 @@ model won’t be cloned. Note that, although when True, the model won’t be clo
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.ActivationMaximization.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_modifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[Jitter(jitter=4),</span> <span class="pre">Rotate2D(degree=1)]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularizers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[TotalVariation2D(weight=1.0),</span> <span class="pre">Norm(weight=0.3,</span> <span class="pre">p=1)]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unconnected_gradients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">tf.UnconnectedGradients.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_modifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_compatible_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization.html#ActivationMaximization.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.ActivationMaximization.__call__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_modifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[Jitter(jitter=4),</span> <span class="pre">Rotate2D(degree=1)]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularizers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[TotalVariation2D(weight=1.0),</span> <span class="pre">Norm(weight=0.3,</span> <span class="pre">p=1)]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unconnected_gradients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">tf.UnconnectedGradients.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_modifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_compatible_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization.html#ActivationMaximization.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.ActivationMaximization.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate the model inputs that maximize the output of the given <cite>score</cite> functions.</p>
 <p>By default, this method is optimized to visualize <cite>tf.keras.application.VGG16</cite> model.
 So if you want to visualize other models, you have to tune the parameters of this method.</p>
@@ -397,6 +389,16 @@ When the model has multiple inputs, a list of <a class="reference external" href
 
 </dd></dl>
 
+<div class="section" id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.input_modifiers.html">Input Modifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.regularizers.html">Regularizers</a></li>
+</ul>
+</div>
+</div>
 </div>
 
 

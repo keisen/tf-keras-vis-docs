@@ -1,6 +1,7 @@
 GradCAM++
 =========================================
 
+![](../images/gradcam_plus_plus.png)
 
 Classes
 -----------------

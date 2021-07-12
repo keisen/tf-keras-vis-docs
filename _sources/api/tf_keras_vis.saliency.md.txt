@@ -1,6 +1,8 @@
 Vanilla Saliency and SmoothGrad
 ===============================
 
+![](../images/smoothgrad.png)
+
 Classes```{eval-rst} <hidden>```
 -----------------
 

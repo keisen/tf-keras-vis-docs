@@ -12,7 +12,7 @@ Welcome to tf-keras-vis!
 ```
 
 What's tf-keras-vis
--------------------
+--------------------
 
 ```{include} ../README.md
 :start-after: <!-- sec.2 -->
