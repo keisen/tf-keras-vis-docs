@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Vanilla Saliency and SmoothGrad &mdash; tf-keras-vis documents (beta) v0.7.0 documentation</title>
+  <title>Vanilla Saliency and SmoothGrad &mdash; tf-keras-vis v0.7.2 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> tf-keras-vis documents (beta)
+            <a href="../index.html" class="icon icon-home"> tf-keras-vis
           
 
           
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.7.0
+                0.7.2
               </div>
             
           
@@ -101,10 +101,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="tf_keras_vis.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#feature-visualization">Feature Visualization</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="tf_keras_vis.html#attentions">Attentions</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Vanilla Saliency and SmoothGrad</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-tf_keras_vis.saliency">Classes<code class="docutils literal notranslate"><span class="pre">{eval-rst}</span> <span class="pre">&lt;hidden&gt;</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Vanilla Saliency and SmoothGrad</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.html#class-activation-map">Class Activation Map</a></li>
 </ul>
 </li>
@@ -113,7 +110,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../change-log.html">CHANGE LOG</a></li>
 </ul>
 
             
@@ -129,7 +125,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">tf-keras-vis documents (beta)</a>
+          <a href="../index.html">tf-keras-vis</a>
         
       </nav>
 
@@ -207,10 +203,15 @@
 </style>
 <div class="section" id="vanilla-saliency-and-smoothgrad">
 <h1>Vanilla Saliency and SmoothGrad<a class="headerlink" href="#vanilla-saliency-and-smoothgrad" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Vanilla Saliency</p></li>
+</ul>
+<p><img alt="" src="../_images/vanilla-saliency.png" /></p>
+<ul class="simple">
+<li><p>SmoothGrad</p></li>
+</ul>
 <p><img alt="" src="../_images/smoothgrad.png" /></p>
-<div class="section" id="module-tf_keras_vis.saliency">
-<span id="classes-eval-rst-hidden"></span><h2>Classes<code class="docutils literal notranslate"><span class="pre">{eval-rst}</span> <span class="pre">&lt;hidden&gt;</span></code><a class="headerlink" href="#module-tf_keras_vis.saliency" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<span class="target" id="module-tf_keras_vis.saliency"></span><dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.saliency.Saliency">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.saliency.</span></span><span class="sig-name descname"><span class="pre">Saliency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/saliency.html#Saliency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.saliency.Saliency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="tf_keras_vis.html#tf_keras_vis.ModelVisualization" title="tf_keras_vis.ModelVisualization"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.ModelVisualization</span></code></a></p>
@@ -298,7 +299,6 @@ whose change would most contribute the score value.</p>
 
 </dd></dl>
 
-</div>
 </div>
 
 

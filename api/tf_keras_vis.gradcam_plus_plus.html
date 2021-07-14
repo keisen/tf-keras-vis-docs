@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>GradCAM++ &mdash; tf-keras-vis documents (beta) v0.7.0 documentation</title>
+  <title>GradCAM++ &mdash; tf-keras-vis v0.7.2 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> tf-keras-vis documents (beta)
+            <a href="../index.html" class="icon icon-home"> tf-keras-vis
           
 
           
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.7.0
+                0.7.2
               </div>
             
           
@@ -115,7 +115,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../change-log.html">CHANGE LOG</a></li>
 </ul>
 
             
@@ -131,7 +130,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">tf-keras-vis documents (beta)</a>
+          <a href="../index.html">tf-keras-vis</a>
         
       </nav>
 
@@ -210,9 +209,7 @@
 <div class="section" id="gradcam">
 <h1>GradCAM++<a class="headerlink" href="#gradcam" title="Permalink to this headline">¶</a></h1>
 <p><img alt="" src="../_images/gradcam_plus_plus.png" /></p>
-<div class="section" id="module-tf_keras_vis.gradcam_plus_plus">
-<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-tf_keras_vis.gradcam_plus_plus" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<span class="target" id="module-tf_keras_vis.gradcam_plus_plus"></span><dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.gradcam_plus_plus.GradcamPlusPlus">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.gradcam_plus_plus.</span></span><span class="sig-name descname"><span class="pre">GradcamPlusPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/gradcam_plus_plus.html#GradcamPlusPlus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.gradcam_plus_plus.GradcamPlusPlus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="tf_keras_vis.html#tf_keras_vis.ModelVisualization" title="tf_keras_vis.ModelVisualization"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.ModelVisualization</span></code></a></p>
@@ -284,7 +281,7 @@ Defaults to True.</p></li>
 <cite>lambda cam: K.relu(cam)</cite>.</p></li>
 <li><p><strong>training</strong> – A bool that indicates whether the model’s training-mode on or off. Defaults
 to False.</p></li>
-<li><p><strong>expand_cam</strong> – True to resize CAM to the same as input image size. <strong>Notes!</strong> When False,
+<li><p><strong>expand_cam</strong> – True to resize CAM to the same as input image size. <strong>Note!</strong> When False,
 even if the model has multiple inputs, return only a CAM. Defaults to True.</p></li>
 <li><p><strong>standardize_cam</strong> – When True, CAM will be standardized. Defaults to True.</p></li>
 <li><p><strong>unconnected_gradients</strong> – Specifies the gradient value returned when the given input
@@ -304,7 +301,6 @@ value.</p>
 
 </dd></dl>
 
-</div>
 </div>
 
 

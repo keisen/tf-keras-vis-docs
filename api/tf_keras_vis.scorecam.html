@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>ScoreCAM &mdash; tf-keras-vis documents (beta) v0.7.0 documentation</title>
+  <title>ScoreCAM &mdash; tf-keras-vis v0.7.2 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> tf-keras-vis documents (beta)
+            <a href="../index.html" class="icon icon-home"> tf-keras-vis
           
 
           
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.7.0
+                0.7.2
               </div>
             
           
@@ -115,7 +115,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../change-log.html">CHANGE LOG</a></li>
 </ul>
 
             
@@ -131,7 +130,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">tf-keras-vis documents (beta)</a>
+          <a href="../index.html">tf-keras-vis</a>
         
       </nav>
 
@@ -209,9 +208,8 @@
 </style>
 <div class="section" id="scorecam">
 <h1>ScoreCAM<a class="headerlink" href="#scorecam" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-tf_keras_vis.scorecam">
-<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-tf_keras_vis.scorecam" title="Permalink to this headline">¶</a></h2>
-<dl class="py attribute">
+<p><img alt="" src="../_images/scorecam.png" /></p>
+<span class="target" id="module-tf_keras_vis.scorecam"></span><dl class="py attribute">
 <dt class="sig sig-object py" id="tf_keras_vis.scorecam.ScoreCAM">
 <span class="sig-prename descclassname"><span class="pre">tf_keras_vis.scorecam.</span></span><span class="sig-name descname"><span class="pre">ScoreCAM</span></span><a class="headerlink" href="#tf_keras_vis.scorecam.ScoreCAM" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="#tf_keras_vis.scorecam.Scorecam" title="tf_keras_vis.scorecam.Scorecam"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.scorecam.Scorecam</span></code></a></p>
@@ -292,7 +290,7 @@ Integer, run as Faster-ScoreCAM. Set larger number (or None), need more time to
 visualize CAM but to be able to get clearer attention images. Defaults to None.</p></li>
 <li><p><strong>training</strong> – A bool that indicates whether the model’s training-mode on or off. Defaults
 to False.</p></li>
-<li><p><strong>expand_cam</strong> – True to resize CAM to the same as input image size. <strong>Notes!</strong> When False,
+<li><p><strong>expand_cam</strong> – True to resize CAM to the same as input image size. <strong>Note!</strong> When False,
 even if the model has multiple inputs, return only a CAM. Defaults to True.</p></li>
 <li><p><strong>standardize_cam</strong> – When True, CAM will be standardized. Defaults to True.</p></li>
 <li><p><strong>unconnected_gradients</strong> – Specifies the gradient value returned when the given input
@@ -312,7 +310,6 @@ value.</p>
 
 </dd></dl>
 
-</div>
 </div>
 
 

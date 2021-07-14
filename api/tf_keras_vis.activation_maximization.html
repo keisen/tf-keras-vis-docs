@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>ActivationMaximization &mdash; tf-keras-vis documents (beta) v0.7.0 documentation</title>
+  <title>ActivationMaximization &mdash; tf-keras-vis v0.7.2 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> tf-keras-vis documents (beta)
+            <a href="../index.html" class="icon icon-home"> tf-keras-vis
           
 
           
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.7.0
+                0.7.2
               </div>
             
           
@@ -101,7 +101,9 @@
 <li class="toctree-l1 current"><a class="reference internal" href="tf_keras_vis.html">API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="tf_keras_vis.html#feature-visualization">Feature Visualization</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ActivationMaximization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.callbacks.html">Callbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.input_modifiers.html">Input Modifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tf_keras_vis.activation_maximization.regularizers.html">Regularizers</a></li>
 </ul>
 </li>
 </ul>
@@ -112,7 +114,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../change-log.html">CHANGE LOG</a></li>
 </ul>
 
             
@@ -128,7 +129,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">tf-keras-vis documents (beta)</a>
+          <a href="../index.html">tf-keras-vis</a>
         
       </nav>
 
@@ -206,12 +207,25 @@
 </style>
 <div class="section" id="activationmaximization">
 <h1>ActivationMaximization<a class="headerlink" href="#activationmaximization" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Convolutional Filters</p></li>
+</ul>
+<p><img alt="" src="../_images/visualize-filters.png" /></p>
+<ul class="simple">
+<li><p>Dense Units</p></li>
+</ul>
+<p><img alt="" src="../_images/visualize-dense-layer.png" /></p>
+<ul class="simple">
+<li><p>Visualizing Dense Unit</p></li>
+</ul>
 <p><img alt="" src="../_images/activation_maximization.0.gif" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>ActivationMaximization class is optimized for VGG16 model in Keras.
 So, when you visualize with other models,
 you <strong>MUST</strong> tune the parameters of ActivationMaximization.</p>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 <span class="target" id="module-tf_keras_vis.activation_maximization"></span><dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.ActivationMaximization">
@@ -389,16 +403,6 @@ When the model has multiple inputs, a list of <a class="reference external" href
 
 </dd></dl>
 
-<div class="section" id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.callbacks.html">Callbacks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.input_modifiers.html">Input Modifiers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tf_keras_vis.activation_maximization.regularizers.html">Regularizers</a></li>
-</ul>
-</div>
-</div>
 </div>
 
 
