@@ -110,7 +110,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#attentions">Attentions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#utilities">Utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#model-visualization-class">Model Visualization Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#module-tf_keras_vis">Model Visualization Class</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
@@ -227,6 +227,182 @@ you <strong>MUST</strong> tune the parameters of ActivationMaximization.</p>
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<span class="target" id="module-tf_keras_vis.activation_maximization"></span><dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.ActivationMaximization">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.</span></span><span class="sig-name descname"><span class="pre">ActivationMaximization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization.html#ActivationMaximization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.ActivationMaximization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="tf_keras_vis.html#tf_keras_vis.ModelVisualization" title="tf_keras_vis.ModelVisualization"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.ModelVisualization</span></code></a></p>
+<p>ActivationMaximization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – A  <cite>tf.keras.Model</cite> instance. When <cite>model_modifier</cite> is NOT None, this model will
+be cloned with <cite>tf.keras.models.clone_model</cite> function and then will be modified by
+<cite>model_modifier</cite> according to needs.</p></li>
+<li><p><strong>model_modifier</strong> – A <a class="reference internal" href="tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.ModelModifier" title="tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.utils.model_modifiers.ModelModifier</span></code></a> instance,
+a function or a list of them. We recommend to apply
+<cite>tf_keras_vis.utils.model_modifiers.ReplaceToLinear</cite> to all visualizations (except
+<a class="reference internal" href="tf_keras_vis.scorecam.html#tf_keras_vis.scorecam.Scorecam" title="tf_keras_vis.scorecam.Scorecam"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.scorecam.Scorecam</span></code></a>) when the model output is softmax. Defaults
+to None.</p></li>
+<li><p><strong>clone</strong> – A bool that indicates whether or not it clones the <cite>model</cite>. When False, the
+model won’t be cloned. Note that, although when True, the model won’t be clone if
+<cite>model_modifier</cite> is None. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.ActivationMaximization.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_modifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[Jitter(jitter=4),</span> <span class="pre">Rotate2D(degree=1)]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularizers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[TotalVariation2D(weight=1.0),</span> <span class="pre">Norm(weight=0.3,</span> <span class="pre">p=1)]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unconnected_gradients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">tf.UnconnectedGradients.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_modifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_compatible_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization.html#ActivationMaximization.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.ActivationMaximization.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the model inputs that maximize the output of the given <cite>score</cite> functions.</p>
+<p>By default, this method is optimized to visualize <cite>tf.keras.application.VGG16</cite> model.
+So if you want to visualize other models, you have to tune the parameters of this method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>score</strong> – <p>A <a class="reference internal" href="tf_keras_vis.utils.scores.html#tf_keras_vis.utils.scores.Score" title="tf_keras_vis.utils.scores.Score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.utils.scores.Score</span></code></a> instance, function or a list of them.
+For example of the Score instance to specify visualizing target:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">CategoricalScore</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">413</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The code above means the same with the one below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">outputs</span><span class="p">:</span> <span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">294</span><span class="p">],</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">413</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>When the model has multiple outputs, you MUST pass a list of
+Score instances or functions. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">CategoricalScore</span><span class="p">,</span> <span class="n">InactiveScore</span>
+<span class="n">score</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">CategoricalScore</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">]),</span>  <span class="c1"># For 1st model output</span>
+    <span class="n">InactiveScore</span><span class="p">(),</span>            <span class="c1"># For 2nd model output</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>seed_input</strong> – <p>A tf.Tensor, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them to input in the model.
+When <cite>None</cite>, the seed_input value will be automatically generated from a uniform
+distribution. If you want to visualize multiple images (i.e., batch_size &gt; 1),
+you have to pass a seed_input object. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seed_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">((</span><span class="n">samples</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">channels</span><span class="p">),</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Farthermore, if the model has multiple inputs and you want multiple images,
+you have to do as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seed_input</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">((</span><span class="n">samples</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">channels</span><span class="p">),</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">),</span>  <span class="c1"># 1st input</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">((</span><span class="n">samples</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">channels</span><span class="p">),</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">),</span>  <span class="c1"># 2nd input</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Defaults to None.</p>
+</p></li>
+<li><p><strong>input_range</strong> – <p>A tuple of two int values or a list of them. The tuple indicates
+<cite>(min, max)</cite> values that is range of the result of this method. If the model has
+multiple inputs, you can use different input ranges for each model input by
+passing list of tuples. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_range</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span>     <span class="c1"># The 1st model input&#39;s range</span>
+    <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>  <span class="c1"># The 2nd model input&#39;s range</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>When <cite>None</cite> or <cite>(None, None)</cite> tuple, the input tensor
+(i.e., the result of this method) will be not applied any limitation.
+Defaults to (0, 255).</p>
+</p></li>
+<li><p><strong>input_modifiers</strong> – <p>A <code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span>
+<span class="pre">InputModifier</span></code> instance, a function, a list of them when the model has a single
+input. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_modifiers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Jitter</span><span class="p">(</span><span class="n">jitter</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span> <span class="n">Rotate</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">Scale</span><span class="p">(</span><span class="n">high</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>When the model has multiple inputs, you have to pass a dictionary
+that contains the lists of input modifiers for each model inputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_modifiers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;input_1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">Jitter</span><span class="p">(</span><span class="n">jitter</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span> <span class="n">Rotate</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">Scale</span><span class="p">(</span><span class="n">high</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)],</span>
+    <span class="s1">&#39;input_2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">Jitter</span><span class="p">(</span><span class="n">jitter</span><span class="o">=</span><span class="mi">8</span><span class="p">)],</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Or you could also pass a list of lists of input modifiers for each model inputs as
+follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_modifiers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="n">Jitter</span><span class="p">(</span><span class="n">jitter</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span> <span class="n">Rotate</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">Scale</span><span class="p">(</span><span class="n">high</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)],</span>  <span class="c1"># For 1st input</span>
+    <span class="p">[</span><span class="n">Jitter</span><span class="p">(</span><span class="n">jitter</span><span class="o">=</span><span class="mi">8</span><span class="p">)],</span>                                     <span class="c1"># For 2nd input</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Defaults to [Jitter(jitter=4), Rotate(degree=1)].</p>
+</p></li>
+<li><p><strong>regularizers</strong> – <p>A <code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.utils.regularizers.Regularizer</span></code> instance,
+a list of regularizers or a list that has lists of regularizers for each input.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">regularizers</span> <span class="o">=</span> <span class="p">[</span><span class="n">TotalVariation2D</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">Norm</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>&gt; Please notice that <cite>regularizes</cite> does NOT accept function object like
+<cite>input_modifiers</cite>.</p>
+<p>When the model has multiple inputs, you have to pass a dictionary
+that contains the lists of regularizers for each model inputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">regularizers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;input_1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">TotalVariation2D</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">Norm</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span>
+    <span class="s1">&#39;input_2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">Norm</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)],</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Or you could also pass a list of lists of regularizers for each model inputs as
+follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">regularizers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="n">TotalVariation2D</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">Norm</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span>  <span class="c1"># For 1st input</span>
+    <span class="p">[</span><span class="n">Norm</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)],</span>                               <span class="c1"># For 2nt input</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Defaults to [TotalVariation2D(weight=1.0), Norm(weight=0.3, p=1)].</p>
+</p></li>
+<li><p><strong>steps</strong> – The number of gradient descent iterations. Defaults to 200.</p></li>
+<li><p><strong>optimizer</strong> – A <cite>tf.optimizers.Optimizer</cite> instance. When None, it will be automatically
+created. Defaults to <cite>tf.optimizers.RMSprop(learning_rate=1.0, rho=0.999)</cite>.</p></li>
+<li><p><strong>gradient_modifier</strong> – A function to modify gradients.
+Defaults to None.</p></li>
+<li><p><strong>callbacks</strong> – A <a class="reference internal" href="tf_keras_vis.activation_maximization.callbacks.html#tf_keras_vis.activation_maximization.callbacks.Callback" title="tf_keras_vis.activation_maximization.callbacks.Callback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.callbacks.Callback</span></code></a> instance
+or a list of them.
+Defaults to None.</p></li>
+<li><p><strong>training</strong> – A bool that indicates whether the model’s training-mode on or off.
+Defaults to False.</p></li>
+<li><p><strong>unconnected_gradients</strong> – Specifies the gradient value returned when the given input
+tensors are unconnected.
+Defaults to tf.UnconnectedGradients.NONE.</p></li>
+<li><p><strong>activation_modifiers</strong> – <p>A function or a dictionary of them (the key is input layer’s
+name). When the model has multiple inputs, you have to pass a dictionary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">activation_modifiers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;input_1&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+    <span class="s1">&#39;input_2&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This functions will be executed before returning the result. Defaults to None.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> when the model has a single input.
+When the model has multiple inputs, a list of <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><strong>ValueError</strong></a> – When there is any invalid arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

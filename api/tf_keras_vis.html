@@ -120,7 +120,7 @@
 <li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.html">Functions</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#model-visualization-class">Model Visualization Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tf_keras_vis">Model Visualization Class</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
@@ -252,8 +252,46 @@
 </ul>
 </div>
 </div>
-<div class="section" id="model-visualization-class">
-<h2>Model Visualization Class<a class="headerlink" href="#model-visualization-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-tf_keras_vis">
+<span id="model-visualization-class"></span><h2>Model Visualization Class<a class="headerlink" href="#module-tf_keras_vis" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.ModelVisualization">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.</span></span><span class="sig-name descname"><span class="pre">ModelVisualization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis.html#ModelVisualization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.ModelVisualization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Visualization class that analyze the model for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – A  <cite>tf.keras.Model</cite> instance. When <cite>model_modifier</cite> is NOT None, this model will
+be cloned with <cite>tf.keras.models.clone_model</cite> function and then will be modified by
+<cite>model_modifier</cite> according to needs.</p></li>
+<li><p><strong>model_modifier</strong> – A <a class="reference internal" href="tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.ModelModifier" title="tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.utils.model_modifiers.ModelModifier</span></code></a> instance,
+a function or a list of them. We recommend to apply
+<cite>tf_keras_vis.utils.model_modifiers.ReplaceToLinear</cite> to all visualizations (except
+<a class="reference internal" href="tf_keras_vis.scorecam.html#tf_keras_vis.scorecam.Scorecam" title="tf_keras_vis.scorecam.Scorecam"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.scorecam.Scorecam</span></code></a>) when the model output is softmax. Defaults
+to None.</p></li>
+<li><p><strong>clone</strong> – A bool that indicates whether or not it clones the <cite>model</cite>. When False, the
+model won’t be cloned. Note that, although when True, the model won’t be clone if
+<cite>model_modifier</cite> is None. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.ModelVisualization.__call__">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis.html#ModelVisualization.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.ModelVisualization.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.9)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Visualized image(s) or something(s).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 

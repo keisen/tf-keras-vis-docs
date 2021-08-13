@@ -107,13 +107,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#categorical-classification-model">Categorical classification model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#binary-classification-task">Binary classification task</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#regression-task">Regression task</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tf_keras_vis.utils.scores">Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.html">Functions</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#model-visualization-class">Model Visualization Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#module-tf_keras_vis">Model Visualization Class</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
@@ -320,8 +320,80 @@ For example, suppose the target value is 0.0, the score function should be as fo
 </div>
 </div>
 </div>
-<div class="section" id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-tf_keras_vis.utils.scores">
+<span id="classes"></span><h2>Classes<a class="headerlink" href="#module-tf_keras_vis.utils.scores" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.scores.BinaryScore">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.scores.</span></span><span class="sig-name descname"><span class="pre">BinaryScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#BinaryScore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.BinaryScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.scores.Score" title="tf_keras_vis.utils.scores.Score"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.utils.scores.Score</span></code></a></p>
+<p>A score function that collects the scores from model output
+which is for binary classification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target_values</strong> – A bool or a list of them.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><strong>ValueError</strong></a> – When target_values is None or an empty list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.scores.CategoricalScore">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.scores.</span></span><span class="sig-name descname"><span class="pre">CategoricalScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#CategoricalScore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.CategoricalScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.scores.Score" title="tf_keras_vis.utils.scores.Score"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.utils.scores.Score</span></code></a></p>
+<p>A score function that collects the scores from model output
+which is for categorical classification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indices</strong> – An integer or a list of them.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><strong>ValueError</strong></a> – When indices is None or an empty list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.scores.InactiveScore">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.scores.</span></span><span class="sig-name descname"><span class="pre">InactiveScore</span></span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#InactiveScore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.InactiveScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.scores.Score" title="tf_keras_vis.utils.scores.Score"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.utils.scores.Score</span></code></a></p>
+<p>A score function that deactivate model output passed to <cite>__call__()</cite>.</p>
+<p>With a multiple output model, you can use this
+if you want a output to be excluded from targets of calculating gradients.</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.scores.Score">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.scores.</span></span><span class="sig-name descname"><span class="pre">Score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#Score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.Score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Abstract class for defining a score function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Instance name. Defaults to None.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.utils.scores.Score.__call__">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#Score.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.Score.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement collecting scores that are used in visualization modules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output</strong> – A tf.Tensor that indicates a model output value.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.9)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Score values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 

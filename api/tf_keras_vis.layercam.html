@@ -112,7 +112,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#utilities">Utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#model-visualization-class">Model Visualization Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#module-tf_keras_vis">Model Visualization Class</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
@@ -207,8 +207,100 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="layercam">
-<h1>LayerCAM<a class="headerlink" href="#layercam" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-tf_keras_vis.layercam">
+<span id="layercam"></span><h1>LayerCAM<a class="headerlink" href="#module-tf_keras_vis.layercam" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tf_keras_vis.layercam.Layercam">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.layercam.</span></span><span class="sig-name descname"><span class="pre">Layercam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/layercam.html#Layercam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.layercam.Layercam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="tf_keras_vis.gradcam.html#tf_keras_vis.gradcam.Gradcam" title="tf_keras_vis.gradcam.Gradcam"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.gradcam.Gradcam</span></code></a></p>
+<p>LayerCAM</p>
+<div class="admonition-references admonition">
+<p class="admonition-title">References</p>
+<ul class="simple">
+<li><p>LayerCAM: Exploring Hierarchical Class Activation Maps for Localization
+(<a class="reference external" href="https://ieeexplore.ieee.org/document/9462463">https://ieeexplore.ieee.org/document/9462463</a>)</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – A  <cite>tf.keras.Model</cite> instance. When <cite>model_modifier</cite> is NOT None, this model will
+be cloned with <cite>tf.keras.models.clone_model</cite> function and then will be modified by
+<cite>model_modifier</cite> according to needs.</p></li>
+<li><p><strong>model_modifier</strong> – A <a class="reference internal" href="tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.ModelModifier" title="tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.utils.model_modifiers.ModelModifier</span></code></a> instance,
+a function or a list of them. We recommend to apply
+<cite>tf_keras_vis.utils.model_modifiers.ReplaceToLinear</cite> to all visualizations (except
+<a class="reference internal" href="tf_keras_vis.scorecam.html#tf_keras_vis.scorecam.Scorecam" title="tf_keras_vis.scorecam.Scorecam"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.scorecam.Scorecam</span></code></a>) when the model output is softmax. Defaults
+to None.</p></li>
+<li><p><strong>clone</strong> – A bool that indicates whether or not it clones the <cite>model</cite>. When False, the
+model won’t be cloned. Note that, although when True, the model won’t be clone if
+<cite>model_modifier</cite> is None. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tf_keras_vis.layercam.Layercam.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penultimate_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seek_penultimate_conv_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">lambda</span> <span class="pre">grads:</span> <span class="pre">...</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">lambda</span> <span class="pre">cam:</span> <span class="pre">...</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand_cam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardize_cam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unconnected_gradients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">tf.UnconnectedGradients.NONE</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/layercam.html#Layercam.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.layercam.Layercam.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate gradient based class activation maps (CAM) by using positive gradient of
+penultimate_layer with respect to score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>score</strong> – <p>A <a class="reference internal" href="tf_keras_vis.utils.scores.html#tf_keras_vis.utils.scores.Score" title="tf_keras_vis.utils.scores.Score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.utils.scores.Score</span></code></a> instance, function or a list of them.
+For example of the Score instance to specify visualizing target:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">CategoricalScore</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">413</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The code above means the same with the one below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">outputs</span><span class="p">:</span> <span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">294</span><span class="p">],</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">413</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>When the model has multiple outputs, you MUST pass a list of
+Score instances or functions. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">CategoricalScore</span><span class="p">,</span> <span class="n">InactiveScore</span>
+<span class="n">score</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">CategoricalScore</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">]),</span>  <span class="c1"># For 1st model output</span>
+    <span class="n">InactiveScore</span><span class="p">(),</span>            <span class="c1"># For 2nd model output</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>seed_input</strong> – A tf.Tensor, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them to input in the model.
+That’s when the model has multiple inputs, you MUST pass a list of tensors.</p></li>
+<li><p><strong>penultimate_layer</strong> – An index or name of the layer, or the tf.keras.layers.Layer
+instance itself. When None, it means the same with <cite>-1</cite>. If the layer specified by
+this option is not <cite>convolutional</cite> layer, <cite>penultimate_layer</cite> will work as the
+offset to seek <cite>convolutional</cite> layer. Defaults to None.</p></li>
+<li><p><strong>seek_penultimate_conv_layer</strong> – A bool that indicates whether or not seeks a penultimate
+layer when the layer specified by <cite>penultimate_layer</cite> is not <cite>convolutional</cite> layer.
+Defaults to True.</p></li>
+<li><p><strong>activation_modifier</strong> – A function to modify the Class Activation Map (CAM). Defaults to
+<cite>lambda cam: K.relu(cam)</cite>.</p></li>
+<li><p><strong>training</strong> – A bool that indicates whether the model’s training-mode on or off. Defaults
+to False.</p></li>
+<li><p><strong>gradient_modifier</strong> – A function to modify gradients. Defaults to
+<cite>lambda grads: tf.keras.backend.relu(grads)</cite>.</p></li>
+<li><p><strong>expand_cam</strong> – True to resize CAM to the same as input image size. <strong>Note!</strong> When False,
+even if the model has multiple inputs, return only a CAM. Defaults to True.</p></li>
+<li><p><strong>standardize_cam</strong> – When True, CAM will be standardized. Defaults to True.</p></li>
+<li><p><strong>unconnected_gradients</strong> – Specifies the gradient value returned when the given input
+tensors are unconnected. Defaults to tf.UnconnectedGradients.NONE.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them. They are the Class Activation Maps (CAMs)
+that indicate the <cite>seed_input</cite> regions whose change would most contribute the score
+value.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.9)"><strong>ValueError</strong></a> – When there is any invalid arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
