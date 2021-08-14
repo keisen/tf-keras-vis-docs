@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>tf_keras_vis.utils &mdash; tf-keras-vis v0.7.2 documentation</title>
+  <title>tf_keras_vis.utils &mdash; tf-keras-vis v0.8.0 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.7.2
+                0.8.0
               </div>
             
           
@@ -233,30 +233,25 @@
     <span class="k">return</span> <span class="n">value</span></div>
 
 
-<div class="viewcode-block" id="standardize"><a class="viewcode-back" href="../../api/tf_keras_vis.utils.html#tf_keras_vis.utils.standardize">[docs]</a><span class="k">def</span> <span class="nf">standardize</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Standardization.</span>
+<span class="nd">@deprecated</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.8.0&#39;</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s2">&quot;Use `normalize()` instead.&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">standardize</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)):</span>
+    <span class="k">return</span> <span class="n">normalize</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="normalize"><a class="viewcode-back" href="../../api/tf_keras_vis.utils.html#tf_keras_vis.utils.normalize">[docs]</a><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Normalization.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        array (np.ndarray): A tensor.</span>
 <span class="sd">        value_range (tuple, optional): `array` will be scaled in this range. Defaults to (1., 0.).</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        np.ndarray: Standardized array.</span>
+<span class="sd">        np.ndarray: Normalize array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">max_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">ndim</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]),</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">min_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">ndim</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]),</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">normalized_array</span> <span class="o">=</span> <span class="p">(</span><span class="n">array</span> <span class="o">-</span> <span class="n">min_value</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">max_value</span> <span class="o">-</span> <span class="n">min_value</span> <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">epsilon</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">normalized_array</span></div>
-
-
-<span class="nd">@deprecated</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s2">&quot;Inappropriate naming, Use `standardize()` instead.&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">value_range</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">standardize</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">normalized_array</span> <span class="o">=</span> <span class="n">standardize</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-        <span class="n">high</span><span class="p">,</span> <span class="n">low</span> <span class="o">=</span> <span class="n">value_range</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">*</span> <span class="n">normalized_array</span> <span class="o">+</span> <span class="n">low</span>
 
 
 <span class="k">def</span> <span class="nf">find_layer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">:</span>

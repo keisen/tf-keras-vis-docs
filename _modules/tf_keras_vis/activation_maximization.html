@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>tf_keras_vis.activation_maximization &mdash; tf-keras-vis v0.7.2 documentation</title>
+  <title>tf_keras_vis.activation_maximization &mdash; tf-keras-vis v0.8.0 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.7.2
+                0.8.0
               </div>
             
           
@@ -195,7 +195,6 @@
                           <span class="n">Norm</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span>
             <span class="n">steps</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
             <span class="n">optimizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># When None, the default is tf.optimizers.RMSprop(1.0, 0.999)</span>
-            <span class="n">normalize_gradient</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># Disabled option.</span>
             <span class="n">gradient_modifier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">callbacks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -318,8 +317,7 @@
 <span class="sd">            gradient_modifier: A function to modify gradients.</span>
 <span class="sd">                Defaults to None.</span>
 <span class="sd">            callbacks: A :obj:`tf_keras_vis.activation_maximization.callbacks.Callback` instance</span>
-<span class="sd">                or a list of them.</span>
-<span class="sd">                Defaults to None.</span>
+<span class="sd">                or a list of them. Defaults to None.</span>
 <span class="sd">            training: A bool that indicates whether the model&#39;s training-mode on or off.</span>
 <span class="sd">                Defaults to False.</span>
 <span class="sd">            unconnected_gradients: Specifies the gradient value returned when the given input</span>
@@ -344,11 +342,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">arguments</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">&#39;self&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">))</span>
-
-        <span class="k">if</span> <span class="n">normalize_gradient</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s2">&quot;`normalize_gradient` option of ActivationMaximization#__call__() is disabled.,&quot;</span>
-                <span class="s2">&quot; And this will be removed in future.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
 
         <span class="c1"># Check model</span>
         <span class="n">mixed_precision_model</span> <span class="o">=</span> <span class="n">is_mixed_precision</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>

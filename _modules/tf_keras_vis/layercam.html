@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>tf_keras_vis.layercam &mdash; tf-keras-vis v0.7.2 documentation</title>
+  <title>tf_keras_vis.layercam &mdash; tf-keras-vis v0.8.0 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.7.2
+                0.8.0
               </div>
             
           
@@ -191,7 +191,7 @@
                  <span class="n">activation_modifier</span><span class="o">=</span><span class="k">lambda</span> <span class="n">cam</span><span class="p">:</span> <span class="n">K</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">cam</span><span class="p">),</span>
                  <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">expand_cam</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                 <span class="n">standardize_cam</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">normalize_cam</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">unconnected_gradients</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">UnconnectedGradients</span><span class="o">.</span><span class="n">NONE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Generate gradient based class activation maps (CAM) by using positive gradient of</span>
 <span class="sd">        penultimate_layer with respect to score.</span>
@@ -233,7 +233,7 @@
 <span class="sd">                `lambda grads: tf.keras.backend.relu(grads)`.</span>
 <span class="sd">            expand_cam: True to resize CAM to the same as input image size. **Note!** When False,</span>
 <span class="sd">                even if the model has multiple inputs, return only a CAM. Defaults to True.</span>
-<span class="sd">            standardize_cam: When True, CAM will be standardized. Defaults to True.</span>
+<span class="sd">            normalize_cam: When True, CAM will be normalized. Defaults to True.</span>
 <span class="sd">            unconnected_gradients: Specifies the gradient value returned when the given input</span>
 <span class="sd">                tensors are unconnected. Defaults to tf.UnconnectedGradients.NONE.</span>
 

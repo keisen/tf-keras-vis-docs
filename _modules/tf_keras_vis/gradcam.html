@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>tf_keras_vis.gradcam &mdash; tf-keras-vis v0.7.2 documentation</title>
+  <title>tf_keras_vis.gradcam &mdash; tf-keras-vis v0.8.0 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.7.2
+                0.8.0
               </div>
             
           
@@ -166,8 +166,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for tf_keras_vis.gradcam</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -175,7 +174,7 @@
 <span class="kn">from</span> <span class="nn">scipy.ndimage.interpolation</span> <span class="kn">import</span> <span class="n">zoom</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">ModelVisualization</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">is_mixed_precision</span><span class="p">,</span> <span class="n">standardize</span><span class="p">,</span> <span class="n">zoom_factor</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">is_mixed_precision</span><span class="p">,</span> <span class="n">normalize</span><span class="p">,</span> <span class="n">zoom_factor</span>
 <span class="kn">from</span> <span class="nn">.utils.model_modifiers</span> <span class="kn">import</span> <span class="n">ExtractIntermediateLayerForGradcam</span> <span class="k">as</span> <span class="n">ModelModifier</span>
 
 
@@ -187,19 +186,17 @@
 <span class="sd">          Visual Explanations from Deep Networks via Gradient-based Localization</span>
 <span class="sd">          (https://arxiv.org/pdf/1610.02391v1.pdf)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Gradcam.__call__"><a class="viewcode-back" href="../../api/tf_keras_vis.gradcam.html#tf_keras_vis.gradcam.Gradcam.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span>
-            <span class="n">score</span><span class="p">,</span>
-            <span class="n">seed_input</span><span class="p">,</span>
-            <span class="n">penultimate_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">seek_penultimate_conv_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">gradient_modifier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">activation_modifier</span><span class="o">=</span><span class="k">lambda</span> <span class="n">cam</span><span class="p">:</span> <span class="n">K</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">cam</span><span class="p">),</span>
-            <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">normalize_gradient</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># Disabled option.</span>
-            <span class="n">expand_cam</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">standardize_cam</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">unconnected_gradients</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">UnconnectedGradients</span><span class="o">.</span><span class="n">NONE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">]:</span>
+<div class="viewcode-block" id="Gradcam.__call__"><a class="viewcode-back" href="../../api/tf_keras_vis.gradcam.html#tf_keras_vis.gradcam.Gradcam.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">score</span><span class="p">,</span>
+                 <span class="n">seed_input</span><span class="p">,</span>
+                 <span class="n">penultimate_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">seek_penultimate_conv_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">gradient_modifier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">activation_modifier</span><span class="o">=</span><span class="k">lambda</span> <span class="n">cam</span><span class="p">:</span> <span class="n">K</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">cam</span><span class="p">),</span>
+                 <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">expand_cam</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">normalize_cam</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">unconnected_gradients</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">UnconnectedGradients</span><span class="o">.</span><span class="n">NONE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Generate gradient based class activation maps (CAM) by using positive gradient of</span>
 <span class="sd">        penultimate_layer with respect to score.</span>
 
@@ -232,16 +229,14 @@
 <span class="sd">            seek_penultimate_conv_layer: A bool that indicates whether or not seeks a penultimate</span>
 <span class="sd">                layer when the layer specified by `penultimate_layer` is not `convolutional` layer.</span>
 <span class="sd">                Defaults to True.</span>
+<span class="sd">            gradient_modifier: A function to modify gradients. Defaults to None.</span>
 <span class="sd">            activation_modifier: A function to modify the Class Activation Map (CAM). Defaults to</span>
 <span class="sd">                `lambda cam: K.relu(cam)`.</span>
 <span class="sd">            training: A bool that indicates whether the model&#39;s training-mode on or off. Defaults</span>
 <span class="sd">                to False.</span>
-<span class="sd">            normalize_gradient (bool, optional): **Note!** This option is now disabled.</span>
-<span class="sd">                Defaults to None.</span>
-<span class="sd">            gradient_modifier: A function to modify gradients. Defaults to None.</span>
 <span class="sd">            expand_cam: True to resize CAM to the same as input image size. **Note!** When False,</span>
 <span class="sd">                even if the model has multiple inputs, return only a CAM. Defaults to True.</span>
-<span class="sd">            standardize_cam: When True, CAM will be standardized. Defaults to True.</span>
+<span class="sd">            normalize_cam: When True, CAM will be normalized. Defaults to True.</span>
 <span class="sd">            unconnected_gradients: Specifies the gradient value returned when the given input</span>
 <span class="sd">                tensors are unconnected. Defaults to tf.UnconnectedGradients.NONE.</span>
 
@@ -254,10 +249,6 @@
 <span class="sd">            :obj:`ValueError`: When there is any invalid arguments.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">if</span> <span class="n">normalize_gradient</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s1">&#39;`normalize_gradient` option is disabled.,&#39;</span>
-                <span class="s1">&#39; And this will be removed in future.&#39;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="c1"># Preparing</span>
         <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scores_for_multiple_outputs</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
         <span class="n">seed_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_seed_inputs_for_multiple_inputs</span><span class="p">(</span><span class="n">seed_input</span><span class="p">)</span>
@@ -287,15 +278,15 @@
             <span class="n">cam</span> <span class="o">=</span> <span class="n">activation_modifier</span><span class="p">(</span><span class="n">cam</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">expand_cam</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">standardize_cam</span><span class="p">:</span>
-                <span class="n">cam</span> <span class="o">=</span> <span class="n">standardize</span><span class="p">(</span><span class="n">cam</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">normalize_cam</span><span class="p">:</span>
+                <span class="n">cam</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">cam</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">cam</span>
 
         <span class="c1"># Visualizing</span>
         <span class="n">factors</span> <span class="o">=</span> <span class="p">(</span><span class="n">zoom_factor</span><span class="p">(</span><span class="n">cam</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">X</span> <span class="ow">in</span> <span class="n">seed_inputs</span><span class="p">)</span>
         <span class="n">cam</span> <span class="o">=</span> <span class="p">[</span><span class="n">zoom</span><span class="p">(</span><span class="n">cam</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">factor</span> <span class="ow">in</span> <span class="n">factors</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">standardize_cam</span><span class="p">:</span>
-            <span class="n">cam</span> <span class="o">=</span> <span class="p">[</span><span class="n">standardize</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cam</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">normalize_cam</span><span class="p">:</span>
+            <span class="n">cam</span> <span class="o">=</span> <span class="p">[</span><span class="n">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cam</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">seed_input</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
             <span class="n">cam</span> <span class="o">=</span> <span class="n">cam</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">cam</span></div></div>

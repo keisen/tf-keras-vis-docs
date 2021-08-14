@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>tf_keras_vis &mdash; tf-keras-vis v0.7.2 documentation</title>
+  <title>tf_keras_vis &mdash; tf-keras-vis v0.8.0 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.7.2
+                0.8.0
               </div>
             
           
@@ -164,20 +164,20 @@
            <div itemprop="articleBody">
             
   <h1>Source code for tf_keras_vis</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">importlib.metadata</span> <span class="kn">import</span> <span class="n">version</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+    <span class="kn">from</span> <span class="nn">importlib_metadata</span> <span class="kn">import</span> <span class="n">version</span>
+
+<span class="n">__version__</span> <span class="o">=</span> <span class="n">version</span><span class="p">(</span><span class="s2">&quot;tf-keras-vis&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">listify</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">importlib.metadata</span> <span class="kn">import</span> <span class="n">version</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-    <span class="kn">from</span> <span class="nn">importlib_metadata</span> <span class="kn">import</span> <span class="n">version</span>
-
-<span class="n">__version__</span> <span class="o">=</span> <span class="n">version</span><span class="p">(</span><span class="s2">&quot;tf-keras-vis&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="ModelVisualization"><a class="viewcode-back" href="../api/tf_keras_vis.html#tf_keras_vis.ModelVisualization">[docs]</a><span class="k">class</span> <span class="nc">ModelVisualization</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
@@ -186,7 +186,7 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_modifier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
-<span class="sd">            model: A  `tf.keras.Model` instance. When `model_modifier` is NOT None, this model will</span>
+<span class="sd">            model: A `tf.keras.Model` instance. When `model_modifier` is NOT None, this model will</span>
 <span class="sd">                be cloned with `tf.keras.models.clone_model` function and then will be modified by</span>
 <span class="sd">                `model_modifier` according to needs.</span>
 <span class="sd">            model_modifier: A :obj:`tf_keras_vis.utils.model_modifiers.ModelModifier` instance,</span>
