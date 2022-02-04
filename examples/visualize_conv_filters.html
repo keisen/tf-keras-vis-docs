@@ -1,78 +1,38 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Visualizing Conv filters using ActivationMaximization &mdash; tf-keras-vis v0.8.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualizing Dense layer using ActivationMaximization" href="visualize_dense_layer.html" />
     <link rel="prev" title="Attentions" href="attentions.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> tf-keras-vis
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 0.8.0
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -80,18 +40,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">HOME</a></li>
 </ul>
@@ -130,71 +79,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">tf-keras-vis</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="index.html">Examples</a> &raquo;</li>
-        
       <li>Visualizing Conv filters using ActivationMaximization</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS for nbsphinx extension */
@@ -405,7 +313,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -465,19 +373,18 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Visualizing-Conv-filters-using-ActivationMaximization">
-<h1>Visualizing Conv filters using ActivationMaximization<a class="headerlink" href="#Visualizing-Conv-filters-using-ActivationMaximization" title="Permalink to this headline">¶</a></h1>
+<section id="Visualizing-Conv-filters-using-ActivationMaximization">
+<h1>Visualizing Conv filters using ActivationMaximization<a class="headerlink" href="#Visualizing-Conv-filters-using-ActivationMaximization" title="Permalink to this headline"></a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/keisen/tf-keras-vis/blob/master/examples/visualize_conv_filters.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> <a class="reference external" href="https://github.com/keisen/tf-keras-vis/blob/master/docs/examples/visualize_conv_filters.ipynb"><img alt="Right click and save" src="https://img.shields.io/badge/Notebook-Open_In_Github-orange.svg" /></a></p>
-<div class="section" id="Preparation">
-<h2>Preparation<a class="headerlink" href="#Preparation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="Load-libraries">
-<h3>Load libraries<a class="headerlink" href="#Load-libraries" title="Permalink to this headline">¶</a></h3>
+<section id="Preparation">
+<h2>Preparation<a class="headerlink" href="#Preparation" title="Permalink to this headline"></a></h2>
+<section id="Load-libraries">
+<h3>Load libraries<a class="headerlink" href="#Load-libraries" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%reload_ext autoreload
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%reload_ext autoreload
 %autoreload 2
 
 import numpy as np
@@ -500,16 +407,15 @@ print(&#39;Tensorflow recognized {} GPUs&#39;.format(gpus))
 Tensorflow recognized 1 GPUs
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Load-tf.keras.Model">
-<h3>Load tf.keras.Model<a class="headerlink" href="#Load-tf.keras.Model" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="Load-tf.keras.Model">
+<h3>Load tf.keras.Model<a class="headerlink" href="#Load-tf.keras.Model" title="Permalink to this headline"></a></h3>
 <p>In this notebook, we use VGG16 model, however if you want to use other tf.keras.Model, you can do so by modifying the section below.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from tensorflow.keras.applications.vgg16 import VGG16 as Model
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tensorflow.keras.applications.vgg16 import VGG16 as Model
 
 # Load model
 model = Model(weights=&#39;imagenet&#39;, include_top=True)
@@ -578,20 +484,19 @@ Non-trainable params: 0
 _________________________________________________________________
 </pre></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Implement-functions-required-to-use-ActivationMaximization">
-<h2>Implement functions required to use ActivationMaximization<a class="headerlink" href="#Implement-functions-required-to-use-ActivationMaximization" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="Model-modifier">
-<h3>Model modifier<a class="headerlink" href="#Model-modifier" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="Implement-functions-required-to-use-ActivationMaximization">
+<h2>Implement functions required to use ActivationMaximization<a class="headerlink" href="#Implement-functions-required-to-use-ActivationMaximization" title="Permalink to this headline"></a></h2>
+<section id="Model-modifier">
+<h3>Model modifier<a class="headerlink" href="#Model-modifier" title="Permalink to this headline"></a></h3>
 <p>You <strong>MUST</strong> define a model modifier to replace the model output to target layer’s output that has filters you want to visualize, and , in addion, replace the function of it to a linear activation function.</p>
 <p>Although we create and use <code class="docutils literal notranslate"><span class="pre">ExtractIntermediateLayer</span></code> and <code class="docutils literal notranslate"><span class="pre">ReplaceToLinear</span></code> instance, we can also use the model modifier function defined by ourselves.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from tf_keras_vis.utils.model_modifiers import ExtractIntermediateLayer, ReplaceToLinear
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tf_keras_vis.utils.model_modifiers import ExtractIntermediateLayer, ReplaceToLinear
 
 layer_name = &#39;block5_conv3&#39; # The target layer that is the last layer of VGG16.
 
@@ -611,16 +516,15 @@ def model_modifier_function(current_model):
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Score-function">
-<h3>Score function<a class="headerlink" href="#Score-function" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="Score-function">
+<h3>Score function<a class="headerlink" href="#Score-function" title="Permalink to this headline"></a></h3>
 <p>And then, you <strong>MUST</strong> create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> that returns target scores. Here, they return the value of 3rd filter in <code class="docutils literal notranslate"><span class="pre">block5_conv3</span></code> layer.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from tf_keras_vis.utils.scores import CategoricalScore
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tf_keras_vis.utils.scores import CategoricalScore
 
 filter_number = 3
 score = CategoricalScore(filter_number)
@@ -632,20 +536,19 @@ def score_function(output):
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="Visualizeing-a-conv-filter">
-<h2>Visualizeing a conv filter<a class="headerlink" href="#Visualizeing-a-conv-filter" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="Create-ActivationMaximization-Instnace">
-<h3>Create ActivationMaximization Instnace<a class="headerlink" href="#Create-ActivationMaximization-Instnace" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="Visualizeing-a-conv-filter">
+<h2>Visualizeing a conv filter<a class="headerlink" href="#Visualizeing-a-conv-filter" title="Permalink to this headline"></a></h2>
+<section id="Create-ActivationMaximization-Instnace">
+<h3>Create ActivationMaximization Instnace<a class="headerlink" href="#Create-ActivationMaximization-Instnace" title="Permalink to this headline"></a></h3>
 <p>When <code class="docutils literal notranslate"><span class="pre">clone</span></code> argument is True(default), the <code class="docutils literal notranslate"><span class="pre">model</span></code> will be cloned, so the <code class="docutils literal notranslate"><span class="pre">model</span></code> instance will be NOT modified, however the process may take a while.</p>
 <p>Here, because the ExtractIntermediateLayer instance will construct new model, setting <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from tf_keras_vis.activation_maximization import ActivationMaximization
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tf_keras_vis.activation_maximization import ActivationMaximization
 
 activation_maximization = ActivationMaximization(model,
                                                  # Please note that `extract_intermediate_layer` has to come before `replace2linear`.
@@ -654,16 +557,15 @@ activation_maximization = ActivationMaximization(model,
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Visualize">
-<h3>Visualize<a class="headerlink" href="#Visualize" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="Visualize">
+<h3>Visualize<a class="headerlink" href="#Visualize" title="Permalink to this headline"></a></h3>
 <p>ActivationMaximization will maximize the value computed by the score function. Here, we will visualize the 63rd convolutional filter.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
 
 from tf_keras_vis.activation_maximization.callbacks import Progress
 
@@ -708,50 +610,47 @@ CPU times: user 8.09 s, sys: 422 ms, total: 8.52 s
 Wall time: 8.49 s
 </pre></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Visualizing-Conv-filters">
-<h2>Visualizing Conv filters<a class="headerlink" href="#Visualizing-Conv-filters" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="Visualizing-Conv-filters">
+<h2>Visualizing Conv filters<a class="headerlink" href="#Visualizing-Conv-filters" title="Permalink to this headline"></a></h2>
 <p>Then, let’s visualize multiple convolutional filters!</p>
-<div class="section" id="Modify-Score-function">
-<h3>Modify Score function<a class="headerlink" href="#Modify-Score-function" title="Permalink to this headline">¶</a></h3>
+<section id="Modify-Score-function">
+<h3>Modify Score function<a class="headerlink" href="#Modify-Score-function" title="Permalink to this headline"></a></h3>
 <p>Because change the target you want to visualize, you MUST create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> again. Here, our socre function returns the values corresponding to 63rd, 132nd and 320th filters of the layer.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from tf_keras_vis.utils.scores import CategoricalScore
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tf_keras_vis.utils.scores import CategoricalScore
 
 filter_numbers = [63, 132, 320]
 scores = CategoricalScore(filter_numbers)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Create-Seed-Input-values">
-<h3>Create Seed-Input values<a class="headerlink" href="#Create-Seed-Input-values" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="Create-Seed-Input-values">
+<h3>Create Seed-Input values<a class="headerlink" href="#Create-Seed-Input-values" title="Permalink to this headline"></a></h3>
 <p>And then, you MUST create <code class="docutils literal notranslate"><span class="pre">seed_input</span></code> value. In default, when visualizing a specific filter, tf-keras-vis automatically generates <code class="docutils literal notranslate"><span class="pre">seed_input</span></code> to visualize a image. When visualizing multiple images, you MUST manually create <code class="docutils literal notranslate"><span class="pre">seed_input</span></code>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Define seed inputs whose shape is (samples, height, width, channels).
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Define seed inputs whose shape is (samples, height, width, channels).
 
 seed_input = tf.random.uniform((3, 224, 224, 3), 0, 255)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="id1">
-<h3>Visualize<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3>Visualize<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
 
 from tf_keras_vis.activation_maximization.callbacks import Progress
 
@@ -798,56 +697,39 @@ CPU times: user 14.2 s, sys: 325 ms, total: 14.5 s
 Wall time: 14.7 s
 </pre></div></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="visualize_dense_layer.html" class="btn btn-neutral float-right" title="Visualizing Dense layer using ActivationMaximization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="attentions.html" class="btn btn-neutral float-left" title="Attentions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="visualize_dense_layer.html" class="btn btn-neutral float-right" title="Visualizing Dense layer using ActivationMaximization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, keisen(Yasuhiro Kubota).
-
-    </p>
+    <p>&#169; Copyright 2021, keisen(Yasuhiro Kubota).</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

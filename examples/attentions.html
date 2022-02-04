@@ -1,78 +1,38 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Attentions &mdash; tf-keras-vis v0.8.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualizing Conv filters using ActivationMaximization" href="visualize_conv_filters.html" />
     <link rel="prev" title="Examples" href="index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> tf-keras-vis
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 0.8.0
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -80,18 +40,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">HOME</a></li>
 </ul>
@@ -126,71 +75,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../license.html">LICENSE</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">tf-keras-vis</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="index.html">Examples</a> &raquo;</li>
-        
       <li>Attentions</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS for nbsphinx extension */
@@ -401,7 +309,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -461,20 +369,19 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Attentions">
-<h1>Attentions<a class="headerlink" href="#Attentions" title="Permalink to this headline">¶</a></h1>
+<section id="Attentions">
+<h1>Attentions<a class="headerlink" href="#Attentions" title="Permalink to this headline"></a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/keisen/tf-keras-vis/blob/master/examples/attentions.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> <a class="reference external" href="https://github.com/keisen/tf-keras-vis/blob/master/docs/examples/attentions.ipynb"><img alt="Right click and save" src="https://img.shields.io/badge/Notebook-Open_In_Github-orange.svg" /></a></p>
 <p>This notebook explains how to get various attention images with Saliency, SmoothGrad, GradCAM, GradCAM++ and ScoreCAM/Faster-ScoreCAM.</p>
-<div class="section" id="Preparation">
-<h2>Preparation<a class="headerlink" href="#Preparation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="Load-libraries">
-<h3>Load libraries<a class="headerlink" href="#Load-libraries" title="Permalink to this headline">¶</a></h3>
+<section id="Preparation">
+<h2>Preparation<a class="headerlink" href="#Preparation" title="Permalink to this headline"></a></h2>
+<section id="Load-libraries">
+<h3>Load libraries<a class="headerlink" href="#Load-libraries" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%reload_ext autoreload
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%reload_ext autoreload
 %autoreload 2
 
 import numpy as np
@@ -497,16 +404,15 @@ print(&#39;Tensorflow recognized {} GPUs&#39;.format(gpus))
 Tensorflow recognized 1 GPUs
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Load-tf.keras.Model">
-<h3>Load tf.keras.Model<a class="headerlink" href="#Load-tf.keras.Model" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="Load-tf.keras.Model">
+<h3>Load tf.keras.Model<a class="headerlink" href="#Load-tf.keras.Model" title="Permalink to this headline"></a></h3>
 <p>In this notebook, we use VGG16 model, but if you want to use other tf.keras.Model, you can do so by modifying the section below.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from tensorflow.keras.applications.vgg16 import VGG16 as Model
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tensorflow.keras.applications.vgg16 import VGG16 as Model
 
 model = Model(weights=&#39;imagenet&#39;, include_top=True)
 model.summary()
@@ -574,16 +480,15 @@ Non-trainable params: 0
 _________________________________________________________________
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Load-and-preprocess-images">
-<h3>Load and preprocess images<a class="headerlink" href="#Load-and-preprocess-images" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="Load-and-preprocess-images">
+<h3>Load and preprocess images<a class="headerlink" href="#Load-and-preprocess-images" title="Permalink to this headline"></a></h3>
 <p>tf-keras-vis supports batch-wise visualization. Here, we load and preprocess three pictures of goldfish, bear and assault-rifle as input data.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from tensorflow.keras.preprocessing.image import load_img
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.applications.vgg16 import preprocess_input
 
 # Image titles
@@ -616,19 +521,18 @@ plt.show()
 <img alt="../_images/examples_attentions_5_0.png" src="../_images/examples_attentions_5_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="Implement-functions-required-to-use-attentions">
-<h2>Implement functions required to use attentions<a class="headerlink" href="#Implement-functions-required-to-use-attentions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="Model-modifier">
-<h3>Model modifier<a class="headerlink" href="#Model-modifier" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="Implement-functions-required-to-use-attentions">
+<h2>Implement functions required to use attentions<a class="headerlink" href="#Implement-functions-required-to-use-attentions" title="Permalink to this headline"></a></h2>
+<section id="Model-modifier">
+<h3>Model modifier<a class="headerlink" href="#Model-modifier" title="Permalink to this headline"></a></h3>
 <p>When the softmax activation function is applied to the last layer of model, it may obstruct generating the attention images, so you should replace the function to a linear activation function. Although we create and use <code class="docutils literal notranslate"><span class="pre">ReplaceToLinear</span></code> instance here, we can also use the model modifier function defined by ourselves.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from tf_keras_vis.utils.model_modifiers import ReplaceToLinear
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tf_keras_vis.utils.model_modifiers import ReplaceToLinear
 
 replace2linear = ReplaceToLinear()
 
@@ -639,16 +543,15 @@ def model_modifier_function(cloned_model):
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Score-function">
-<h3>Score function<a class="headerlink" href="#Score-function" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="Score-function">
+<h3>Score function<a class="headerlink" href="#Score-function" title="Permalink to this headline"></a></h3>
 <p>And then, you <strong>MUST</strong> create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> that returns target scores. Here, they return the score values corresponding Goldfish, Bear, Assault Rifle.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from tf_keras_vis.utils.scores import CategoricalScore
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tf_keras_vis.utils.scores import CategoricalScore
 
 # 1 is the imagenet index corresponding to Goldfish, 294 to Bear and 413 to Assault Rifle.
 score = CategoricalScore([1, 294, 413])
@@ -662,17 +565,16 @@ def score_function(output):
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="Vanilla-Saliency">
-<h2>Vanilla Saliency<a class="headerlink" href="#Vanilla-Saliency" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="Vanilla-Saliency">
+<h2>Vanilla Saliency<a class="headerlink" href="#Vanilla-Saliency" title="Permalink to this headline"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Saliency</span></code> generates a saliency map that appears the regions of ​​the input image that contributes the most to the output value.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
 from tensorflow.keras import backend as K
 from tf_keras_vis.saliency import Saliency
 # from tf_keras_vis.utils import normalize
@@ -715,17 +617,16 @@ CPU times: user 2.46 s, sys: 670 ms, total: 3.13 s
 Wall time: 3.07 s
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="SmoothGrad">
-<h2>SmoothGrad<a class="headerlink" href="#SmoothGrad" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="SmoothGrad">
+<h2>SmoothGrad<a class="headerlink" href="#SmoothGrad" title="Permalink to this headline"></a></h2>
 <p>As you can see above, Vanilla Saliency map is too noisy, so let’s remove noise in the saliency map using SmoothGrad! SmoothGrad is a method that reduce the noise in saliency map by adding noise to input image.</p>
 <p><strong>Note:</strong> Because SmoothGrad calculates the gradient repeatedly, it might take much time around 2-3 minutes when using CPU.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
 
 # Generate saliency map with smoothing that reduce noise by adding noise
 saliency_map = saliency(score,
@@ -764,16 +665,15 @@ CPU times: user 1.33 s, sys: 122 ms, total: 1.45 s
 Wall time: 1.43 s
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="GradCAM">
-<h2>GradCAM<a class="headerlink" href="#GradCAM" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="GradCAM">
+<h2>GradCAM<a class="headerlink" href="#GradCAM" title="Permalink to this headline"></a></h2>
 <p>Saliency is one of useful way of visualizing attention that appears the regions of the input image that contributes the most to the output value. GradCAM is another way of visualizing attention over input. Instead of using gradients of model outputs, it uses of penultimate layer output (that is the convolutional layer just before Dense layers).</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
 
 from matplotlib import cm
 from tf_keras_vis.gradcam import Gradcam
@@ -822,16 +722,15 @@ Wall time: 1.17 s
 </div>
 <p>As you can see above, GradCAM is useful method for intuitively knowing where the attention is. However, when you take a look closely, you’ll see that the visualized attentions don’t completely cover the target (especially the head of Bear) in the picture.</p>
 <p>Okay then, let’s move on to next method that is able to fix the problem above you looked.</p>
-</div>
-<div class="section" id="GradCAM++">
-<h2>GradCAM++<a class="headerlink" href="#GradCAM++" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="GradCAM++">
+<h2>GradCAM++<a class="headerlink" href="#GradCAM++" title="Permalink to this headline"></a></h2>
 <p>GradCAM++ can provide better visual explanations of CNN model predictions.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
 
 from tf_keras_vis.gradcam_plus_plus import GradcamPlusPlus
 
@@ -879,16 +778,15 @@ Wall time: 1.24 s
 </pre></div></div>
 </div>
 <p>As you can see above, Now, the visualized attentions almost completely cover the target objects!</p>
-</div>
-<div class="section" id="ScoreCAM">
-<h2>ScoreCAM<a class="headerlink" href="#ScoreCAM" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="ScoreCAM">
+<h2>ScoreCAM<a class="headerlink" href="#ScoreCAM" title="Permalink to this headline"></a></h2>
 <p>In the end, Here, we show you ScoreCAM. It is an another method that generates Class Activation Map. The characteristic of this method is that it’s the <code class="docutils literal notranslate"><span class="pre">gradient-free</span></code> method unlike GradCAM, GradCAM++ or Saliency.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
 
 from tf_keras_vis.scorecam import Scorecam
 from tf_keras_vis.utils import num_of_gpus
@@ -932,9 +830,9 @@ Wall time: 19.1 s
 </pre></div></div>
 </div>
 <p>As you can see above, The visualized images are more sophisticated!</p>
-</div>
-<div class="section" id="Faster-ScoreCAM">
-<h2>Faster-ScoreCAM<a class="headerlink" href="#Faster-ScoreCAM" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="Faster-ScoreCAM">
+<h2>Faster-ScoreCAM<a class="headerlink" href="#Faster-ScoreCAM" title="Permalink to this headline"></a></h2>
 <p>ScoreCAM is a great method, however, it takes a bit more time to process it than other cam methods. There is a good news for us. Faster-ScorecAM that makes ScoreCAM to be more efficient was devised by &#64;tabayashi0117.</p>
 <p><a class="reference external" href="https://github.com/tabayashi0117/Score-CAM/blob/master/README.md#faster-score-cam">https://github.com/tabayashi0117/Score-CAM/blob/master/README.md#faster-score-cam</a></p>
 <blockquote>
@@ -944,8 +842,7 @@ Wall time: 19.1 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
 
 from tf_keras_vis.scorecam import Scorecam
 
@@ -990,55 +887,38 @@ CPU times: user 3.58 s, sys: 191 ms, total: 3.77 s
 Wall time: 3.64 s
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="visualize_conv_filters.html" class="btn btn-neutral float-right" title="Visualizing Conv filters using ActivationMaximization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="visualize_conv_filters.html" class="btn btn-neutral float-right" title="Visualizing Conv filters using ActivationMaximization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, keisen(Yasuhiro Kubota).
-
-    </p>
+    <p>&#169; Copyright 2021, keisen(Yasuhiro Kubota).</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
