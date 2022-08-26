@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LayerCAM &mdash; tf-keras-vis v0.8.1 documentation</title>
+  <title>LayerCAM &mdash; tf-keras-vis v0.8.2 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
@@ -31,7 +32,7 @@
             <a href="../index.html" class="icon icon-home"> tf-keras-vis
           </a>
               <div class="version">
-                0.8.1
+                0.8.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -116,11 +117,11 @@
 }
 </style>
 <section id="module-tf_keras_vis.layercam">
-<span id="layercam"></span><h1>LayerCAM<a class="headerlink" href="#module-tf_keras_vis.layercam" title="Permalink to this headline"></a></h1>
+<span id="layercam"></span><h1>LayerCAM<a class="headerlink" href="#module-tf_keras_vis.layercam" title="Permalink to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.layercam.Layercam">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.layercam.</span></span><span class="sig-name descname"><span class="pre">Layercam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/layercam.html#Layercam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.layercam.Layercam" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="tf_keras_vis.gradcam.html#tf_keras_vis.gradcam.Gradcam" title="tf_keras_vis.gradcam.Gradcam"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.gradcam.Gradcam</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="tf_keras_vis.gradcam.html#tf_keras_vis.gradcam.Gradcam" title="tf_keras_vis.gradcam.Gradcam"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gradcam</span></code></a></p>
 <p>LayerCAM</p>
 <div class="admonition-references admonition">
 <p class="admonition-title">References</p>
@@ -174,7 +175,7 @@ Score instances or functions. For example:</p>
 </pre></div>
 </div>
 </p></li>
-<li><p><strong>seed_input</strong> – A tf.Tensor, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.22)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them to input in the model.
+<li><p><strong>seed_input</strong> – A tf.Tensor, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them to input in the model.
 That’s when the model has multiple inputs, you MUST pass a list of tensors.</p></li>
 <li><p><strong>penultimate_layer</strong> – An index or name of the layer, or the tf.keras.layers.Layer
 instance itself. When None, it means the same with <cite>-1</cite>. If the layer specified by
@@ -197,7 +198,7 @@ tensors are unconnected. Defaults to tf.UnconnectedGradients.NONE.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>An <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.22)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them. They are the Class Activation Maps (CAMs)
+<dd class="field-even"><p>An <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them. They are the Class Activation Maps (CAMs)
 that indicate the <cite>seed_input</cite> regions whose change would most contribute the score
 value.</p>
 </dd>
@@ -205,7 +206,7 @@ value.</p>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.10)"><strong>ValueError</strong></a> – When there is any invalid arguments.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><em>Union</em></a>[<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.22)">numpy.ndarray</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><em>Union</em></a>[<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><em>ndarray</em></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a>]</p>
 </dd>
 </dl>
 </dd></dl>

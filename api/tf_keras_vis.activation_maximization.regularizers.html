@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Regularizers &mdash; tf-keras-vis v0.8.1 documentation</title>
+  <title>Regularizers &mdash; tf-keras-vis v0.8.2 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
@@ -31,7 +32,7 @@
             <a href="../index.html" class="icon icon-home"> tf-keras-vis
           </a>
               <div class="version">
-                0.8.1
+                0.8.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -115,11 +116,11 @@
 }
 </style>
 <section id="module-tf_keras_vis.activation_maximization.regularizers">
-<span id="regularizers"></span><h1>Regularizers<a class="headerlink" href="#module-tf_keras_vis.activation_maximization.regularizers" title="Permalink to this headline"></a></h1>
+<span id="regularizers"></span><h1>Regularizers<a class="headerlink" href="#module-tf_keras_vis.activation_maximization.regularizers" title="Permalink to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.regularizers.Norm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.regularizers.</span></span><span class="sig-name descname"><span class="pre">Norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Norm'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/regularizers.html#Norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.regularizers.Norm" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.regularizers.Regularizer" title="tf_keras_vis.activation_maximization.regularizers.Regularizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.regularizers.Regularizer</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.regularizers.Regularizer" title="tf_keras_vis.activation_maximization.regularizers.Regularizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Regularizer</span></code></a></p>
 <p>A regularizer that introduces Norm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -136,7 +137,7 @@ Defaults to 10.</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.regularizers.Regularizer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.regularizers.</span></span><span class="sig-name descname"><span class="pre">Regularizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/regularizers.html#Regularizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.regularizers.Regularizer" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
 <p>Abstract class for defining a regularizer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -168,7 +169,7 @@ Defaults to 10.</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.regularizers.TotalVariation2D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.regularizers.</span></span><span class="sig-name descname"><span class="pre">TotalVariation2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TotalVariation2D'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/regularizers.html#TotalVariation2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.regularizers.TotalVariation2D" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.regularizers.Regularizer" title="tf_keras_vis.activation_maximization.regularizers.Regularizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.regularizers.Regularizer</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.regularizers.Regularizer" title="tf_keras_vis.activation_maximization.regularizers.Regularizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Regularizer</span></code></a></p>
 <p>A regularizer that introduces Total Variation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
