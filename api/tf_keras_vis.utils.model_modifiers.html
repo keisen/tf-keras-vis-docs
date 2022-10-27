@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Model Modifiers &mdash; tf-keras-vis v0.8.2 documentation</title>
+  <title>Model Modifiers &mdash; tf-keras-vis v0.9.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,6 +16,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -32,7 +33,7 @@
             <a href="../index.html" class="icon icon-home"> tf-keras-vis
           </a>
               <div class="version">
-                0.8.2
+                0.9.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -52,7 +53,13 @@
 <li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#feature-visualization">Feature Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tf_keras_vis.html#attentions">Attentions</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="tf_keras_vis.html#utilities">Utilities</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Model Modifiers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Model Modifiers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tf_keras_vis.utils.model_modifiers.ExtractIntermediateLayer"><code class="docutils literal notranslate"><span class="pre">ExtractIntermediateLayer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tf_keras_vis.utils.model_modifiers.GuidedBackpropagation"><code class="docutils literal notranslate"><span class="pre">GuidedBackpropagation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="docutils literal notranslate"><span class="pre">ModelModifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tf_keras_vis.utils.model_modifiers.ReplaceToLinear"><code class="docutils literal notranslate"><span class="pre">ReplaceToLinear</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.scores.html">Scores</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tf_keras_vis.utils.html">Functions</a></li>
 </ul>
@@ -156,7 +163,7 @@ model explanations.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.utils.model_modifiers.ModelModifier">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.model_modifiers.</span></span><span class="sig-name descname"><span class="pre">ModelModifier</span></span><a class="reference internal" href="../_modules/tf_keras_vis/utils/model_modifiers.html#ModelModifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.model_modifiers.ModelModifier" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
 <p>Abstract class for defining a model modifier.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tf_keras_vis.utils.model_modifiers.ModelModifier.__call__">
@@ -167,7 +174,7 @@ model explanations.</p>
 <dd class="field-odd"><p><strong>model</strong> – A model instance.</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.10)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.11)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
 </dd>
 </dl>
 <p>Returns: Modified model or None.</p>
@@ -204,7 +211,7 @@ that is passed to <cite>ModelVisualization#__init__()</cite>. For example:</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, keisen(Yasuhiro Kubota).</p>
+    <p>&#169; Copyright 2022, keisen(Yasuhiro Kubota).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
