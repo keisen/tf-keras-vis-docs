@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>tf_keras_vis.utils.model_modifiers &mdash; tf-keras-vis v0.9.0 documentation</title>
+  <title>tf_keras_vis.utils.model_modifiers &mdash; tf-keras-vis v0.8.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
             <a href="../../../index.html" class="icon icon-home"> tf-keras-vis
           </a>
               <div class="version">
-                0.9.0
+                0.8.3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -63,11 +63,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-          <li><a href="../../tf_keras_vis.html">tf_keras_vis</a> &raquo;</li>
-          <li><a href="../utils.html">tf_keras_vis.utils</a> &raquo;</li>
-      <li>tf_keras_vis.utils.model_modifiers</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../../tf_keras_vis.html">tf_keras_vis</a></li>
+          <li class="breadcrumb-item"><a href="../utils.html">tf_keras_vis.utils</a></li>
+      <li class="breadcrumb-item active">tf_keras_vis.utils.model_modifiers</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -201,11 +201,11 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_layer</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">_layer</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">):</span>
                 <span class="n">_layer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">_layer</span><span class="p">]</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_layer</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-                <span class="n">_layer</span> <span class="o">=</span> <span class="n">find_layer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">_layer</span><span class="p">)</span>
+                <span class="n">_layer</span> <span class="o">=</span> <span class="n">find_layer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">_l</span><span class="p">:</span> <span class="n">_l</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">_layer</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid argument. `penultimate_layer`=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">penultimate_layer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">_layer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">seek_conv_layer</span><span class="p">:</span>
-            <span class="n">_layer</span> <span class="o">=</span> <span class="n">find_layer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">Conv</span><span class="p">),</span> <span class="n">offset</span><span class="o">=</span><span class="n">_layer</span><span class="p">)</span>
+            <span class="n">_layer</span> <span class="o">=</span> <span class="n">find_layer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">_l</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_l</span><span class="p">,</span> <span class="n">Conv</span><span class="p">),</span> <span class="n">offset</span><span class="o">=</span><span class="n">_layer</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">_layer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unable to determine penultimate `Conv` layer. &quot;</span>
                              <span class="sa">f</span><span class="s2">&quot;`penultimate_layer`=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">penultimate_layer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ActivationMaximization &mdash; tf-keras-vis v0.9.0 documentation</title>
+  <title>ActivationMaximization &mdash; tf-keras-vis v0.8.3 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
             <a href="../index.html" class="icon icon-home"> tf-keras-vis
           </a>
               <div class="version">
-                0.9.0
+                0.8.3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -81,9 +81,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="tf_keras_vis.html">API</a> &raquo;</li>
-      <li>ActivationMaximization</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="tf_keras_vis.html">API</a></li>
+      <li class="breadcrumb-item active">ActivationMaximization</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -196,7 +196,7 @@ you have to pass a seed_input object. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seed_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">((</span><span class="n">samples</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">channels</span><span class="p">),</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Farthermore, if the model has multiple inputs and you want multiple images,
+<p>Furthermore, if the model has multiple inputs and you want multiple images,
 you have to do as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seed_input</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">((</span><span class="n">samples</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">channels</span><span class="p">),</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">),</span>  <span class="c1"># 1st input</span>
