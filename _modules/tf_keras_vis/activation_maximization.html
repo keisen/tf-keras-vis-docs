@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>tf_keras_vis.activation_maximization &mdash; tf-keras-vis v0.8.3 documentation</title>
+  <title>tf_keras_vis.activation_maximization &mdash; tf-keras-vis v0.8.4 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
             <a href="../../index.html" class="icon icon-home"> tf-keras-vis
           </a>
               <div class="version">
-                0.8.3
+                0.8.4
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -511,10 +511,10 @@
         <span class="n">input_ranges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">min</span> <span class="k">if</span> <span class="n">low</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">low</span><span class="p">,</span>
                          <span class="n">input_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">max</span> <span class="k">if</span> <span class="n">high</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">high</span><span class="p">)</span>
                         <span class="k">for</span> <span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">),</span> <span class="n">input_tensor</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">input_ranges</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">inputs</span><span class="p">)]</span>
-        <span class="n">clipped_values</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">))</span>
+        <span class="n">clipped_values</span> <span class="o">=</span> <span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
                           <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">seed_inputs</span><span class="p">,</span> <span class="n">input_ranges</span><span class="p">))</span>
-        <span class="n">clipped_values</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-                          <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">clipped_values</span><span class="p">,</span> <span class="n">input_ranges</span><span class="p">))</span>
+        <span class="n">clipped_values</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">input_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+                          <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">input_tensor</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">clipped_values</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">inputs</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">activation_modifiers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">clipped_values</span> <span class="o">=</span> <span class="p">((</span><span class="n">activation_modifiers</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">seed_input</span><span class="p">)</span>
                               <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">seed_input</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">input_names</span><span class="p">,</span> <span class="n">clipped_values</span><span class="p">))</span>

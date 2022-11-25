@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>tf_keras_vis.saliency &mdash; tf-keras-vis v0.8.3 documentation</title>
+  <title>tf_keras_vis.saliency &mdash; tf-keras-vis v0.8.4 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
             <a href="../../index.html" class="icon icon-home"> tf-keras-vis
           </a>
               <div class="version">
-                0.8.3
+                0.8.4
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -158,7 +158,7 @@
         <span class="c1"># Processing saliency</span>
         <span class="k">if</span> <span class="n">smooth_samples</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">smooth_samples</span> <span class="o">=</span> <span class="n">get_num_of_steps_allowed</span><span class="p">(</span><span class="n">smooth_samples</span><span class="p">)</span>
-            <span class="n">seed_inputs</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="n">smooth_samples</span><span class="p">,</span> <span class="p">)</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)))</span>
+            <span class="n">seed_inputs</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="n">smooth_samples</span><span class="p">,</span> <span class="p">)</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)))</span>
                            <span class="k">for</span> <span class="n">X</span> <span class="ow">in</span> <span class="n">seed_inputs</span><span class="p">)</span>
             <span class="n">seed_inputs</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="n">smooth_samples</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
                            <span class="k">for</span> <span class="n">X</span> <span class="ow">in</span> <span class="n">seed_inputs</span><span class="p">)</span>
