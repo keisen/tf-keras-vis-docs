@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Callbacks &mdash; tf-keras-vis v0.8.4 documentation</title>
+  <title>Callbacks &mdash; tf-keras-vis v0.8.5 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -12,9 +12,6 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -30,14 +27,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> tf-keras-vis
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            tf-keras-vis
           </a>
               <div class="version">
-                0.8.4
+                0.8.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -81,7 +82,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="tf_keras_vis.html">API</a></li>
           <li class="breadcrumb-item"><a href="tf_keras_vis.activation_maximization.html">ActivationMaximization</a></li>
       <li class="breadcrumb-item active">Callbacks</li>
@@ -93,31 +94,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-tf_keras_vis.activation_maximization.callbacks">
+  <section id="module-tf_keras_vis.activation_maximization.callbacks">
 <span id="callbacks"></span><h1>Callbacks<a class="headerlink" href="#module-tf_keras_vis.activation_maximization.callbacks" title="Permalink to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.callbacks.Callback">
@@ -130,7 +107,7 @@
 <dd><p>This function will be called after updating input values by gradient descent in
 <a class="reference internal" href="tf_keras_vis.activation_maximization.html#tf_keras_vis.activation_maximization.ActivationMaximization.__call__" title="tf_keras_vis.activation_maximization.ActivationMaximization.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.ActivationMaximization.__call__()</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i</strong> – The current number of optimizer iteration.</p></li>
 <li><p><strong>values</strong> – A list of tf.Tensor that indicates current <cite>values</cite>.</p></li>
@@ -152,7 +129,7 @@ scores and regularization values.</p></li>
 <span class="sig-name descname"><span class="pre">on_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/callbacks.html#Callback.on_begin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.Callback.on_begin" title="Permalink to this definition"></a></dt>
 <dd><p>Called at the begin of optimization process.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The parameters that was passed to
 <a class="reference internal" href="tf_keras_vis.activation_maximization.html#tf_keras_vis.activation_maximization.ActivationMaximization.__call__" title="tf_keras_vis.activation_maximization.ActivationMaximization.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.ActivationMaximization.__call__()</span></code></a>.</p>
 </dd>
@@ -175,7 +152,7 @@ scores and regularization values.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.callbacks.Callback" title="tf_keras_vis.activation_maximization.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
 <p>Callback to construct a gif of optimized image.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>path</strong> – The file path to save gif.</p>
 </dd>
 </dl>
@@ -192,7 +169,7 @@ scores and regularization values.</p></li>
 Please use <a class="reference internal" href="#tf_keras_vis.activation_maximization.callbacks.Progress" title="tf_keras_vis.activation_maximization.callbacks.Progress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.callbacks.Progress</span></code></a> instead.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interval</strong> – An integer that indicates the interval of printing.
 Defaults to 10.</p>
 </dd>
@@ -202,7 +179,7 @@ Defaults to 10.</p>
 <span class="sig-name descname"><span class="pre">on_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tf_keras_vis.activation_maximization.callbacks.PrintLogger.on_begin" title="Permalink to this definition"></a></dt>
 <dd><p>Called at the begin of optimization process.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>kwargs</strong> – The parameters that was passed to
 <a class="reference internal" href="tf_keras_vis.activation_maximization.html#tf_keras_vis.activation_maximization.ActivationMaximization.__call__" title="tf_keras_vis.activation_maximization.ActivationMaximization.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.activation_maximization.ActivationMaximization.__call__()</span></code></a>.</p>
 </dd>

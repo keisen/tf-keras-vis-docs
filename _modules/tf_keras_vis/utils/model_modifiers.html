@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>tf_keras_vis.utils.model_modifiers &mdash; tf-keras-vis v0.8.4 documentation</title>
+  <title>tf_keras_vis.utils.model_modifiers &mdash; tf-keras-vis v0.8.5 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -11,9 +11,6 @@
   <![endif]-->
   
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -27,14 +24,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> tf-keras-vis
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            tf-keras-vis
           </a>
               <div class="version">
-                0.8.4
+                0.8.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,7 +64,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
           <li class="breadcrumb-item"><a href="../../tf_keras_vis.html">tf_keras_vis</a></li>
           <li class="breadcrumb-item"><a href="../utils.html">tf_keras_vis.utils</a></li>
@@ -83,7 +84,9 @@
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">from</span> <span class="nn">packaging.version</span> <span class="kn">import</span> <span class="n">parse</span> <span class="k">as</span> <span class="n">version</span>
 
-<span class="k">if</span> <span class="n">version</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">VERSION</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">version</span><span class="p">(</span><span class="s2">&quot;2.9.0rc0&quot;</span><span class="p">):</span>
+<span class="k">if</span> <span class="n">version</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">VERSION</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">version</span><span class="p">(</span><span class="s2">&quot;2.13.0rc0&quot;</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">keras.src.layers.convolutional.base_conv</span> <span class="kn">import</span> <span class="n">Conv</span>
+<span class="k">elif</span> <span class="n">version</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">VERSION</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">version</span><span class="p">(</span><span class="s2">&quot;2.9.0rc0&quot;</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">keras.layers.convolutional.base_conv</span> <span class="kn">import</span> <span class="n">Conv</span>
 <span class="k">elif</span> <span class="n">version</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">VERSION</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">version</span><span class="p">(</span><span class="s2">&quot;2.6.0rc0&quot;</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">tensorflow.python.keras.layers.convolutional</span> <span class="kn">import</span> <span class="n">Conv</span>
@@ -94,11 +97,11 @@
 
 
 <div class="viewcode-block" id="ModelModifier"><a class="viewcode-back" href="../../../api/tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.ModelModifier">[docs]</a><span class="k">class</span> <span class="nc">ModelModifier</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Abstract class for defining a model modifier.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract class for defining a model modifier.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="ModelModifier.__call__"><a class="viewcode-back" href="../../../api/tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.ModelModifier.__call__">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Implement modification to the model before processing gradient descent.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Implement modification to the model before processing gradient descent.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            model: A model instance.</span>
@@ -112,7 +115,7 @@
 
 
 <div class="viewcode-block" id="ReplaceToLinear"><a class="viewcode-back" href="../../../api/tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.ReplaceToLinear">[docs]</a><span class="k">class</span> <span class="nc">ReplaceToLinear</span><span class="p">(</span><span class="n">ModelModifier</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A model modifier that replaces the activation functions of all output layers to</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A model modifier that replaces the activation functions of all output layers to</span>
 <span class="sd">    `tf.keras.activations.linear`.</span>
 
 <span class="sd">    Please note that this modifier must be set the end of modifiers list</span>
@@ -130,7 +133,7 @@
 
 
 <div class="viewcode-block" id="ExtractIntermediateLayer"><a class="viewcode-back" href="../../../api/tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.ExtractIntermediateLayer">[docs]</a><span class="k">class</span> <span class="nc">ExtractIntermediateLayer</span><span class="p">(</span><span class="n">ModelModifier</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A model modifier that constructs new model instance</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A model modifier that constructs new model instance</span>
 <span class="sd">    whose output layer is an intermediate layer of `model`.</span>
 
 <span class="sd">    This modifier will be used to visualize the features of the model layer.</span>
@@ -150,7 +153,7 @@
 
 
 <div class="viewcode-block" id="GuidedBackpropagation"><a class="viewcode-back" href="../../../api/tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.GuidedBackpropagation">[docs]</a><span class="k">class</span> <span class="nc">GuidedBackpropagation</span><span class="p">(</span><span class="n">ModelModifier</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A model modifier that replaces the gradient calculation of activation functions to</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A model modifier that replaces the gradient calculation of activation functions to</span>
 <span class="sd">    Guided calculation.</span>
 
 <span class="sd">    For details on Guided back propagation, see the papers:</span>

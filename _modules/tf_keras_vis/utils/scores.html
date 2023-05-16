@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>tf_keras_vis.utils.scores &mdash; tf-keras-vis v0.8.4 documentation</title>
+  <title>tf_keras_vis.utils.scores &mdash; tf-keras-vis v0.8.5 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -11,9 +11,6 @@
   <![endif]-->
   
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -27,14 +24,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> tf-keras-vis
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            tf-keras-vis
           </a>
               <div class="version">
-                0.8.4
+                0.8.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,7 +64,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
           <li class="breadcrumb-item"><a href="../../tf_keras_vis.html">tf_keras_vis</a></li>
           <li class="breadcrumb-item"><a href="../utils.html">tf_keras_vis.utils</a></li>
@@ -86,10 +87,10 @@
 
 
 <div class="viewcode-block" id="Score"><a class="viewcode-back" href="../../../api/tf_keras_vis.utils.scores.html#tf_keras_vis.utils.scores.Score">[docs]</a><span class="k">class</span> <span class="nc">Score</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Abstract class for defining a score function.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract class for defining a score function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            name: Instance name. Defaults to None.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -97,7 +98,7 @@
 
 <div class="viewcode-block" id="Score.__call__"><a class="viewcode-back" href="../../../api/tf_keras_vis.utils.scores.html#tf_keras_vis.utils.scores.Score.__call__">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Implement collecting scores that are used in visualization modules.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Implement collecting scores that are used in visualization modules.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            output: A tf.Tensor that indicates a model output value.</span>
@@ -112,7 +113,7 @@
 
 
 <div class="viewcode-block" id="InactiveScore"><a class="viewcode-back" href="../../../api/tf_keras_vis.utils.scores.html#tf_keras_vis.utils.scores.InactiveScore">[docs]</a><span class="k">class</span> <span class="nc">InactiveScore</span><span class="p">(</span><span class="n">Score</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A score function that deactivate model output passed to `__call__()`.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A score function that deactivate model output passed to `__call__()`.</span>
 
 <span class="sd">    With a multiple output model, you can use this</span>
 <span class="sd">    if you want a output to be excluded from targets of calculating gradients.</span>
@@ -125,11 +126,11 @@
 
 
 <div class="viewcode-block" id="BinaryScore"><a class="viewcode-back" href="../../../api/tf_keras_vis.utils.scores.html#tf_keras_vis.utils.scores.BinaryScore">[docs]</a><span class="k">class</span> <span class="nc">BinaryScore</span><span class="p">(</span><span class="n">Score</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A score function that collects the scores from model output</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A score function that collects the scores from model output</span>
 <span class="sd">    which is for binary classification.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_values</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            target_values: A bool or a list of them.</span>
 
@@ -155,11 +156,11 @@
 
 
 <div class="viewcode-block" id="CategoricalScore"><a class="viewcode-back" href="../../../api/tf_keras_vis.utils.scores.html#tf_keras_vis.utils.scores.CategoricalScore">[docs]</a><span class="k">class</span> <span class="nc">CategoricalScore</span><span class="p">(</span><span class="n">Score</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A score function that collects the scores from model output</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A score function that collects the scores from model output</span>
 <span class="sd">    which is for categorical classification.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            indices: An integer or a list of them.</span>
 
