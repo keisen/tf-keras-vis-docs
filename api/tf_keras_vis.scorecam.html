@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ScoreCAM &mdash; tf-keras-vis v0.8.6 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=a40e1ebb"></script>
+        <script src="../_static/documentation_options.js?v=dc2badcf"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -97,17 +99,17 @@
            <div itemprop="articleBody">
              
   <section id="scorecam">
-<h1>ScoreCAM<a class="headerlink" href="#scorecam" title="Permalink to this heading"></a></h1>
+<h1>ScoreCAM<a class="headerlink" href="#scorecam" title="Link to this heading"></a></h1>
 <p><img alt="" src="../_images/scorecam.png" /></p>
-<span class="target" id="module-tf_keras_vis.scorecam"></span><dl class="py attribute">
+<dl class="py attribute" id="module-tf_keras_vis.scorecam">
 <dt class="sig sig-object py" id="tf_keras_vis.scorecam.ScoreCAM">
-<span class="sig-prename descclassname"><span class="pre">tf_keras_vis.scorecam.</span></span><span class="sig-name descname"><span class="pre">ScoreCAM</span></span><a class="headerlink" href="#tf_keras_vis.scorecam.ScoreCAM" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">tf_keras_vis.scorecam.</span></span><span class="sig-name descname"><span class="pre">ScoreCAM</span></span><a class="headerlink" href="#tf_keras_vis.scorecam.ScoreCAM" title="Link to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#tf_keras_vis.scorecam.Scorecam" title="tf_keras_vis.scorecam.Scorecam"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scorecam</span></code></a></p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.scorecam.Scorecam">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.scorecam.</span></span><span class="sig-name descname"><span class="pre">Scorecam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/scorecam.html#Scorecam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.scorecam.Scorecam" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.scorecam.</span></span><span class="sig-name descname"><span class="pre">Scorecam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/scorecam.html#Scorecam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.scorecam.Scorecam" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="tf_keras_vis.html#tf_keras_vis.ModelVisualization" title="tf_keras_vis.ModelVisualization"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelVisualization</span></code></a></p>
 <p>Score-CAM and Faster Score-CAM</p>
 <div class="admonition-references admonition">
@@ -137,7 +139,7 @@ model won’t be cloned. Note that, although when True, the model won’t be clo
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tf_keras_vis.scorecam.Scorecam.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penultimate_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seek_penultimate_conv_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">lambda</span> <span class="pre">cam:</span> <span class="pre">...</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand_cam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_cam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/scorecam.html#Scorecam.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.scorecam.Scorecam.__call__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penultimate_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seek_penultimate_conv_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_modifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">lambda</span> <span class="pre">cam:</span> <span class="pre">...</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand_cam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_cam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/scorecam.html#Scorecam.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.scorecam.Scorecam.__call__" title="Link to this definition"></a></dt>
 <dd><p>Generate score-weighted class activation maps (CAM) by using gradient-free
 visualization method.</p>
 <dl class="field-list simple">

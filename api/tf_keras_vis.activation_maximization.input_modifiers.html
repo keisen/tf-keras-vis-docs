@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Input Modifiers &mdash; tf-keras-vis v0.8.6 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=a40e1ebb"></script>
+        <script src="../_static/documentation_options.js?v=dc2badcf"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -97,15 +99,15 @@
            <div itemprop="articleBody">
              
   <section id="module-tf_keras_vis.activation_maximization.input_modifiers">
-<span id="input-modifiers"></span><h1>Input Modifiers<a class="headerlink" href="#module-tf_keras_vis.activation_maximization.input_modifiers" title="Permalink to this heading"></a></h1>
+<span id="input-modifiers"></span><h1>Input Modifiers<a class="headerlink" href="#module-tf_keras_vis.activation_maximization.input_modifiers" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.input_modifiers.InputModifier">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span></span><span class="sig-name descname"><span class="pre">InputModifier</span></span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#InputModifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.InputModifier" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span></span><span class="sig-name descname"><span class="pre">InputModifier</span></span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#InputModifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.InputModifier" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
 <p>Abstract class for defining an input modifier.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.input_modifiers.InputModifier.__call__">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed_input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#InputModifier.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.InputModifier.__call__" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed_input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#InputModifier.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.InputModifier.__call__" title="Link to this definition"></a></dt>
 <dd><p>Implement modification to the input before processing gradient descent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -128,7 +130,7 @@ model.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.input_modifiers.Jitter">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span></span><span class="sig-name descname"><span class="pre">Jitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jitter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#Jitter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.Jitter" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span></span><span class="sig-name descname"><span class="pre">Jitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jitter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#Jitter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.Jitter" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.input_modifiers.InputModifier" title="tf_keras_vis.activation_maximization.input_modifiers.InputModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputModifier</span></code></a></p>
 <p>An input modifier that introduces random jitter.
 Jitter has been shown to produce crisper activation maximization images.</p>
@@ -141,7 +143,7 @@ Jitter has been shown to produce crisper activation maximization images.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.input_modifiers.Rotate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span></span><span class="sig-name descname"><span class="pre">Rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">2)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#Rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.Rotate" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span></span><span class="sig-name descname"><span class="pre">Rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">2)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#Rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.Rotate" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.input_modifiers.InputModifier" title="tf_keras_vis.activation_maximization.input_modifiers.InputModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputModifier</span></code></a></p>
 <p>An input modifier that introduces random rotation.</p>
 <dl class="field-list simple">
@@ -160,7 +162,7 @@ Defaults to (1, 2).</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.input_modifiers.Rotate2D">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span></span><span class="sig-name descname"><span class="pre">Rotate2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#Rotate2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.Rotate2D" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span></span><span class="sig-name descname"><span class="pre">Rotate2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#Rotate2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.Rotate2D" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.input_modifiers.Rotate" title="tf_keras_vis.activation_maximization.input_modifiers.Rotate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rotate</span></code></a></p>
 <p>An input modifier for 2D that introduces random rotation.</p>
 <dl class="field-list simple">
@@ -172,7 +174,7 @@ Defaults to (1, 2).</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.activation_maximization.input_modifiers.Scale">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span></span><span class="sig-name descname"><span class="pre">Scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#Scale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.Scale" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.activation_maximization.input_modifiers.</span></span><span class="sig-name descname"><span class="pre">Scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/activation_maximization/input_modifiers.html#Scale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.activation_maximization.input_modifiers.Scale" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.activation_maximization.input_modifiers.InputModifier" title="tf_keras_vis.activation_maximization.input_modifiers.InputModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputModifier</span></code></a></p>
 <p>An input modifier that introduces randam scaling.</p>
 <dl class="field-list simple">

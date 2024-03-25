@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>tf_keras_vis.activation_maximization.regularizers &mdash; tf-keras-vis v0.8.6 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=a40e1ebb"></script>
+        <script src="../../../_static/documentation_options.js?v=dc2badcf"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -86,7 +88,9 @@
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 
 
-<div class="viewcode-block" id="Regularizer"><a class="viewcode-back" href="../../../api/tf_keras_vis.activation_maximization.regularizers.html#tf_keras_vis.activation_maximization.regularizers.Regularizer">[docs]</a><span class="k">class</span> <span class="nc">Regularizer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<div class="viewcode-block" id="Regularizer">
+<a class="viewcode-back" href="../../../api/tf_keras_vis.activation_maximization.regularizers.html#tf_keras_vis.activation_maximization.regularizers.Regularizer">[docs]</a>
+<span class="k">class</span> <span class="nc">Regularizer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract class for defining a regularizer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -97,7 +101,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 
-<div class="viewcode-block" id="Regularizer.__call__"><a class="viewcode-back" href="../../../api/tf_keras_vis.activation_maximization.regularizers.html#tf_keras_vis.activation_maximization.regularizers.Regularizer.__call__">[docs]</a>    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Regularizer.__call__">
+<a class="viewcode-back" href="../../../api/tf_keras_vis.activation_maximization.regularizers.html#tf_keras_vis.activation_maximization.regularizers.Regularizer.__call__">[docs]</a>
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Implement regularization.</span>
 
@@ -110,10 +116,14 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            NotImplementedError: This method must be overwritten.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+</div>
 
 
-<div class="viewcode-block" id="TotalVariation2D"><a class="viewcode-back" href="../../../api/tf_keras_vis.activation_maximization.regularizers.html#tf_keras_vis.activation_maximization.regularizers.TotalVariation2D">[docs]</a><span class="k">class</span> <span class="nc">TotalVariation2D</span><span class="p">(</span><span class="n">Regularizer</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TotalVariation2D">
+<a class="viewcode-back" href="../../../api/tf_keras_vis.activation_maximization.regularizers.html#tf_keras_vis.activation_maximization.regularizers.TotalVariation2D">[docs]</a>
+<span class="k">class</span> <span class="nc">TotalVariation2D</span><span class="p">(</span><span class="n">Regularizer</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A regularizer that introduces Total Variation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -138,7 +148,10 @@
         <span class="k">return</span> <span class="n">tv</span></div>
 
 
-<div class="viewcode-block" id="Norm"><a class="viewcode-back" href="../../../api/tf_keras_vis.activation_maximization.regularizers.html#tf_keras_vis.activation_maximization.regularizers.Norm">[docs]</a><span class="k">class</span> <span class="nc">Norm</span><span class="p">(</span><span class="n">Regularizer</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Norm">
+<a class="viewcode-back" href="../../../api/tf_keras_vis.activation_maximization.regularizers.html#tf_keras_vis.activation_maximization.regularizers.Norm">[docs]</a>
+<span class="k">class</span> <span class="nc">Norm</span><span class="p">(</span><span class="n">Regularizer</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A regularizer that introduces Norm.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -160,6 +173,7 @@
         <span class="n">norm</span> <span class="o">/=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">input_value</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">)))</span>
         <span class="n">norm</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span>
         <span class="k">return</span> <span class="n">norm</span></div>
+
 </pre></div>
 
            </div>

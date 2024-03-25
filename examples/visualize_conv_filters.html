@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Visualizing Conv filters using ActivationMaximization &mdash; tf-keras-vis v0.8.6 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=a40e1ebb"></script>
+        <script src="../_static/documentation_options.js?v=dc2badcf"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -110,12 +112,12 @@
            <div itemprop="articleBody">
              
   <section id="Visualizing-Conv-filters-using-ActivationMaximization">
-<h1>Visualizing Conv filters using ActivationMaximization<a class="headerlink" href="#Visualizing-Conv-filters-using-ActivationMaximization" title="Permalink to this heading"></a></h1>
+<h1>Visualizing Conv filters using ActivationMaximization<a class="headerlink" href="#Visualizing-Conv-filters-using-ActivationMaximization" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/keisen/tf-keras-vis/blob/master/examples/visualize_conv_filters.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> <a class="reference external" href="https://github.com/keisen/tf-keras-vis/blob/master/docs/examples/visualize_conv_filters.ipynb"><img alt="Right click and save" src="https://img.shields.io/badge/Notebook-Open_In_Github-orange.svg" /></a></p>
 <section id="Preparation">
-<h2>Preparation<a class="headerlink" href="#Preparation" title="Permalink to this heading"></a></h2>
+<h2>Preparation<a class="headerlink" href="#Preparation" title="Link to this heading"></a></h2>
 <section id="Load-libraries">
-<h3>Load libraries<a class="headerlink" href="#Load-libraries" title="Permalink to this heading"></a></h3>
+<h3>Load libraries<a class="headerlink" href="#Load-libraries" title="Link to this heading"></a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -145,7 +147,7 @@ Tensorflow recognized 1 GPUs
 </div>
 </section>
 <section id="Load-tf.keras.Model">
-<h3>Load tf.keras.Model<a class="headerlink" href="#Load-tf.keras.Model" title="Permalink to this heading"></a></h3>
+<h3>Load tf.keras.Model<a class="headerlink" href="#Load-tf.keras.Model" title="Link to this heading"></a></h3>
 <p>In this notebook, we use VGG16 model, however if you want to use other tf.keras.Model, you can do so by modifying the section below.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -223,9 +225,9 @@ _________________________________________________________________
 </section>
 </section>
 <section id="Implement-functions-required-to-use-ActivationMaximization">
-<h2>Implement functions required to use ActivationMaximization<a class="headerlink" href="#Implement-functions-required-to-use-ActivationMaximization" title="Permalink to this heading"></a></h2>
+<h2>Implement functions required to use ActivationMaximization<a class="headerlink" href="#Implement-functions-required-to-use-ActivationMaximization" title="Link to this heading"></a></h2>
 <section id="Model-modifier">
-<h3>Model modifier<a class="headerlink" href="#Model-modifier" title="Permalink to this heading"></a></h3>
+<h3>Model modifier<a class="headerlink" href="#Model-modifier" title="Link to this heading"></a></h3>
 <p>You <strong>MUST</strong> define a model modifier to replace the model output to target layer’s output that has filters you want to visualize, and , in addion, replace the function of it to a linear activation function.</p>
 <p>Although we create and use <code class="docutils literal notranslate"><span class="pre">ExtractIntermediateLayer</span></code> and <code class="docutils literal notranslate"><span class="pre">ReplaceToLinear</span></code> instance, we can also use the model modifier function defined by ourselves.</p>
 <div class="nbinput nblast docutils container">
@@ -254,7 +256,7 @@ def model_modifier_function(current_model):
 </div>
 </section>
 <section id="Score-function">
-<h3>Score function<a class="headerlink" href="#Score-function" title="Permalink to this heading"></a></h3>
+<h3>Score function<a class="headerlink" href="#Score-function" title="Link to this heading"></a></h3>
 <p>And then, you <strong>MUST</strong> create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> that returns target scores. Here, they return the value of 3rd filter in <code class="docutils literal notranslate"><span class="pre">block5_conv3</span></code> layer.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -275,9 +277,9 @@ def score_function(output):
 </section>
 </section>
 <section id="Visualizeing-a-conv-filter">
-<h2>Visualizeing a conv filter<a class="headerlink" href="#Visualizeing-a-conv-filter" title="Permalink to this heading"></a></h2>
+<h2>Visualizeing a conv filter<a class="headerlink" href="#Visualizeing-a-conv-filter" title="Link to this heading"></a></h2>
 <section id="Create-ActivationMaximization-Instnace">
-<h3>Create ActivationMaximization Instnace<a class="headerlink" href="#Create-ActivationMaximization-Instnace" title="Permalink to this heading"></a></h3>
+<h3>Create ActivationMaximization Instnace<a class="headerlink" href="#Create-ActivationMaximization-Instnace" title="Link to this heading"></a></h3>
 <p>When <code class="docutils literal notranslate"><span class="pre">clone</span></code> argument is True(default), the <code class="docutils literal notranslate"><span class="pre">model</span></code> will be cloned, so the <code class="docutils literal notranslate"><span class="pre">model</span></code> instance will be NOT modified, however the process may take a while.</p>
 <p>Here, because the ExtractIntermediateLayer instance will construct new model, setting <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="nbinput nblast docutils container">
@@ -295,7 +297,7 @@ activation_maximization = ActivationMaximization(model,
 </div>
 </section>
 <section id="Visualize">
-<h3>Visualize<a class="headerlink" href="#Visualize" title="Permalink to this heading"></a></h3>
+<h3>Visualize<a class="headerlink" href="#Visualize" title="Link to this heading"></a></h3>
 <p>ActivationMaximization will maximize the value computed by the score function. Here, we will visualize the 63rd convolutional filter.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -349,10 +351,10 @@ Wall time: 8.49 s
 </section>
 </section>
 <section id="Visualizing-Conv-filters">
-<h2>Visualizing Conv filters<a class="headerlink" href="#Visualizing-Conv-filters" title="Permalink to this heading"></a></h2>
+<h2>Visualizing Conv filters<a class="headerlink" href="#Visualizing-Conv-filters" title="Link to this heading"></a></h2>
 <p>Then, let’s visualize multiple convolutional filters!</p>
 <section id="Modify-Score-function">
-<h3>Modify Score function<a class="headerlink" href="#Modify-Score-function" title="Permalink to this heading"></a></h3>
+<h3>Modify Score function<a class="headerlink" href="#Modify-Score-function" title="Link to this heading"></a></h3>
 <p>Because change the target you want to visualize, you MUST create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> again. Here, our socre function returns the values corresponding to 63rd, 132nd and 320th filters of the layer.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -367,7 +369,7 @@ scores = CategoricalScore(filter_numbers)
 </div>
 </section>
 <section id="Create-Seed-Input-values">
-<h3>Create Seed-Input values<a class="headerlink" href="#Create-Seed-Input-values" title="Permalink to this heading"></a></h3>
+<h3>Create Seed-Input values<a class="headerlink" href="#Create-Seed-Input-values" title="Link to this heading"></a></h3>
 <p>And then, you MUST create <code class="docutils literal notranslate"><span class="pre">seed_input</span></code> value. In default, when visualizing a specific filter, tf-keras-vis automatically generates <code class="docutils literal notranslate"><span class="pre">seed_input</span></code> to visualize a image. When visualizing multiple images, you MUST manually create <code class="docutils literal notranslate"><span class="pre">seed_input</span></code>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -381,7 +383,7 @@ seed_input = tf.random.uniform((3, 224, 224, 3), 0, 255)
 </div>
 </section>
 <section id="id1">
-<h3>Visualize<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>Visualize<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
