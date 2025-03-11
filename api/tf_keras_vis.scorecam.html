@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ScoreCAM &mdash; tf-keras-vis v0.8.7 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+  <title>ScoreCAM &mdash; tf-keras-vis v0.8.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=785329d6"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=90498a14"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -37,9 +35,6 @@
           <a href="../index.html" class="icon icon-home">
             tf-keras-vis
           </a>
-              <div class="version">
-                0.8.7
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -123,8 +118,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model</strong> – A <cite>tf.keras.Model</cite> instance. When <cite>model_modifier</cite> is NOT None, this model will
-be cloned with <cite>tf.keras.models.clone_model</cite> function and then will be modified by
+<li><p><strong>model</strong> – A <cite>keras.Model</cite> instance. When <cite>model_modifier</cite> is NOT None, this model will
+be cloned with <cite>keras.models.clone_model</cite> function and then will be modified by
 <cite>model_modifier</cite> according to needs.</p></li>
 <li><p><strong>model_modifier</strong> – A <a class="reference internal" href="tf_keras_vis.utils.model_modifiers.html#tf_keras_vis.utils.model_modifiers.ModelModifier" title="tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_keras_vis.utils.model_modifiers.ModelModifier</span></code></a> instance,
 a function or a list of them. We recommend to apply
@@ -156,7 +151,7 @@ For example of the Score instance to specify visualizing target:</p>
 </div>
 <p>When the model has multiple outputs, you MUST pass a list of
 Score instances or functions. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">CategoricalScore</span><span class="p">,</span> <span class="n">InactiveScore</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.utils.scores</span><span class="w"> </span><span class="kn">import</span> <span class="n">CategoricalScore</span><span class="p">,</span> <span class="n">InactiveScore</span>
 <span class="n">score</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">CategoricalScore</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">]),</span>  <span class="c1"># For 1st model output</span>
     <span class="n">InactiveScore</span><span class="p">(),</span>            <span class="c1"># For 2nd model output</span>
@@ -165,9 +160,9 @@ Score instances or functions. For example:</p>
 </pre></div>
 </div>
 </p></li>
-<li><p><strong>seed_input</strong> – A tf.Tensor, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them to input in the model.
+<li><p><strong>seed_input</strong> – A tf.Tensor, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them to input in the model.
 That’s when the model has multiple inputs, you MUST pass a list of tensors.</p></li>
-<li><p><strong>penultimate_layer</strong> – An index or name of the layer, or the tf.keras.layers.Layer
+<li><p><strong>penultimate_layer</strong> – An index or name of the layer, or the keras.layers.Layer
 instance itself. When None, it means the same with <cite>-1</cite>. If the layer specified by
 this option is not <cite>convolutional</cite> layer, <cite>penultimate_layer</cite> will work as the
 offset to seek <cite>convolutional</cite> layer. Defaults to None.</p></li>
@@ -175,7 +170,7 @@ offset to seek <cite>convolutional</cite> layer. Defaults to None.</p></li>
 layer when the layer specified by <cite>penultimate_layer</cite> is not <cite>convolutional</cite> layer.
 Defaults to True.</p></li>
 <li><p><strong>activation_modifier</strong> – A function to modify the Class Activation Map (CAM). Defaults to
-<cite>lambda cam: K.relu(cam)</cite>.</p></li>
+<cite>lambda cam: keras.activations.relu(cam)</cite>.</p></li>
 <li><p><strong>batch_size</strong> – The number of samples per batch. Defaults to 32.</p></li>
 <li><p><strong>max_N</strong> – When None or under Zero, run as ScoreCAM. When not None and over Zero of
 Integer, run as Faster-ScoreCAM. Set larger number (or None), need more time to
@@ -190,15 +185,15 @@ tensors are unconnected. Defaults to tf.UnconnectedGradients.NONE.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>An <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them. They are the Class Activation Maps (CAMs)
+<dd class="field-even"><p>An <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or a list of them. They are the Class Activation Maps (CAMs)
 that indicate the <cite>seed_input</cite> regions whose change would most contribute the score
 value.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><strong>ValueError</strong></a> – When there is any invalid arguments.</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – When there is any invalid arguments.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><em>ndarray</em></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2)"><em>ndarray</em></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
 </dd>
 </dl>
 </dd></dl>

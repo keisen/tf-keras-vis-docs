@@ -1,25 +1,23 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Visualizing Dense layer using ActivationMaximization &mdash; tf-keras-vis v0.8.7 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+  <title>Visualizing Dense layer using ActivationMaximization &mdash; tf-keras-vis v0.8.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=785329d6"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=90498a14"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -38,9 +36,6 @@
           <a href="../index.html" class="icon icon-home">
             tf-keras-vis
           </a>
-              <div class="version">
-                0.8.7
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -60,7 +55,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Visualizing Dense layer using ActivationMaximization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Preparation">Preparation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Load-libraries">Load libraries</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Load-tf.keras.Model">Load tf.keras.Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Load-keras.Model">Load keras.Model</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#Implement-functions-required-to-use-ActivationMaximization">Implement functions required to use ActivationMaximization</a><ul>
@@ -119,18 +114,28 @@
 <section id="Load-libraries">
 <h3>Load libraries<a class="headerlink" href="#Load-libraries" title="Link to this heading"></a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%reload_ext autoreload
 %autoreload 2
+import warnings
+
+warnings.filterwarnings(&#39;ignore&#39;)
 
 import numpy as np
-from matplotlib import pyplot as plt
-%matplotlib inline
-
 import tensorflow as tf
+from matplotlib import pyplot as plt
+
+%matplotlib inline
+from packaging.version import parse as version
+
 from tf_keras_vis.utils import num_of_gpus
+
+if version(tf.version.VERSION) &lt; version(&#39;2.16.0&#39;):
+    import tensorflow.keras as keras
+else:
+    import keras
 
 _, gpus = num_of_gpus()
 print(&#39;Tensorflow recognized {} GPUs&#39;.format(gpus))
@@ -142,85 +147,104 @@ print(&#39;Tensorflow recognized {} GPUs&#39;.format(gpus))
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Tensorflow recognized 1 GPUs
+Tensorflow recognized 0 GPUs
 </pre></div></div>
 </div>
 </section>
-<section id="Load-tf.keras.Model">
-<h3>Load tf.keras.Model<a class="headerlink" href="#Load-tf.keras.Model" title="Link to this heading"></a></h3>
-<p>In this notebook, we use VGG16 model, however if you want to use other tf.keras.Model, you can do so by modifying the section below.</p>
+<section id="Load-keras.Model">
+<h3>Load keras.Model<a class="headerlink" href="#Load-keras.Model" title="Link to this heading"></a></h3>
+<p>In this notebook, we use VGG16 model, however if you want to use other keras.Model, you can do so by modifying the section below.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tensorflow.keras.applications.vgg16 import VGG16 as Model
-
-# Load model
-model = Model(weights=&#39;imagenet&#39;, include_top=True)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model = keras.applications.vgg16.VGG16(weights=&#39;imagenet&#39;, include_top=True)
 model.summary()
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "vgg16"</span>
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block1_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)   │         <span style="color: #00af00; text-decoration-color: #00af00">1,792</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block1_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)   │        <span style="color: #00af00; text-decoration-color: #00af00">36,928</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block1_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)   │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block2_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)  │        <span style="color: #00af00; text-decoration-color: #00af00">73,856</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block2_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)  │       <span style="color: #00af00; text-decoration-color: #00af00">147,584</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block2_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │       <span style="color: #00af00; text-decoration-color: #00af00">295,168</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │       <span style="color: #00af00; text-decoration-color: #00af00">590,080</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_conv3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │       <span style="color: #00af00; text-decoration-color: #00af00">590,080</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">1,180,160</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_conv3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_conv3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">7</span>, <span style="color: #00af00; text-decoration-color: #00af00">7</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (<span style="color: #0087ff; text-decoration-color: #0087ff">Flatten</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">25088</span>)          │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ fc1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">4096</span>)           │   <span style="color: #00af00; text-decoration-color: #00af00">102,764,544</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ fc2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">4096</span>)           │    <span style="color: #00af00; text-decoration-color: #00af00">16,781,312</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ predictions (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1000</span>)           │     <span style="color: #00af00; text-decoration-color: #00af00">4,097,000</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">138,357,544</span> (527.79 MB)
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">138,357,544</span> (527.79 MB)
+</pre></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Model: &#34;vgg16&#34;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-input_1 (InputLayer)         [(None, 224, 224, 3)]     0
-_________________________________________________________________
-block1_conv1 (Conv2D)        (None, 224, 224, 64)      1792
-_________________________________________________________________
-block1_conv2 (Conv2D)        (None, 224, 224, 64)      36928
-_________________________________________________________________
-block1_pool (MaxPooling2D)   (None, 112, 112, 64)      0
-_________________________________________________________________
-block2_conv1 (Conv2D)        (None, 112, 112, 128)     73856
-_________________________________________________________________
-block2_conv2 (Conv2D)        (None, 112, 112, 128)     147584
-_________________________________________________________________
-block2_pool (MaxPooling2D)   (None, 56, 56, 128)       0
-_________________________________________________________________
-block3_conv1 (Conv2D)        (None, 56, 56, 256)       295168
-_________________________________________________________________
-block3_conv2 (Conv2D)        (None, 56, 56, 256)       590080
-_________________________________________________________________
-block3_conv3 (Conv2D)        (None, 56, 56, 256)       590080
-_________________________________________________________________
-block3_pool (MaxPooling2D)   (None, 28, 28, 256)       0
-_________________________________________________________________
-block4_conv1 (Conv2D)        (None, 28, 28, 512)       1180160
-_________________________________________________________________
-block4_conv2 (Conv2D)        (None, 28, 28, 512)       2359808
-_________________________________________________________________
-block4_conv3 (Conv2D)        (None, 28, 28, 512)       2359808
-_________________________________________________________________
-block4_pool (MaxPooling2D)   (None, 14, 14, 512)       0
-_________________________________________________________________
-block5_conv1 (Conv2D)        (None, 14, 14, 512)       2359808
-_________________________________________________________________
-block5_conv2 (Conv2D)        (None, 14, 14, 512)       2359808
-_________________________________________________________________
-block5_conv3 (Conv2D)        (None, 14, 14, 512)       2359808
-_________________________________________________________________
-block5_pool (MaxPooling2D)   (None, 7, 7, 512)         0
-_________________________________________________________________
-flatten (Flatten)            (None, 25088)             0
-_________________________________________________________________
-fc1 (Dense)                  (None, 4096)              102764544
-_________________________________________________________________
-fc2 (Dense)                  (None, 4096)              16781312
-_________________________________________________________________
-predictions (Dense)          (None, 1000)              4097000
-=================================================================
-Total params: 138,357,544
-Trainable params: 138,357,544
-Non-trainable params: 0
-_________________________________________________________________
-</pre></div></div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre></div>
 </div>
 </section>
 </section>
@@ -230,17 +254,18 @@ _________________________________________________________________
 <h3>Model modifier<a class="headerlink" href="#Model-modifier" title="Link to this heading"></a></h3>
 <p>When the softmax activation function is applied to the last layer of model, it may obstruct generating the actiation maps, so you should replace the function to a linear activation function. Here, we create and use <code class="docutils literal notranslate"><span class="pre">ReplaceToLinear</span></code> instance.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tf_keras_vis.utils.model_modifiers import ReplaceToLinear
 
 replace2linear = ReplaceToLinear()
 
+
 # Instead of using ReplaceToLinear instance,
 # you can also define the function from scratch as follows:
 def model_modifier_function(cloned_model):
-    cloned_model.layers[-1].activation = tf.keras.activations.linear
+    cloned_model.layers[-1].activation = keras.activations.linear
 </pre></div>
 </div>
 </div>
@@ -249,13 +274,14 @@ def model_modifier_function(cloned_model):
 <h3>Score function<a class="headerlink" href="#Score-function" title="Link to this heading"></a></h3>
 <p>You <strong>MUST</strong> create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> that returns arbitrary category value. Here, our socre function returns the value corresponding to No.20 (Ouzel) of imangenet.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tf_keras_vis.utils.scores import CategoricalScore
 
 # 20 is the imagenet index corresponding to Ouzel.
 score = CategoricalScore(20)
+
 
 # Instead of using CategoricalScore object above,
 # you can also define the function from scratch as follows:
@@ -274,14 +300,12 @@ def score_function(output):
 <h3>Create ActivationMaximization Instnace<a class="headerlink" href="#Create-ActivationMaximization-Instnace" title="Link to this heading"></a></h3>
 <p>When <code class="docutils literal notranslate"><span class="pre">clone</span></code> argument is True(default), the <code class="docutils literal notranslate"><span class="pre">model</span></code> will be cloned, so the <code class="docutils literal notranslate"><span class="pre">model</span></code> instance will be NOT modified, however the process may take a while.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tf_keras_vis.activation_maximization import ActivationMaximization
 
-activation_maximization = ActivationMaximization(model,
-                                                 model_modifier=replace2linear,
-                                                 clone=True)
+activation_maximization = ActivationMaximization(model, model_modifier=replace2linear, clone=True)
 </pre></div>
 </div>
 </div>
@@ -290,7 +314,7 @@ activation_maximization = ActivationMaximization(model,
 <h3>Visualize<a class="headerlink" href="#Visualize" title="Link to this heading"></a></h3>
 <p>ActivationMaximization will maximize the output of the score function. Here, as a result, we will get a visualized image that maximizes the model output corresponding to the No.20 (Ouzel) of imagenet.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
@@ -299,11 +323,8 @@ from tf_keras_vis.activation_maximization.input_modifiers import Jitter, Rotate2
 from tf_keras_vis.activation_maximization.regularizers import Norm, TotalVariation2D
 
 # Generate maximized activation
-activations = activation_maximization(score,
-                                      callbacks=[Progress()])
-
-## Since v0.6.0, calling `astype()` is NOT necessary.
-# activations = activations[0].astype(np.uint8)
+activations = activation_maximization(score, callbacks=[Progress()])
+activations = activations.astype(np.uint8)
 
 # Render
 f, ax = plt.subplots(figsize=(4, 4))
@@ -320,7 +341,7 @@ plt.show()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-200/200 [==============================] - 9s 39ms/step - Score: 228.4386 - TotalVariation2D: 17.8522 - Norm: 36.6915
+<span class="ansi-bold">200/200</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">142s</span> 711ms/step - Score: 67.9749 - TotalVariation2D: 7.1202 - Norm: 38.1231
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -335,8 +356,8 @@ plt.show()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 8.77 s, sys: 477 ms, total: 9.25 s
-Wall time: 9.19 s
+CPU times: user 12min 2s, sys: 16.1 s, total: 12min 18s
+Wall time: 2min 22s
 </pre></div></div>
 </div>
 </section>
@@ -348,13 +369,14 @@ Wall time: 9.19 s
 <h3>Modify Score function<a class="headerlink" href="#Modify-Score-function" title="Link to this heading"></a></h3>
 <p>Because change the target you want to visualize, you <strong>MUST</strong> create <code class="docutils literal notranslate"><span class="pre">Score</span></code> instance or define <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">function</span></code> again that returns arbitrary category values. Here, our socre function returns the values corresponding to No.1 (Goldfish), No.294 (Bear) and No.413 (Assault rifle) of imagenet.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from tf_keras_vis.utils.scores import CategoricalScore
 
 image_titles = [&#39;Goldfish&#39;, &#39;Bear&#39;, &#39;Assault rifle&#39;]
 scores = CategoricalScore([1, 294, 413])
+
 
 # Instead of using CategoricalScore object above,
 # you can also define the function from scratch as follows:
@@ -370,7 +392,7 @@ def score_function(output):
 <h3>Create Seed-Input values<a class="headerlink" href="#Create-Seed-Input-values" title="Link to this heading"></a></h3>
 <p>And then, you MUST create <code class="docutils literal notranslate"><span class="pre">seed_input</span></code> value. In default, when visualizing a specific output category, tf-keras-vis automatically generates <code class="docutils literal notranslate"><span class="pre">seed_input</span></code> to visualize a image for each model input. When visualizing multiple images, you MUST manually create <code class="docutils literal notranslate"><span class="pre">seed_input</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create `seed_input` whose shape is (samples, height, width, channels).
@@ -383,22 +405,18 @@ seed_input = tf.random.uniform((3, 224, 224, 3), 0, 255)
 <section id="id1">
 <h3>Visualize<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
 
+from tf_keras_vis.activation_maximization.callbacks import PrintLogger, Progress
 from tf_keras_vis.activation_maximization.input_modifiers import Jitter, Rotate2D, Scale
 from tf_keras_vis.activation_maximization.regularizers import Norm, TotalVariation2D
-from tf_keras_vis.activation_maximization.callbacks import Progress, PrintLogger
 
 # Generate maximized activation
-activations = activation_maximization(scores,
-                                      seed_input=seed_input,
-                                      callbacks=[Progress()])
-
-## Since v0.6.0, calling `astype()` is NOT necessary.
-# activations = activations[0].astype(np.uint8)
+activations = activation_maximization(scores, seed_input=seed_input, callbacks=[Progress()])
+activations = activations.astype(np.uint8)
 
 # Render
 f, ax = plt.subplots(nrows=1, ncols=3, figsize=(12, 4))
@@ -416,7 +434,7 @@ plt.show()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-200/200 [==============================] - 15s 72ms/step - Score: 319.9390 - TotalVariation2D: 19.0078 - Norm: 37.0567
+<span class="ansi-bold">200/200</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">376s</span> 2s/step - Score: 116.3636 - TotalVariation2D: 6.9861 - Norm: 38.1922
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -431,8 +449,8 @@ plt.show()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 14.8 s, sys: 459 ms, total: 15.2 s
-Wall time: 15.3 s
+CPU times: user 38min 50s, sys: 26.4 s, total: 39min 17s
+Wall time: 6min 16s
 </pre></div></div>
 </div>
 </section>

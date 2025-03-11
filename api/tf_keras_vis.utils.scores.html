@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scores &mdash; tf-keras-vis v0.8.7 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+  <title>Scores &mdash; tf-keras-vis v0.8.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=785329d6"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=90498a14"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -37,9 +35,6 @@
           <a href="../index.html" class="icon icon-home">
             tf-keras-vis
           </a>
-              <div class="version">
-                0.8.7
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -114,18 +109,18 @@ Here, we will introduce the fundamental score usage with the models below.</p>
 <h2>Categorical classification model<a class="headerlink" href="#categorical-classification-model" title="Link to this heading"></a></h2>
 <p>We expect the output shape of the categorical classification model is <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_of_classes)</span></code>. That’s, <code class="docutils literal notranslate"><span class="pre">softmax</span></code> activation function is applied to the output layer of the model.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">output</span></code> variable below is assigned model output value. The code snippet below means that it will return the values corresponding to the 20th of categories.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, num_of_classes)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, num_of_classes)</span>
    <span class="k">return</span> <span class="n">output</span><span class="p">[:,</span> <span class="mi">20</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>The function below means the same as above. When you don’t need to implement additional code to process output value, we recommend you to utilize the <a class="reference internal" href="#tf_keras_vis.utils.scores.html#module-tf_keras_vis.utils.scores.CategoricalScore"><span class="xref myst">CategoricalScore</span></a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">CategoricalScore</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.utils.scores</span><span class="w"> </span><span class="kn">import</span> <span class="n">CategoricalScore</span>
 
 <span class="n">score</span> <span class="o">=</span> <span class="n">CategoricalScore</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>If you want to visualize corresponding to multiple various categories, you can define as follows. The code snippet below means that it will return the three values for the 20th, the 48th and the No.123rd of categories respectively.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, num_of_classes)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, num_of_classes)</span>
    <span class="k">return</span> <span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">48</span><span class="p">],</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -134,7 +129,7 @@ Here, we will introduce the fundamental score usage with the models below.</p>
 <p>Please note that the length of the values returned by the score function MUST be identical to <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> (the number of samples).</p>
 </div>
 <p>Of course, you can also use <a class="reference internal" href="#tf_keras_vis.utils.scores.html#module-tf_keras_vis.utils.scores.CategoricalScore"><span class="xref myst">CategoricalScore</span></a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">CategoricalScore</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.utils.scores</span><span class="w"> </span><span class="kn">import</span> <span class="n">CategoricalScore</span>
 
 <span class="n">score</span> <span class="o">=</span> <span class="n">CategoricalScore</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">128</span><span class="p">])</span>
 </pre></div>
@@ -147,7 +142,7 @@ Here, we will introduce the fundamental score usage with the models below.</p>
 <section id="true">
 <h3>1.0 (True)<a class="headerlink" href="#true" title="Link to this heading"></a></h3>
 <p>Like the categorical classification, it just returns the value as follows.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, 1)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, 1)</span>
    <span class="k">return</span> <span class="n">output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -155,7 +150,7 @@ Here, we will introduce the fundamental score usage with the models below.</p>
 <section id="false">
 <h3>0.0 (False)<a class="headerlink" href="#false" title="Link to this heading"></a></h3>
 <p>The model output value smaller, the score value should be larger, so you need to multiply by <code class="docutils literal notranslate"><span class="pre">-1.0</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, 1)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span> <span class="c1"># output shape is (batch_size, 1)</span>
    <span class="k">return</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -163,12 +158,12 @@ Here, we will introduce the fundamental score usage with the models below.</p>
 <section id="utilizing-binaryscore-class">
 <h3>Utilizing BinaryScore class<a class="headerlink" href="#utilizing-binaryscore-class" title="Link to this heading"></a></h3>
 <p>Of course, we recommend you to utilize BinaryScore class as follows.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">BinaryScore</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.utils.scores</span><span class="w"> </span><span class="kn">import</span> <span class="n">BinaryScore</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">BinaryScore</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span> <span class="c1"># or BinaryScore(False) </span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">BinaryScore</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.utils.scores</span><span class="w"> </span><span class="kn">import</span> <span class="n">BinaryScore</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">BinaryScore</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1"># or BinaryScore(True) </span>
 </pre></div>
 </div>
@@ -187,7 +182,7 @@ Here, we introduce a simple way each for three situations below we want to visua
 <section id="increase-the-output-value">
 <h3>1. Increase the output value<a class="headerlink" href="#increase-the-output-value" title="Link to this heading"></a></h3>
 <p>It just returns the value like the categorical classification.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -196,7 +191,7 @@ Here, we introduce a simple way each for three situations below we want to visua
 <h3>2. Decrease the output value<a class="headerlink" href="#decrease-the-output-value" title="Link to this heading"></a></h3>
 <p>The model output value smaller, the score value should be larger,
 so you need to multiply by <code class="docutils literal notranslate"><span class="pre">-1.0</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -205,8 +200,8 @@ so you need to multiply by <code class="docutils literal notranslate"><span clas
 <h3>3. Maintain the output value at …<a class="headerlink" href="#maintain-the-output-value-at" title="Link to this heading"></a></h3>
 <p>The model output value closer to the target value, the score value should be larger, so you need to calculate <code class="docutils literal notranslate"><span class="pre">abs(1.0</span> <span class="pre">/</span> <span class="pre">(target_value</span> <span class="pre">-</span> <span class="pre">model_output_value))</span></code>.
 For example, suppose the target value is 0.0, the score function should be as follows.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">epsilon</span><span class="p">()))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">score_function</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">epsilon</span><span class="p">()))</span>
 </pre></div>
 </div>
 </section>
@@ -224,7 +219,7 @@ which is for binary classification.</p>
 <dd class="field-odd"><p><strong>target_values</strong> – A bool or a list of them.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><strong>ValueError</strong></a> – When target_values is None or an empty list.</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – When target_values is None or an empty list.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -240,7 +235,7 @@ which is for categorical classification.</p>
 <dd class="field-odd"><p><strong>indices</strong> – An integer or a list of them.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><strong>ValueError</strong></a> – When indices is None or an empty list.</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – When indices is None or an empty list.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -259,7 +254,7 @@ if you want a output to be excluded from targets of calculating gradients.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.utils.scores.Score">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.scores.</span></span><span class="sig-name descname"><span class="pre">Score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/scores.html#Score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.scores.Score" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
 <p>Abstract class for defining a score function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -275,13 +270,13 @@ if you want a output to be excluded from targets of calculating gradients.</p>
 <dd class="field-odd"><p><strong>output</strong> – A tf.Tensor that indicates a model output value.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.12)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.13)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Score values.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>Tensor</em> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a></p>
+<dd class="field-even"><p><em>Tensor</em> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a></p>
 </dd>
 </dl>
 </dd></dl>

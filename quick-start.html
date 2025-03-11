@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quick Start &mdash; tf-keras-vis v0.8.7 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+  <title>Quick Start &mdash; tf-keras-vis v0.8.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=785329d6"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=90498a14"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -37,9 +35,6 @@
           <a href="index.html" class="icon icon-home">
             tf-keras-vis
           </a>
-              <div class="version">
-                0.8.7
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -125,15 +120,15 @@ $<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </sp
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
 <section id="activationmaximization">
 <h3>ActivationMaximization<a class="headerlink" href="#activationmaximization" title="Link to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.applications</span> <span class="kn">import</span> <span class="n">VGG16</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">tf_keras_vis.activation_maximization</span> <span class="kn">import</span> <span class="n">ActivationMaximization</span>
-<span class="kn">from</span> <span class="nn">tf_keras_vis.activation_maximization.callbacks</span> <span class="kn">import</span> <span class="n">Progress</span>
-<span class="kn">from</span> <span class="nn">tf_keras_vis.activation_maximization.input_modifiers</span> <span class="kn">import</span> <span class="n">Jitter</span><span class="p">,</span> <span class="n">Rotate2D</span>
-<span class="kn">from</span> <span class="nn">tf_keras_vis.activation_maximization.regularizers</span> <span class="kn">import</span> <span class="n">TotalVariation2D</span><span class="p">,</span> <span class="n">Norm</span>
-<span class="kn">from</span> <span class="nn">tf_keras_vis.utils.model_modifiers</span> <span class="kn">import</span> <span class="n">ExtractIntermediateLayer</span><span class="p">,</span> <span class="n">ReplaceToLinear</span>
-<span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">CategoricalScore</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">keras.applications</span><span class="w"> </span><span class="kn">import</span> <span class="n">VGG16</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.activation_maximization</span><span class="w"> </span><span class="kn">import</span> <span class="n">ActivationMaximization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.activation_maximization.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="n">Progress</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.activation_maximization.input_modifiers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jitter</span><span class="p">,</span> <span class="n">Rotate2D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.activation_maximization.regularizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">TotalVariation2D</span><span class="p">,</span> <span class="n">Norm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.utils.model_modifiers</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExtractIntermediateLayer</span><span class="p">,</span> <span class="n">ReplaceToLinear</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.utils.scores</span><span class="w"> </span><span class="kn">import</span> <span class="n">CategoricalScore</span>
 
 <span class="c1"># Create the visualization instance.</span>
 <span class="c1"># All visualization classes accept a model and model-modifier, which, for example,</span>
@@ -152,7 +147,7 @@ $<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </sp
                            <span class="n">input_modifiers</span><span class="o">=</span><span class="p">[</span><span class="n">Jitter</span><span class="p">(</span><span class="n">jitter</span><span class="o">=</span><span class="mi">16</span><span class="p">),</span> <span class="n">Rotate2D</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span>
                            <span class="n">regularizers</span><span class="o">=</span><span class="p">[</span><span class="n">TotalVariation2D</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
                                          <span class="n">Norm</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span>
-                           <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">),</span>
+                           <span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">),</span>
                            <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">Progress</span><span class="p">()])</span>
 
 <span class="c1">## Since v0.6.0, calling `astype()` is NOT necessary.</span>
@@ -165,12 +160,12 @@ $<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </sp
 </section>
 <section id="gradcam">
 <h3>Gradcam++<a class="headerlink" href="#gradcam" title="Link to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
-<span class="kn">from</span> <span class="nn">tf_keras_vis.gradcam_plus_plus</span> <span class="kn">import</span> <span class="n">GradcamPlusPlus</span>
-<span class="kn">from</span> <span class="nn">tf_keras_vis.utils.model_modifiers</span> <span class="kn">import</span> <span class="n">ReplaceToLinear</span>
-<span class="kn">from</span> <span class="nn">tf_keras_vis.utils.scores</span> <span class="kn">import</span> <span class="n">CategoricalScore</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.gradcam_plus_plus</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradcamPlusPlus</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.utils.model_modifiers</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReplaceToLinear</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tf_keras_vis.utils.scores</span><span class="w"> </span><span class="kn">import</span> <span class="n">CategoricalScore</span>
 
 <span class="c1"># Create GradCAM++ object</span>
 <span class="n">gradcam</span> <span class="o">=</span> <span class="n">GradcamPlusPlus</span><span class="p">(</span><span class="n">YOUR_MODEL_INSTANCE</span><span class="p">,</span>

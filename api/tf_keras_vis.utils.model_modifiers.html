@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Model Modifiers &mdash; tf-keras-vis v0.8.7 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+  <title>Model Modifiers &mdash; tf-keras-vis v0.8.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=785329d6"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=90498a14"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -37,9 +35,6 @@
           <a href="../index.html" class="icon icon-home">
             tf-keras-vis
           </a>
-              <div class="version">
-                0.8.7
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -114,7 +109,7 @@ whose output layer is an intermediate layer of <cite>model</cite>.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.utils.model_modifiers.GuidedBackpropagation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.model_modifiers.</span></span><span class="sig-name descname"><span class="pre">GuidedBackpropagation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_activations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[tf.keras.activations.relu]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/model_modifiers.html#GuidedBackpropagation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.model_modifiers.GuidedBackpropagation" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.model_modifiers.</span></span><span class="sig-name descname"><span class="pre">GuidedBackpropagation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_activations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[keras.activations.relu]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tf_keras_vis/utils/model_modifiers.html#GuidedBackpropagation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.model_modifiers.GuidedBackpropagation" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.model_modifiers.ModelModifier" title="tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelModifier</span></code></a></p>
 <p>A model modifier that replaces the gradient calculation of activation functions to
 Guided calculation.</p>
@@ -144,7 +139,7 @@ model explanations.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="tf_keras_vis.utils.model_modifiers.ModelModifier">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.model_modifiers.</span></span><span class="sig-name descname"><span class="pre">ModelModifier</span></span><a class="reference internal" href="../_modules/tf_keras_vis/utils/model_modifiers.html#ModelModifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.model_modifiers.ModelModifier" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
 <p>Abstract class for defining a model modifier.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tf_keras_vis.utils.model_modifiers.ModelModifier.__call__">
@@ -155,7 +150,7 @@ model explanations.</p>
 <dd class="field-odd"><p><strong>model</strong> – A model instance.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.12)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.13)"><strong>NotImplementedError</strong></a> – This method must be overwritten.</p>
 </dd>
 </dl>
 <p>Returns: Modified model or None.</p>
@@ -168,7 +163,7 @@ model explanations.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tf_keras_vis.utils.model_modifiers.</span></span><span class="sig-name descname"><span class="pre">ReplaceToLinear</span></span><a class="reference internal" href="../_modules/tf_keras_vis/utils/model_modifiers.html#ReplaceToLinear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tf_keras_vis.utils.model_modifiers.ReplaceToLinear" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tf_keras_vis.utils.model_modifiers.ModelModifier" title="tf_keras_vis.utils.model_modifiers.ModelModifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelModifier</span></code></a></p>
 <p>A model modifier that replaces the activation functions of all output layers to
-<cite>tf.keras.activations.linear</cite>.</p>
+<cite>keras.activations.linear</cite>.</p>
 <p>Please note that this modifier must be set the end of modifiers list
 that is passed to <cite>ModelVisualization#__init__()</cite>. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># When visualizing `intermediate-1` layer.</span>
