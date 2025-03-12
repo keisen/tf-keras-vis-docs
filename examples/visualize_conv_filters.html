@@ -142,12 +142,33 @@ print(&#39;Tensorflow recognized {} GPUs&#39;.format(gpus))
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2025-03-12 12:14:30.711256: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1741749270.734787    1580 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1741749270.738998    1580 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-03-12 12:14:30.756316: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Tensorflow recognized 0 GPUs
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2025-03-12 12:14:34.860354: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:152] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
 </pre></div></div>
 </div>
 </section>
@@ -166,78 +187,85 @@ model.summary()
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-2025-03-11 10:11:23.089008: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
-2025-03-11 10:11:23.127872: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1497600000 Hz
-2025-03-11 10:11:23.159298: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55d6cccfa300 executing computations on platform Host. Devices:
-2025-03-11 10:11:23.159360: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Host, Default Version
-2025-03-11 10:11:24.562677: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 411041792 exceeds 10% of system memory.
-2025-03-11 10:11:25.600036: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 411041792 exceeds 10% of system memory.
-2025-03-11 10:11:25.968289: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 411041792 exceeds 10% of system memory.
-2025-03-11 10:11:34.364411: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 411041792 exceeds 10% of system memory.
-</pre></div></div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "vgg16"</span>
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)        │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block1_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)   │         <span style="color: #00af00; text-decoration-color: #00af00">1,792</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block1_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)   │        <span style="color: #00af00; text-decoration-color: #00af00">36,928</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block1_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)   │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block2_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)  │        <span style="color: #00af00; text-decoration-color: #00af00">73,856</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block2_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)  │       <span style="color: #00af00; text-decoration-color: #00af00">147,584</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block2_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │       <span style="color: #00af00; text-decoration-color: #00af00">295,168</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │       <span style="color: #00af00; text-decoration-color: #00af00">590,080</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_conv3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │       <span style="color: #00af00; text-decoration-color: #00af00">590,080</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">1,180,160</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_conv3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_conv3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">7</span>, <span style="color: #00af00; text-decoration-color: #00af00">7</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (<span style="color: #0087ff; text-decoration-color: #0087ff">Flatten</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">25088</span>)          │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ fc1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">4096</span>)           │   <span style="color: #00af00; text-decoration-color: #00af00">102,764,544</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ fc2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">4096</span>)           │    <span style="color: #00af00; text-decoration-color: #00af00">16,781,312</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ predictions (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1000</span>)           │     <span style="color: #00af00; text-decoration-color: #00af00">4,097,000</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">138,357,544</span> (527.79 MB)
+</pre></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">138,357,544</span> (527.79 MB)
+</pre></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Model: &#34;vgg16&#34;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-input_1 (InputLayer)         [(None, 224, 224, 3)]     0
-_________________________________________________________________
-block1_conv1 (Conv2D)        (None, 224, 224, 64)      1792
-_________________________________________________________________
-block1_conv2 (Conv2D)        (None, 224, 224, 64)      36928
-_________________________________________________________________
-block1_pool (MaxPooling2D)   (None, 112, 112, 64)      0
-_________________________________________________________________
-block2_conv1 (Conv2D)        (None, 112, 112, 128)     73856
-_________________________________________________________________
-block2_conv2 (Conv2D)        (None, 112, 112, 128)     147584
-_________________________________________________________________
-block2_pool (MaxPooling2D)   (None, 56, 56, 128)       0
-_________________________________________________________________
-block3_conv1 (Conv2D)        (None, 56, 56, 256)       295168
-_________________________________________________________________
-block3_conv2 (Conv2D)        (None, 56, 56, 256)       590080
-_________________________________________________________________
-block3_conv3 (Conv2D)        (None, 56, 56, 256)       590080
-_________________________________________________________________
-block3_pool (MaxPooling2D)   (None, 28, 28, 256)       0
-_________________________________________________________________
-block4_conv1 (Conv2D)        (None, 28, 28, 512)       1180160
-_________________________________________________________________
-block4_conv2 (Conv2D)        (None, 28, 28, 512)       2359808
-_________________________________________________________________
-block4_conv3 (Conv2D)        (None, 28, 28, 512)       2359808
-_________________________________________________________________
-block4_pool (MaxPooling2D)   (None, 14, 14, 512)       0
-_________________________________________________________________
-block5_conv1 (Conv2D)        (None, 14, 14, 512)       2359808
-_________________________________________________________________
-block5_conv2 (Conv2D)        (None, 14, 14, 512)       2359808
-_________________________________________________________________
-block5_conv3 (Conv2D)        (None, 14, 14, 512)       2359808
-_________________________________________________________________
-block5_pool (MaxPooling2D)   (None, 7, 7, 512)         0
-_________________________________________________________________
-flatten (Flatten)            (None, 25088)             0
-_________________________________________________________________
-fc1 (Dense)                  (None, 4096)              102764544
-_________________________________________________________________
-fc2 (Dense)                  (None, 4096)              16781312
-_________________________________________________________________
-predictions (Dense)          (None, 1000)              4097000
-=================================================================
-Total params: 138,357,544
-Trainable params: 138,357,544
-Non-trainable params: 0
-_________________________________________________________________
-</pre></div></div>
+<div class="output_area rendered_html docutils container">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre></div>
 </div>
 </section>
 </section>
@@ -345,7 +373,7 @@ plt.show()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1/1 [==============================] - 5s 5s/step - Score: -26.6444 - TotalVariation2D: 91.6567 - Norm: 38.1966
+<span class="ansi-bold">200/200</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">131s</span> 655ms/step - Score: 383.8325 - TotalVariation2D: 10.1696 - Norm: 38.4541
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -360,8 +388,8 @@ plt.show()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 8.27 s, sys: 1.61 s, total: 9.88 s
-Wall time: 5.59 s
+CPU times: user 10min 9s, sys: 39.7 s, total: 10min 48s
+Wall time: 2min 11s
 </pre></div></div>
 </div>
 </section>
@@ -428,338 +456,23 @@ plt.show()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
- 14/200 [=&gt;............................] - ETA: 28:42 - Score: 181.4960 - TotalVariation2D: 53.8528 - Norm: 37.8567
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-ERROR:root:Internal Python error in the inspect module.
-Below is the traceback from this internal error.
-
-ERROR:root:Internal Python error in the inspect module.
-Below is the traceback from this internal error.
-
+<span class="ansi-bold">200/200</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">358s</span> 2s/step - Score: 403.1880 - TotalVariation2D: 10.4963 - Norm: 38.4931
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-Traceback (most recent call last):
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/magics/execution.py&#34;, line 1335, in time
-    exec(code, glob, local_ns)
-  File &#34;&lt;timed exec&gt;&#34;, line 4, in &lt;module&gt;
-  File &#34;/home/keisen/tf-keras-vis/tf_keras_vis/activation_maximization/__init__.py&#34;, line 235, in __call__
-    unconnected_gradients=unconnected_gradients)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/eager/backprop.py&#34;, line 1014, in gradient
-    unconnected_gradients=unconnected_gradients)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/eager/imperative_grad.py&#34;, line 76, in imperative_grad
-    compat.as_str(unconnected_gradients.value))
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/eager/backprop.py&#34;, line 138, in _gradient_function
-    return grad_fn(mock_op, *out_grads)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/ops/nn_grad.py&#34;, line 596, in _Conv2DGrad
-    data_format=data_format),
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/ops/gen_nn_ops.py&#34;, line 1356, in conv2d_backprop_input
-    &#34;dilations&#34;, dilations)
-KeyboardInterrupt
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py&#34;, line 2099, in showtraceback
-    stb = value._render_traceback_()
-AttributeError: &#39;KeyboardInterrupt&#39; object has no attribute &#39;_render_traceback_&#39;
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 1101, in get_records
-    return _fixed_getinnerframes(etb, number_of_lines_of_context, tb_offset)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 248, in wrapped
-    return f(*args, **kwargs)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 281, in _fixed_getinnerframes
-    records = fix_frame_records_filenames(inspect.getinnerframes(etb, context))
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/inspect.py&#34;, line 1502, in getinnerframes
-    frameinfo = (tb.tb_frame,) + getframeinfo(tb, context)
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/inspect.py&#34;, line 1460, in getframeinfo
-    filename = getsourcefile(frame) or getfile(frame)
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/inspect.py&#34;, line 696, in getsourcefile
-    if getattr(getmodule(object, filename), &#39;__loader__&#39;, None) is not None:
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/inspect.py&#34;, line 742, in getmodule
-    os.path.realpath(f)] = module.__name__
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/posixpath.py&#34;, line 395, in realpath
-    path, ok = _joinrealpath(filename[:0], filename, {})
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/posixpath.py&#34;, line 428, in _joinrealpath
-    newpath = join(path, name)
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/posixpath.py&#34;, line 87, in join
-    if b.startswith(sep):
-KeyboardInterrupt
-Traceback (most recent call last):
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/magics/execution.py&#34;, line 1335, in time
-    exec(code, glob, local_ns)
-  File &#34;&lt;timed exec&gt;&#34;, line 4, in &lt;module&gt;
-  File &#34;/home/keisen/tf-keras-vis/tf_keras_vis/activation_maximization/__init__.py&#34;, line 235, in __call__
-    unconnected_gradients=unconnected_gradients)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/eager/backprop.py&#34;, line 1014, in gradient
-    unconnected_gradients=unconnected_gradients)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/eager/imperative_grad.py&#34;, line 76, in imperative_grad
-    compat.as_str(unconnected_gradients.value))
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/eager/backprop.py&#34;, line 138, in _gradient_function
-    return grad_fn(mock_op, *out_grads)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/ops/nn_grad.py&#34;, line 596, in _Conv2DGrad
-    data_format=data_format),
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/ops/gen_nn_ops.py&#34;, line 1356, in conv2d_backprop_input
-    &#34;dilations&#34;, dilations)
-KeyboardInterrupt
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py&#34;, line 2099, in showtraceback
-    stb = value._render_traceback_()
-AttributeError: &#39;KeyboardInterrupt&#39; object has no attribute &#39;_render_traceback_&#39;
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py&#34;, line 3553, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;/tmp/ipykernel_13067/3193510264.py&#34;, line 1, in &lt;module&gt;
-    get_ipython().run_cell_magic(&#39;time&#39;, &#39;&#39;, &#34;\nfrom tf_keras_vis.activation_maximization.callbacks import Progress\n\n# Generate maximized activation\nactivations = activation_maximization(scores, seed_input=seed_input, callbacks=[Progress()])\nactivations = activations.astype(np.uint8)\n\n# Render\nf, ax = plt.subplots(nrows=1, ncols=3, figsize=(12, 4))\nfor i, filter_number in enumerate(filter_numbers):\n    ax[i].set_title(&#39;filter[{:03d}]&#39;.format(filter_number), fontsize=16)\n    ax[i].imshow(activations[i])\n    ax[i].axis(&#39;off&#39;)\nplt.tight_layout()\nplt.show()\n&#34;)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py&#34;, line 2473, in run_cell_magic
-    result = fn(*args, **kwargs)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/decorator.py&#34;, line 232, in fun
-    return caller(func, *(extras + args), **kw)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/magic.py&#34;, line 187, in &lt;lambda&gt;
-    call = lambda f, *a, **k: f(*a, **k)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/magics/execution.py&#34;, line 1342, in time
-    self.shell.showtraceback()
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py&#34;, line 2102, in showtraceback
-    value, tb, tb_offset=tb_offset)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 1368, in structured_traceback
-    self, etype, value, tb, tb_offset, number_of_lines_of_context)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 1268, in structured_traceback
-    self, etype, value, tb, tb_offset, number_of_lines_of_context
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 1125, in structured_traceback
-    tb_offset)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 1082, in format_exception_as_a_whole
-    last_unique, recursion_repeat = find_recursion(orig_etype, evalue, records)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 382, in find_recursion
-    return len(records), 0
-TypeError: object of type &#39;NoneType&#39; has no len()
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py&#34;, line 2099, in showtraceback
-    stb = value._render_traceback_()
-AttributeError: &#39;TypeError&#39; object has no attribute &#39;_render_traceback_&#39;
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 1101, in get_records
-    return _fixed_getinnerframes(etb, number_of_lines_of_context, tb_offset)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 248, in wrapped
-    return f(*args, **kwargs)
-  File &#34;/home/keisen/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py&#34;, line 281, in _fixed_getinnerframes
-    records = fix_frame_records_filenames(inspect.getinnerframes(etb, context))
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/inspect.py&#34;, line 1502, in getinnerframes
-    frameinfo = (tb.tb_frame,) + getframeinfo(tb, context)
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/inspect.py&#34;, line 1460, in getframeinfo
-    filename = getsourcefile(frame) or getfile(frame)
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/inspect.py&#34;, line 696, in getsourcefile
-    if getattr(getmodule(object, filename), &#39;__loader__&#39;, None) is not None:
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/inspect.py&#34;, line 742, in getmodule
-    os.path.realpath(f)] = module.__name__
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/posixpath.py&#34;, line 395, in realpath
-    path, ok = _joinrealpath(filename[:0], filename, {})
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/posixpath.py&#34;, line 443, in _joinrealpath
-    path, ok = _joinrealpath(path, os.readlink(newpath), seen)
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/posixpath.py&#34;, line 429, in _joinrealpath
-    if not islink(newpath):
-  File &#34;/home/keisen/.pyenv/versions/3.7.17/lib/python3.7/posixpath.py&#34;, line 171, in islink
-    st = os.lstat(path)
-KeyboardInterrupt
-</pre></div></div>
+<img alt="../_images/examples_visualize_conv_filters_17_1.png" src="../_images/examples_visualize_conv_filters_17_1.png" />
+</div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/magics/execution.py</span> in <span class="ansi-cyan-fg">time</span><span class="ansi-blue-fg">(self, line, cell, local_ns)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1334</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1335</span><span class="ansi-red-fg">                 </span>exec<span class="ansi-blue-fg">(</span>code<span class="ansi-blue-fg">,</span> glob<span class="ansi-blue-fg">,</span> local_ns<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1336</span>                 out<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span>
-
-<span class="ansi-green-fg">&lt;timed exec&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-
-<span class="ansi-green-fg">~/tf-keras-vis/tf_keras_vis/activation_maximization/__init__.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">(self, score, seed_input, input_range, input_modifiers, regularizers, steps, optimizer, gradient_modifier, callbacks, training, unconnected_gradients, activation_modifiers)</span>
-<span class="ansi-green-intense-fg ansi-bold">    234</span>                                       input_variables<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">--&gt; 235</span><span class="ansi-red-fg">                                       unconnected_gradients=unconnected_gradients)
-</span><span class="ansi-green-intense-fg ansi-bold">    236</span>                 grads <span class="ansi-blue-fg">=</span> listify<span class="ansi-blue-fg">(</span>grads<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/eager/backprop.py</span> in <span class="ansi-cyan-fg">gradient</span><span class="ansi-blue-fg">(self, target, sources, output_gradients, unconnected_gradients)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1013</span>         sources_raw<span class="ansi-blue-fg">=</span>flat_sources_raw<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">-&gt; 1014</span><span class="ansi-red-fg">         unconnected_gradients=unconnected_gradients)
-</span><span class="ansi-green-intense-fg ansi-bold">   1015</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/eager/imperative_grad.py</span> in <span class="ansi-cyan-fg">imperative_grad</span><span class="ansi-blue-fg">(tape, target, sources, output_gradients, sources_raw, unconnected_gradients)</span>
-<span class="ansi-green-intense-fg ansi-bold">     75</span>       sources_raw<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">---&gt; 76</span><span class="ansi-red-fg">       compat.as_str(unconnected_gradients.value))
-</span>
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/eager/backprop.py</span> in <span class="ansi-cyan-fg">_gradient_function</span><span class="ansi-blue-fg">(op_name, attr_tuple, num_inputs, inputs, outputs, out_grads, skip_input_indices)</span>
-<span class="ansi-green-intense-fg ansi-bold">    137</span>
-<span class="ansi-green-fg">--&gt; 138</span><span class="ansi-red-fg">   </span><span class="ansi-green-fg">return</span> grad_fn<span class="ansi-blue-fg">(</span>mock_op<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>out_grads<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    139</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/ops/nn_grad.py</span> in <span class="ansi-cyan-fg">_Conv2DGrad</span><span class="ansi-blue-fg">(op, grad)</span>
-<span class="ansi-green-intense-fg ansi-bold">    595</span>           use_cudnn_on_gpu<span class="ansi-blue-fg">=</span>use_cudnn_on_gpu<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">--&gt; 596</span><span class="ansi-red-fg">           data_format=data_format),
-</span><span class="ansi-green-intense-fg ansi-bold">    597</span>       gen_nn_ops.conv2d_backprop_filter(
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/tensorflow_core/python/ops/gen_nn_ops.py</span> in <span class="ansi-cyan-fg">conv2d_backprop_input</span><span class="ansi-blue-fg">(input_sizes, filter, out_backprop, strides, padding, use_cudnn_on_gpu, explicit_paddings, data_format, dilations, name)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1355</span>         <span class="ansi-blue-fg">&#34;explicit_paddings&#34;</span><span class="ansi-blue-fg">,</span> explicit_paddings<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;data_format&#34;</span><span class="ansi-blue-fg">,</span> data_format<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">-&gt; 1356</span><span class="ansi-red-fg">         &#34;dilations&#34;, dilations)
-</span><span class="ansi-green-intense-fg ansi-bold">   1357</span>       <span class="ansi-green-fg">return</span> _result
-
-<span class="ansi-red-fg">KeyboardInterrupt</span>:
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">showtraceback</span><span class="ansi-blue-fg">(self, exc_tuple, filename, tb_offset, exception_only, running_compiled_code)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2098</span>                         <span class="ansi-red-fg"># in the engines. This should return a list of strings.</span>
-<span class="ansi-green-fg">-&gt; 2099</span><span class="ansi-red-fg">                         </span>stb <span class="ansi-blue-fg">=</span> value<span class="ansi-blue-fg">.</span>_render_traceback_<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2100</span>                     <span class="ansi-green-fg">except</span> Exception<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-red-fg">AttributeError</span>: &#39;KeyboardInterrupt&#39; object has no attribute &#39;_render_traceback_&#39;
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-    <span class="ansi-red-fg">[... skipping hidden 1 frame]</span>
-
-<span class="ansi-green-fg">/tmp/ipykernel_13067/3193510264.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_cell_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;time&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;\nfrom tf_keras_vis.activation_maximization.callbacks import Progress\n\n# Generate maximized activation\nactivations = activation_maximization(scores, seed_input=seed_input, callbacks=[Progress()])\nactivations = activations.astype(np.uint8)\n\n# Render\nf, ax = plt.subplots(nrows=1, ncols=3, figsize=(12, 4))\nfor i, filter_number in enumerate(filter_numbers):\n    ax[i].set_title(&#39;filter[{:03d}]&#39;.format(filter_number), fontsize=16)\n    ax[i].imshow(activations[i])\n    ax[i].axis(&#39;off&#39;)\nplt.tight_layout()\nplt.show()\n&#34;</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2472</span>                 args <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span>magic_arg_s<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">-&gt; 2473</span><span class="ansi-red-fg">                 </span>result <span class="ansi-blue-fg">=</span> fn<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2474</span>             <span class="ansi-green-fg">return</span> result
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/decorator.py</span> in <span class="ansi-cyan-fg">fun</span><span class="ansi-blue-fg">(*args, **kw)</span>
-<span class="ansi-green-intense-fg ansi-bold">    231</span>                 args<span class="ansi-blue-fg">,</span> kw <span class="ansi-blue-fg">=</span> fix<span class="ansi-blue-fg">(</span>args<span class="ansi-blue-fg">,</span> kw<span class="ansi-blue-fg">,</span> sig<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 232</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> caller<span class="ansi-blue-fg">(</span>func<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span><span class="ansi-blue-fg">(</span>extras <span class="ansi-blue-fg">+</span> args<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kw<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    233</span>     fun<span class="ansi-blue-fg">.</span>__name__ <span class="ansi-blue-fg">=</span> func<span class="ansi-blue-fg">.</span>__name__
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/magic.py</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(f, *a, **k)</span>
-<span class="ansi-green-intense-fg ansi-bold">    186</span>     <span class="ansi-green-fg">def</span> magic_deco<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 187</span><span class="ansi-red-fg">         </span>call <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span> f<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">:</span> f<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    188</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/magics/execution.py</span> in <span class="ansi-cyan-fg">time</span><span class="ansi-blue-fg">(self, line, cell, local_ns)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1341</span>             <span class="ansi-green-fg">except</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1342</span><span class="ansi-red-fg">                 </span>self<span class="ansi-blue-fg">.</span>shell<span class="ansi-blue-fg">.</span>showtraceback<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1343</span>                 <span class="ansi-green-fg">return</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">showtraceback</span><span class="ansi-blue-fg">(self, exc_tuple, filename, tb_offset, exception_only, running_compiled_code)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2101</span>                         stb = self.InteractiveTB.structured_traceback(etype,
-<span class="ansi-green-fg">-&gt; 2102</span><span class="ansi-red-fg">                                             value, tb, tb_offset=tb_offset)
-</span><span class="ansi-green-intense-fg ansi-bold">   2103</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ansi-cyan-fg">structured_traceback</span><span class="ansi-blue-fg">(self, etype, value, tb, tb_offset, number_of_lines_of_context)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1367</span>         return FormattedTB.structured_traceback(
-<span class="ansi-green-fg">-&gt; 1368</span><span class="ansi-red-fg">             self, etype, value, tb, tb_offset, number_of_lines_of_context)
-</span><span class="ansi-green-intense-fg ansi-bold">   1369</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ansi-cyan-fg">structured_traceback</span><span class="ansi-blue-fg">(self, etype, value, tb, tb_offset, number_of_lines_of_context)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1267</span>             return VerboseTB.structured_traceback(
-<span class="ansi-green-fg">-&gt; 1268</span><span class="ansi-red-fg">                 </span>self<span class="ansi-blue-fg">,</span> etype<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">,</span> tb<span class="ansi-blue-fg">,</span> tb_offset<span class="ansi-blue-fg">,</span> number_of_lines_of_context
-<span class="ansi-green-intense-fg ansi-bold">   1269</span>             )
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ansi-cyan-fg">structured_traceback</span><span class="ansi-blue-fg">(self, etype, evalue, etb, tb_offset, number_of_lines_of_context)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1124</span>         formatted_exception = self.format_exception_as_a_whole(etype, evalue, etb, number_of_lines_of_context,
-<span class="ansi-green-fg">-&gt; 1125</span><span class="ansi-red-fg">                                                                tb_offset)
-</span><span class="ansi-green-intense-fg ansi-bold">   1126</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ansi-cyan-fg">format_exception_as_a_whole</span><span class="ansi-blue-fg">(self, etype, evalue, etb, number_of_lines_of_context, tb_offset)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1081</span>
-<span class="ansi-green-fg">-&gt; 1082</span><span class="ansi-red-fg">         </span>last_unique<span class="ansi-blue-fg">,</span> recursion_repeat <span class="ansi-blue-fg">=</span> find_recursion<span class="ansi-blue-fg">(</span>orig_etype<span class="ansi-blue-fg">,</span> evalue<span class="ansi-blue-fg">,</span> records<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1083</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ansi-cyan-fg">find_recursion</span><span class="ansi-blue-fg">(etype, value, records)</span>
-<span class="ansi-green-intense-fg ansi-bold">    381</span>     <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> is_recursion_error<span class="ansi-blue-fg">(</span>etype<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">,</span> records<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 382</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> len<span class="ansi-blue-fg">(</span>records<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0</span>
-<span class="ansi-green-intense-fg ansi-bold">    383</span>
-
-<span class="ansi-red-fg">TypeError</span>: object of type &#39;NoneType&#39; has no len()
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">showtraceback</span><span class="ansi-blue-fg">(self, exc_tuple, filename, tb_offset, exception_only, running_compiled_code)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2098</span>                         <span class="ansi-red-fg"># in the engines. This should return a list of strings.</span>
-<span class="ansi-green-fg">-&gt; 2099</span><span class="ansi-red-fg">                         </span>stb <span class="ansi-blue-fg">=</span> value<span class="ansi-blue-fg">.</span>_render_traceback_<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2100</span>                     <span class="ansi-green-fg">except</span> Exception<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-red-fg">AttributeError</span>: &#39;TypeError&#39; object has no attribute &#39;_render_traceback_&#39;
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-    <span class="ansi-red-fg">[... skipping hidden 1 frame]</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">showtraceback</span><span class="ansi-blue-fg">(self, exc_tuple, filename, tb_offset, exception_only, running_compiled_code)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2100</span>                     <span class="ansi-green-fg">except</span> Exception<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   2101</span>                         stb = self.InteractiveTB.structured_traceback(etype,
-<span class="ansi-green-fg">-&gt; 2102</span><span class="ansi-red-fg">                                             value, tb, tb_offset=tb_offset)
-</span><span class="ansi-green-intense-fg ansi-bold">   2103</span>
-<span class="ansi-green-intense-fg ansi-bold">   2104</span>                     self<span class="ansi-blue-fg">.</span>_showtraceback<span class="ansi-blue-fg">(</span>etype<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">,</span> stb<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ansi-cyan-fg">structured_traceback</span><span class="ansi-blue-fg">(self, etype, value, tb, tb_offset, number_of_lines_of_context)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1366</span>             self<span class="ansi-blue-fg">.</span>tb <span class="ansi-blue-fg">=</span> tb
-<span class="ansi-green-intense-fg ansi-bold">   1367</span>         return FormattedTB.structured_traceback(
-<span class="ansi-green-fg">-&gt; 1368</span><span class="ansi-red-fg">             self, etype, value, tb, tb_offset, number_of_lines_of_context)
-</span><span class="ansi-green-intense-fg ansi-bold">   1369</span>
-<span class="ansi-green-intense-fg ansi-bold">   1370</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ansi-cyan-fg">structured_traceback</span><span class="ansi-blue-fg">(self, etype, value, tb, tb_offset, number_of_lines_of_context)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1266</span>             <span class="ansi-red-fg"># Verbose modes need a full traceback</span>
-<span class="ansi-green-intense-fg ansi-bold">   1267</span>             return VerboseTB.structured_traceback(
-<span class="ansi-green-fg">-&gt; 1268</span><span class="ansi-red-fg">                 </span>self<span class="ansi-blue-fg">,</span> etype<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">,</span> tb<span class="ansi-blue-fg">,</span> tb_offset<span class="ansi-blue-fg">,</span> number_of_lines_of_context
-<span class="ansi-green-intense-fg ansi-bold">   1269</span>             )
-<span class="ansi-green-intense-fg ansi-bold">   1270</span>         <span class="ansi-green-fg">elif</span> mode <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;Minimal&#39;</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ansi-cyan-fg">structured_traceback</span><span class="ansi-blue-fg">(self, etype, evalue, etb, tb_offset, number_of_lines_of_context)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1123</span>
-<span class="ansi-green-intense-fg ansi-bold">   1124</span>         formatted_exception = self.format_exception_as_a_whole(etype, evalue, etb, number_of_lines_of_context,
-<span class="ansi-green-fg">-&gt; 1125</span><span class="ansi-red-fg">                                                                tb_offset)
-</span><span class="ansi-green-intense-fg ansi-bold">   1126</span>
-<span class="ansi-green-intense-fg ansi-bold">   1127</span>         colors <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>Colors  <span class="ansi-red-fg"># just a shorthand + quicker name lookup</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ansi-cyan-fg">format_exception_as_a_whole</span><span class="ansi-blue-fg">(self, etype, evalue, etb, number_of_lines_of_context, tb_offset)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1080</span>
-<span class="ansi-green-intense-fg ansi-bold">   1081</span>
-<span class="ansi-green-fg">-&gt; 1082</span><span class="ansi-red-fg">         </span>last_unique<span class="ansi-blue-fg">,</span> recursion_repeat <span class="ansi-blue-fg">=</span> find_recursion<span class="ansi-blue-fg">(</span>orig_etype<span class="ansi-blue-fg">,</span> evalue<span class="ansi-blue-fg">,</span> records<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1083</span>
-<span class="ansi-green-intense-fg ansi-bold">   1084</span>         frames <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>format_records<span class="ansi-blue-fg">(</span>records<span class="ansi-blue-fg">,</span> last_unique<span class="ansi-blue-fg">,</span> recursion_repeat<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/tkv37/lib/python3.7/site-packages/IPython/core/ultratb.py</span> in <span class="ansi-cyan-fg">find_recursion</span><span class="ansi-blue-fg">(etype, value, records)</span>
-<span class="ansi-green-intense-fg ansi-bold">    380</span>     <span class="ansi-red-fg"># first frame (from in to out) that looks different.</span>
-<span class="ansi-green-intense-fg ansi-bold">    381</span>     <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> is_recursion_error<span class="ansi-blue-fg">(</span>etype<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">,</span> records<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 382</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> len<span class="ansi-blue-fg">(</span>records<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">0</span>
-<span class="ansi-green-intense-fg ansi-bold">    383</span>
-<span class="ansi-green-intense-fg ansi-bold">    384</span>     <span class="ansi-red-fg"># Select filename, lineno, func_name to track frames with</span>
-
-<span class="ansi-red-fg">TypeError</span>: object of type &#39;NoneType&#39; has no len()
+CPU times: user 33min 48s, sys: 1min 30s, total: 35min 18s
+Wall time: 5min 58s
 </pre></div></div>
 </div>
 </section>
